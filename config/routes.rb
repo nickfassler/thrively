@@ -1,3 +1,5 @@
 Thrively::Application.routes.draw do
-  root to: 'Clearance::Sessions#new'
+  root to: 'dashboard#index'
+
+  resource :dashboard, only: :show
 end
