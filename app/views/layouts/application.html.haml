@@ -1,0 +1,26 @@
+!!! 5
+
+%head
+  %meta(charset='UTF-8')
+  %title Thrively #{".: #{yield(:title)}" if yield(:title).present?}
+  = stylesheet_link_tag :application, media: 'all'
+  = csrf_meta_tags
+
+%body
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        = link_to 'Thrively', root_path, class: 'brand'
+
+        .nav-collapse.collapse
+          %ul.nav
+            %li
+              - if signed_in?
+                = link_to 'Sign out', sign_out_path, method: :delete
+              - else
+                = link_to 'Sign in', sign_in_path
+
+  .container
+    = render 'flashes'
+    = yield
+    = render 'javascript'
