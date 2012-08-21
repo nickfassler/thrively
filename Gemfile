@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'bootstrap-sass', '2.0.4.0'
 gem 'clearance', '1.0.0.rc1'
 gem 'haml', '3.1.6'
@@ -12,7 +14,9 @@ gem 'thin', '1.4.1'
 
 group :test do
   gem 'database_cleaner', '0.8.0'
+  gem 'capybara-webkit', '0.12.1'
   gem 'factory_girl_rails', '4.0.0'
+  gem 'launchy', '2.1.2'
   gem 'rspec-spies', '2.1.0'
   gem 'shoulda-matchers', '1.2.0'
   gem 'timecop', '0.4.5'
