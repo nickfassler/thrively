@@ -1,0 +1,11 @@
+%h2 Request Feedback
+
+= form_for @request do |f|
+  = f.fields_for :requested_feedbacks do |rf|
+    = rf.label :email, 'Recipients'
+    = rf.text_field :email
+  = f.label :subject, 'Feedback Subject'
+  = f.text_field :subject
+  = f.label :message, 'Email Message'
+  = f.text_area :message
+  = f.submit 'Send'
