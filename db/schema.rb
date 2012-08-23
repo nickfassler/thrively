@@ -14,11 +14,20 @@
 ActiveRecord::Schema.define(:version => 20120822163157) do
 
   create_table "feedbacks", :force => true do |t|
-    t.string  "subject"
-    t.text    "plus"
-    t.text    "delta"
-    t.integer "giver_id"
-    t.integer "receiver_id"
+    t.string   "subject"
+    t.text     "plus"
+    t.text     "delta"
+    t.integer  "giver_id"
+    t.integer  "receiver_id"
+    t.string   "giver_type"
+    t.string   "receiver_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "guests", :force => true do |t|
+    t.string   "email",      :null => false
+    t.datetime "created_at", :null => false
   end
 
   create_table "requested_feedbacks", :force => true do |t|

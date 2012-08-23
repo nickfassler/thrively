@@ -1,0 +1,13 @@
+%h2 Give Feedback
+
+= form_for @feedback do |f|
+  = f.label 'Subject'
+  = f.text_field :subject
+
+  = f.label :plus, 'Did well'
+  = f.text_field :plus, rows: 2
+
+  = f.label :delta, 'Improve'
+  = f.text_area :delta, rows: 2
+  %br
+  = f.submit 'Send'
