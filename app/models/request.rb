@@ -6,5 +6,6 @@ class Request < ActiveRecord::Base
   has_many :users, through: :requested_feedbacks
   has_many :feedbacks
 
-  accepts_nested_attributes_for :requested_feedbacks
+  accepts_nested_attributes_for :requested_feedbacks,
+    reject_if: ->(attributes) { attributes[:email].blank? }
 end
