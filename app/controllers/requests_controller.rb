@@ -8,12 +8,14 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(params[:request])
+    @request.user_id = current_user.id
 
     if @request.save
-      flash[:success] = 'Feedback request sent successfully'
-      redirect_to dashboard_path
+      RequestMailer.new_request(@request).deliver
+      redirect_to dashboard_path,
+        flash: { success: 'Feedback request sent successfully' }
     else
-      flash[:error] = 'An error prevented this request form being sent'
+      flash.now[:error] = 'An error prevented this request form being sent'
       render action: 'new'
     end
   end

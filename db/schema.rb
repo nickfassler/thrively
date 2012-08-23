@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20120822163157) do
 
-  create_table "feedback", :force => true do |t|
+  create_table "feedbacks", :force => true do |t|
     t.string  "subject"
     t.text    "plus"
     t.text    "delta"

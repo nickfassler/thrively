@@ -13,7 +13,7 @@ class CreateFeedbacksAndRequests < ActiveRecord::Migration
       t.string :email
     end
 
-    create_table :feedback do |t|
+    create_table :feedbacks do |t|
       t.string :subject
       t.text :plus
       t.text :delta
