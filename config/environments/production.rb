@@ -9,4 +9,11 @@ Thrively::Application.configure do
   config.consider_all_requests_local = false
   config.i18n.fallbacks = true
   config.serve_static_assets = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:        'smtp.mandrillapp.com',
+    port:           25,
+    user_name:      ENV['MANDRILL_USERNAME'],
+    password:       ENV['MANDRILL_PASSWORD']
+  }
 end
