@@ -3,7 +3,7 @@ class CreateGuests < ActiveRecord::Migration
     create_table :guests do |t|
       t.string :email, null: false
 
-      t.datetime :created_at, null: false
+      t.timestamps
     end
   end
 end

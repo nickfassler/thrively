@@ -1,14 +1,13 @@
 %h2 Request Feedback
 
-= nested_form_for @request do |f|
-  = label_tag 'Recipients'
-  = f.fields_for :requested_feedbacks do |rf|
-    = rf.text_field :email, placeholder: 'Email', class: 'email'
-  = f.link_to_add 'add', :requested_feedbacks
+= form_for @request do |f|
+  = email_form_fields
 
   = f.label :subject, 'Feedback Subject'
   = f.text_field :subject
+
   = f.label :message, 'Email Message'
   = f.text_area :message, rows: 2
+
   %br
   = f.submit 'Send'

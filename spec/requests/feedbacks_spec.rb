@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Feedbacks' do
   background do
-    @requester = create(:user, email: 'user@example.com')
+    @receiver = create(:user, email: 'user@example.com')
     @giver = create(:user, email: 'user2@example.com')
   end
 
@@ -10,7 +10,7 @@ feature 'Feedbacks' do
     sign_in_as @giver
     click_link 'Give feedback'
     fill_in 'Email', with: @receiver.email
-    fill_in 'Subject', with: 'Test feedback subject'
+    fill_in 'Feedback subject', with: 'Test feedback subject'
     fill_in 'Did well', with: 'Something'
     fill_in 'Improve', with: 'Something'
     click_button 'Send'
@@ -22,7 +22,7 @@ feature 'Feedbacks' do
   scenario 'User must fill in all fields to give feedback' do
     sign_in_as @giver
     click_link 'Give feedback'
-    fill_in 'Subject', with: 'Test feedback subject'
+    fill_in 'Feedback subject', with: 'Test feedback subject'
     click_button 'Send'
 
     current_path.should == feedbacks_path

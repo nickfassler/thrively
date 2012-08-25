@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822163157) do
+ActiveRecord::Schema.define(:version => 20120825010341) do
 
   create_table "feedbacks", :force => true do |t|
     t.string   "subject"
     t.text     "plus"
     t.text     "delta"
-    t.integer  "giver_id"
-    t.integer  "receiver_id"
-    t.string   "giver_type"
-    t.string   "receiver_type"
+    t.integer  "giver_id",      :null => false
+    t.integer  "receiver_id",   :null => false
+    t.string   "giver_type",    :null => false
+    t.string   "receiver_type", :null => false
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -28,15 +28,19 @@ ActiveRecord::Schema.define(:version => 20120822163157) do
   create_table "guests", :force => true do |t|
     t.string   "email",      :null => false
     t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "requested_feedbacks", :force => true do |t|
-    t.integer "request_id"
-    t.string  "email"
+    t.integer  "request_id", :null => false
+    t.integer  "giver_id",   :null => false
+    t.string   "giver_type", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "requests", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    :null => false
     t.string   "subject"
     t.text     "message"
     t.datetime "created_at", :null => false

@@ -35,13 +35,24 @@ feature 'Requests' do
     last_email.to.should include(@giver2.email)
   end
 
-  scenario 'User cannot submit feedback request without valid email' do
+  scenario 'User cannot submit feedback request without email' do
     sign_in_as @requester
     click_link 'Request feedback'
     click_button 'Send'
 
     current_path.should == requests_path
-    page.should have_content('error prevented')
+    page.should have_content('There is an error')
+    last_email.should be_nil
+  end
+
+  scenario 'User cannot submit feedback with invalid email' do
+    sign_in_as @requester
+    click_link 'Request feedback'
+    fill_in_email('bad@email')
+    click_button 'Send'
+
+    current_path.should == requests_path
+    page.should have_content('There is an error')
     last_email.should be_nil
   end
 

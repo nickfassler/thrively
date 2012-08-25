@@ -3,11 +3,10 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    @request.requested_feedbacks.build
   end
 
   def create
-    @request = Request.new(params[:request])
+    @request = Request.new(params[:request].update(emails: params[:emails]))
     @request.user_id = current_user.id
 
     if @request.save
@@ -15,7 +14,7 @@ class RequestsController < ApplicationController
       redirect_to dashboard_path,
         flash: { success: 'Feedback request sent successfully' }
     else
-      flash.now[:error] = 'An error prevented this request form being sent'
+      flash.now[:error] = 'There is an error in your input'
       render action: 'new'
     end
   end
