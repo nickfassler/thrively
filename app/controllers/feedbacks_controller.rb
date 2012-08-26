@@ -1,7 +1,7 @@
 class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
-    @feedback.receiver = Guest.new
+    @feedback.receiver = User.new
   end
 
   def create

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 feature 'Feedbacks' do
   background do
-    @receiver = create(:user, email: 'user@example.com')
-    @giver = create(:user, email: 'user2@example.com')
+    @receiver = create(:user)
+    @giver = create(:user)
   end
 
   scenario 'User can give feedback to another user' do

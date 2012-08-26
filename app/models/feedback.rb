@@ -5,12 +5,11 @@ class Feedback < ActiveRecord::Base
   belongs_to :giver, polymorphic: true
   belongs_to :receiver, polymorphic: true
 
-  validates :receiver_id, presence: true
-  validates :giver_id, presence: true
+  validates :receiver, presence: true
+  validates :giver, presence: true
   validates :subject, presence: true
   validates :plus, presence: true
   validates :delta, presence: true
-  validates_associated :receiver, :giver
 
   def receiver_attributes=(attributes)
     email = attributes[:email]
