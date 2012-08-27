@@ -3,6 +3,15 @@ FactoryGirl.define do
     "user#{n}@example.com"
   end
 
+  factory :feedback do
+    association :receiver, factory: :user
+    association :giver, factory: :user
+
+    subject 'Feedback for test'
+    plus    'Good job'
+    delta   'Improve your specs'
+  end
+
   factory :guest do
     email
   end
@@ -12,6 +21,17 @@ FactoryGirl.define do
 
     subject 'Please provide feedback'
     message 'Dear friend, I would like your feedback'
+
+    after(:build) do |request|
+      if request.requested_feedbacks.empty?
+        request.requested_feedbacks = [build(:requested_feedback, request: request)]
+      end
+    end
+  end
+
+  factory :requested_feedback do
+    association :giver, factory: :user
+    request
   end
 
   factory :user do

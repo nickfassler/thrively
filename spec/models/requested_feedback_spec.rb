@@ -9,4 +9,13 @@ describe RequestedFeedback do
   it { should_not allow_mass_assignment_of(:request_id) }
 
   it { should validate_presence_of(:giver) }
+
+  describe '#create_history_event' do
+    it 'creates a history event for feedback giver' do
+      requested_feedback = build(:requested_feedback)
+
+      expect { requested_feedback.create_history_event }.to change { HistoryEvent.count }.by(1)
+      HistoryEvent.last.user.should == requested_feedback.giver
+    end
+  end
 end

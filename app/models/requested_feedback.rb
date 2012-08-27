@@ -9,4 +9,10 @@ class RequestedFeedback < ActiveRecord::Base
   def giver_email
     giver.email
   end
+
+  def create_history_event
+    if giver.is_a? User
+      HistoryEvent.create(resource: request, user_id: giver.id)
+    end
+  end
 end

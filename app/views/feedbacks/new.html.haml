@@ -9,9 +9,9 @@
   = f.text_field :subject, placeholder: 'What is the feedback about?'
 
   = f.label :plus, 'Did well'
-  = f.text_field :plus, rows: 2, placeholder: 'Explain what was done well'
+  = f.text_area :plus, rows: 2, placeholder: 'Explain what was done well'
 
   = f.label :delta, 'Improve'
   = f.text_area :delta, rows: 2, placeholder: 'Explain areas for improvement'
   %br
-  = f.submit 'Send'
+  = f.submit 'Send', class: 'btn'

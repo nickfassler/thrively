@@ -14,8 +14,13 @@
 
 @import 'bootstrap';
 
+body {
+  background-image: image-url('bg-texture.png');
+  background-repeat: repeat;
+}
+
 #main-content {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 #flash {
