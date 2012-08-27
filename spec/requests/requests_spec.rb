@@ -7,7 +7,7 @@ feature 'Requests' do
   end
 
   scenario 'User can create a feedback request' do
-    sign_in_as @requester.email
+    sign_in_as @requester
     click_link 'Request feedback'
     fill_in_email(@giver.email)
     fill_in 'Subject', with: 'Test request subject'
@@ -22,7 +22,7 @@ feature 'Requests' do
   scenario 'User can create feedback request with multiple emails', js: true  do
     @giver2 = create(:user, email: 'guest2@example.com')
 
-    sign_in_as @requester.email
+    sign_in_as @requester
     click_link 'Request feedback'
     fill_in_email(@giver.email)
     click_link 'add'
@@ -36,12 +36,23 @@ feature 'Requests' do
   end
 
   scenario 'User cannot submit feedback request without email' do
-    sign_in_as @requester.email
+    sign_in_as @requester
     click_link 'Request feedback'
     click_button 'Send'
 
     current_path.should == requests_path
-    page.should have_content('error prevented')
+    page.should have_content('There is an error')
+    last_email.should be_nil
+  end
+
+  scenario 'User cannot submit feedback with invalid email' do
+    sign_in_as @requester
+    click_link 'Request feedback'
+    fill_in_email('bad@email')
+    click_button 'Send'
+
+    current_path.should == requests_path
+    page.should have_content('There is an error')
     last_email.should be_nil
   end
 
@@ -50,18 +61,5 @@ feature 'Requests' do
 
     current_path.should == sign_in_path
     page.should have_content('Sign in')
-  end
-
-  private
-
-  def fill_in_email(email)
-    all('form input.email').last.set(email)
-  end
-
-  def sign_in_as(email)
-    visit root_path
-    fill_in 'Email', with: email
-    fill_in 'Password', with: 'password'
-    click_button 'Sign in'
   end
 end

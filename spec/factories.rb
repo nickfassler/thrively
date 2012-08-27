@@ -3,6 +3,10 @@ FactoryGirl.define do
     "user#{n}@example.com"
   end
 
+  factory :guest do
+    email
+  end
+
   factory :request do
     user
 

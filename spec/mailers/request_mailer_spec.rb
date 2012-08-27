@@ -4,8 +4,7 @@ describe RequestMailer do
   describe 'new_request' do
     it 'contructs the email' do
       request = create(:request,
-        requested_feedbacks_attributes: [
-          { email: 'guest1@example.com' }, { email: 'guest2@example.com' }]
+        emails: { '0' => 'guest1@example.com', '1' => 'guest2@example.com' }
       )
       mail = RequestMailer.new_request(request)
 
