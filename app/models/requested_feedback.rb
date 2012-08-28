@@ -15,4 +15,8 @@ class RequestedFeedback < ActiveRecord::Base
       HistoryEvent.create(resource: request, user_id: giver.id)
     end
   end
+
+  def notify
+    Mailer.request_sent(request, giver).deliver
+  end
 end
