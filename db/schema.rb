@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120825010341) do
+ActiveRecord::Schema.define(:version => 20120827204608) do
 
   create_table "feedbacks", :force => true do |t|
     t.string   "subject"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20120825010341) do
     t.string   "email",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "history_events", :force => true do |t|
+    t.string   "resource_type", :null => false
+    t.integer  "resource_id",   :null => false
+    t.integer  "user_id",       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "requested_feedbacks", :force => true do |t|

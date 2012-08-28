@@ -8,7 +8,7 @@ feature 'Feedbacks' do
 
   scenario 'User can give feedback to another user' do
     sign_in_as @giver
-    click_link 'Give feedback'
+    click_link 'Give Feedback'
     fill_in 'Email', with: @receiver.email
     fill_in 'Feedback subject', with: 'Test feedback subject'
     fill_in 'Did well', with: 'Something'
@@ -21,7 +21,7 @@ feature 'Feedbacks' do
 
   scenario 'User must fill in all fields to give feedback' do
     sign_in_as @giver
-    click_link 'Give feedback'
+    click_link 'Give Feedback'
     fill_in 'Feedback subject', with: 'Test feedback subject'
     click_button 'Send'
 

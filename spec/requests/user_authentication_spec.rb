@@ -9,7 +9,7 @@ feature 'UserAuthenticaton' do
     fill_in 'Password', with: 'password'
     click_button 'Sign up'
 
-    page.should have_content('Dashboard')
+    page.should have_content('Stream')
   end
 
   scenario 'Existing user signs in and is taken to their dashboard' do
@@ -21,6 +21,6 @@ feature 'UserAuthenticaton' do
     fill_in 'Password', with: 'password'
     click_button 'Sign in'
 
-    page.should have_content('Dashboard')
+    page.should have_content('Stream')
   end
 end

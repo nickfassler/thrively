@@ -8,7 +8,7 @@ feature 'Requests' do
 
   scenario 'User can create a feedback request' do
     sign_in_as @requester
-    click_link 'Request feedback'
+    click_link 'Request Feedback'
     fill_in_email(@giver.email)
     fill_in 'Subject', with: 'Test request subject'
     fill_in 'Email Message', with: 'Hi friend. Please give me feedback.'
@@ -23,7 +23,7 @@ feature 'Requests' do
     @giver2 = create(:user, email: 'guest2@example.com')
 
     sign_in_as @requester
-    click_link 'Request feedback'
+    click_link 'Request Feedback'
     fill_in_email(@giver.email)
     click_link 'add'
     fill_in_email(@giver2.email)
@@ -37,7 +37,7 @@ feature 'Requests' do
 
   scenario 'User cannot submit feedback request without email' do
     sign_in_as @requester
-    click_link 'Request feedback'
+    click_link 'Request Feedback'
     click_button 'Send'
 
     current_path.should == requests_path
@@ -47,7 +47,7 @@ feature 'Requests' do
 
   scenario 'User cannot submit feedback with invalid email' do
     sign_in_as @requester
-    click_link 'Request feedback'
+    click_link 'Request Feedback'
     fill_in_email('bad@email')
     click_button 'Send'
 

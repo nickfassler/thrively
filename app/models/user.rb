@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :requested_feedbacks, through: :requests
   has_many :given_feedbacks, as: :giver, class_name: Feedback
+  has_many :history_events, order: 'created_at DESC'
+
+  def stream_events
+    history_events.order('created_at DESC')
+  end
 end

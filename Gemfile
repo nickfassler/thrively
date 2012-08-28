@@ -4,6 +4,7 @@ ruby '1.9.3'
 
 gem 'bootstrap-sass', '2.0.4.0'
 gem 'clearance', '1.0.0.rc1'
+gem 'draper', '0.17.0'
 gem 'haml', '3.1.6'
 gem 'jquery-rails', '2.1.1'
 gem 'nested_form', '0.2.2'
