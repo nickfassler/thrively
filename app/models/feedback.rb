@@ -1,5 +1,5 @@
 class Feedback < ActiveRecord::Base
-  attr_accessible :plus, :delta, :subject, :receiver_attributes
+  attr_accessible :plus, :delta, :subject, :receiver_email, :request_id
 
   belongs_to :request
   belongs_to :giver, polymorphic: true
@@ -11,10 +11,21 @@ class Feedback < ActiveRecord::Base
   validates :plus, presence: true
   validates :delta, presence: true
 
-  def receiver_attributes=(attributes)
-    email = attributes[:email]
-    user_or_guest = User.where(email: email).first
-    user_or_guest ||= Guest.where(email: email).first_or_initialize
-    self.receiver = user_or_guest
+  before_validation :copy_attributes_from_request
+
+  def copy_attributes_from_request
+    if request
+      self.receiver = request.user
+      self.subject = request.subject
+    end
+  end
+
+  def receiver_email
+    (request && request.user.email) || receiver.try(:email)
+  end
+
+  def receiver_email=(email)
+    self.receiver = User.where(email: email).first
+    self.receiver ||= Guest.where(email: email).first_or_initialize
   end
 end

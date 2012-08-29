@@ -1,9 +1,6 @@
-.app-box
-  .app-box-head
-    %h1 Feedback Stream
+- content_for :title, 'Feedback Stream'
 
-  .app-box-content
-    - @events.each do |event|
-      %div{ class: event.html_classes }
-        = event.header
-        = event.body
+- @events.each do |event|
+  %div{ class: event.html_classes }
+    = event.header
+    = event.body

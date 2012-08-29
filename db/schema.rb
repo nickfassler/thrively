@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120827204608) do
+ActiveRecord::Schema.define(:version => 20120829185336) do
 
   create_table "feedbacks", :force => true do |t|
     t.string   "subject"
@@ -23,7 +23,13 @@ ActiveRecord::Schema.define(:version => 20120827204608) do
     t.string   "receiver_type", :null => false
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "request_id"
   end
+
+  add_index "feedbacks", ["giver_type"], :name => "index_feedbacks_on_giver_type"
+  add_index "feedbacks", ["receiver_id"], :name => "index_feedbacks_on_receiver_id"
+  add_index "feedbacks", ["receiver_type"], :name => "index_feedbacks_on_receiver_type"
+  add_index "feedbacks", ["request_id"], :name => "index_feedbacks_on_request_id"
 
   create_table "guests", :force => true do |t|
     t.string   "email",      :null => false

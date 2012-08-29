@@ -2,7 +2,7 @@
 
 %head
   %meta(charset='UTF-8')
-  %title Thrively #{".: #{yield(:title)}" if yield(:title).present?}
+  %title Thrively#{": #{yield(:title)}" if yield(:title).present?}
   = stylesheet_link_tag :application, media: 'all'
   = csrf_meta_tags
 
@@ -19,14 +19,18 @@
               - else
                 = link_to 'Sign in', sign_in_path
         .action-btns.pull-right
-          %button.btn.btn-success.btn-large
+          %a{ href: new_feedback_path, class: 'btn btn-success btn-large'}
             %i.icon-gift
-            = link_to "Give Feedback", new_feedback_path
-          %button.btn.btn-success.btn-large
+            Give Feedback
+          %a{ href: new_request_path, class: 'btn btn-success btn-large'}
             %i.icon-heart
-            = link_to "Request Feedback", new_request_path
+            Request Feedback
 
   #main-content.container
-    = render 'flashes'
-    = yield
-    = render 'javascript'
+    .app-box
+      .app-box-head
+        %h1 #{yield(:title)}
+      .app-box-content
+        = render 'flashes'
+        = yield
+  = render 'javascript'
