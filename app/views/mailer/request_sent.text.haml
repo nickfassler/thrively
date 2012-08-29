@@ -1,0 +1,19 @@
+Hi #{@receiver.email},
+\
+#{@request.user.email} would like your feedback.
+\
+= "----"
+#{@request.subject}
+#{@request.message}
+= "----"
+\
+Click the link below to give your feedback on what worked and what could be improved:
+\
+#{new_feedback_url(request_id: @request.id)}
+\
+Thank you.
+\
+= "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+#{@request.user.email} is using Thrively to collect, give, and track feedback: http://thrive.ly/
+\
+Copyright 2012 - Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA

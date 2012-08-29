@@ -16,7 +16,7 @@ feature 'Requests' do
 
     current_path.should == dashboard_path
     page.should have_content('Feedback request sent successfully')
-    last_email.to.should include(@giver.email)
+    last_sent_email.to.should include(@giver.email)
   end
 
   scenario 'User can create feedback request with multiple emails', js: true  do
@@ -31,8 +31,7 @@ feature 'Requests' do
 
     current_path.should == dashboard_path
     page.should have_content('Feedback request sent successfully')
-    last_email.to.should include(@giver.email)
-    last_email.to.should include(@giver2.email)
+    sent_emails.should have(2).items
   end
 
   scenario 'User cannot submit feedback request without email' do
@@ -42,7 +41,7 @@ feature 'Requests' do
 
     current_path.should == requests_path
     page.should have_content('There is an error')
-    last_email.should be_nil
+    last_sent_email.should be_nil
   end
 
   scenario 'User cannot submit feedback with invalid email' do
@@ -53,7 +52,7 @@ feature 'Requests' do
 
     current_path.should == requests_path
     page.should have_content('There is an error')
-    last_email.should be_nil
+    last_sent_email.should be_nil
   end
 
   scenario 'Guest cannot access feeback request page' do

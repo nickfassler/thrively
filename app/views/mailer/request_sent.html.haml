@@ -1,0 +1,28 @@
+%div{style: "font-family: Arial; font-size:12px;"}
+  %p Hi #{@receiver.email},
+  %p #{@request.user.email} would like your feedback.
+
+  %table{bgcolor: "#FFFFEE", border: "0", cellpadding: "0", cellspacing: "10",
+    style: "border: 1px solid #EEE;", width: "100%"}
+    %tr
+      %td{style: "font-family: Georgia; color:#333333; font-size:13px;"}
+        %div
+          %strong= @request.subject
+          %br
+          %br
+          %em= @request.message
+
+  %p Click the link below to give your feedback on what worked and what could be improved:
+  %p
+    = link_to new_feedback_url(request_id: @request.id), new_feedback_url(request_id: @request.id)
+    /%a{href: "http://thrive.ly/croaky/s093usfgslkdjg"} http://thrive.ly/croaky/s093usfgslkdjg
+  %p Thank you.
+
+  %hr{style: "height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;"}
+    %p
+      = "#{@request.user.email} is using"
+      = link_to "Thrively", root_url
+      to collect, give, and track feedback.
+      %br
+      %br
+      \© 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA

@@ -17,6 +17,7 @@ feature 'Feedbacks' do
 
     current_path.should == dashboard_path
     page.should have_content('Feedback was successful')
+    last_sent_email.to.should include(@receiver.email)
   end
 
   scenario 'User must fill in all fields to give feedback' do
@@ -27,5 +28,6 @@ feature 'Feedbacks' do
 
     current_path.should == feedbacks_path
     page.should have_content('There is an error')
+    last_sent_email.should be_nil
   end
 end

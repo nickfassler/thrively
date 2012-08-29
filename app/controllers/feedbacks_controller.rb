@@ -9,6 +9,7 @@ class FeedbacksController < ApplicationController
     @feedback.giver = current_user
 
     if @feedback.save
+      Mailer.feedback_given(@feedback).deliver
       redirect_to dashboard_path, flash: { success: 'Feedback was successful' }
     else
       flash.now[:error] = 'There is an error in your input'
