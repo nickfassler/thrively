@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
   def new
-    @feedback = Feedback.new
+    @feedback = Feedback.new(request_id: params[:request_id])
     @feedback.receiver = User.new
   end
 

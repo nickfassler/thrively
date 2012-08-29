@@ -14,4 +14,22 @@ describe Feedback do
   it { should validate_presence_of(:subject) }
   it { should validate_presence_of(:plus) }
   it { should validate_presence_of(:delta) }
+
+  describe '#receiver_email=' do
+    it 'assigns receiver as guest for never seen email' do
+      feedback = Feedback.new(receiver_email: 'guest@example.com')
+      feedback.receiver.should be_a Guest
+    end
+
+    it 'assigns receiver as user for existing user email' do
+      feedback = Feedback.new(receiver_email: create(:user).email)
+      feedback.receiver.should be_a User
+    end
+
+    it 'preserves feedback requester as receiver ignoring receiver_email' do
+      request = create(:request)
+      feedback = create(:feedback, request: request, receiver_email: 'guest@example.com')
+      feedback.receiver.should == request.user
+    end
+  end
 end
