@@ -11,7 +11,7 @@ describe Feedback do
 
   it { should validate_presence_of(:receiver) }
   it { should validate_presence_of(:giver) }
-  it { should validate_presence_of(:subject) }
+  it { should validate_presence_of(:topic) }
   it { should validate_presence_of(:plus) }
   it { should validate_presence_of(:delta) }
 

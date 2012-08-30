@@ -10,7 +10,7 @@ feature 'Requests' do
     sign_in_as @requester
     click_link 'Request Feedback'
     fill_in_email(@giver.email)
-    fill_in 'Subject', with: 'Test request subject'
+    fill_in 'Topic', with: 'Test request topic'
     fill_in 'Email Message', with: 'Hi friend. Please give me feedback.'
     click_button 'Send'
 

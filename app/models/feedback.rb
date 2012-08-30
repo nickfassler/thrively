@@ -1,5 +1,5 @@
 class Feedback < ActiveRecord::Base
-  attr_accessible :plus, :delta, :subject, :receiver_email, :request_id
+  attr_accessible :plus, :delta, :topic, :receiver_email, :request_id
 
   belongs_to :request
   belongs_to :giver, polymorphic: true
@@ -7,7 +7,7 @@ class Feedback < ActiveRecord::Base
 
   validates :receiver, presence: true
   validates :giver, presence: true
-  validates :subject, presence: true
+  validates :topic, presence: true
   validates :plus, presence: true
   validates :delta, presence: true
 
@@ -16,7 +16,7 @@ class Feedback < ActiveRecord::Base
   def copy_attributes_from_request
     if request
       self.receiver = request.user
-      self.subject = request.subject
+      self.topic = request.topic
     end
   end
 
