@@ -21,4 +21,12 @@ class Request < ActiveRecord::Base
   def emails
     requested_feedbacks.map(&:giver_email)
   end
+
+  def invitees
+    requested_feedbacks.includes(:giver).map(&:giver)
+  end
+
+  def sender?(_user)
+    user == _user
+  end
 end

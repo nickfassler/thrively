@@ -25,30 +25,22 @@ describe HistoryEventDecorator do
   end
 
   describe '#header' do
-    context 'for request' do
-      it "contains requester's email in invitee's stream" do
-        request = create(:request)
-        invitee = request.requested_feedbacks.first.giver
-        decorator_for(request, invitee).header.should =~ /#{request.user.email}/
-      end
+    it 'calls request decorator when resource is a request' do
+      request = create(:request)
+      fake_request_decorator = double(header: double(html_safe: true))
+      RequestDecorator.stub(:new).and_return(fake_request_decorator)
 
-      it "contains invitee's email in requester's stream" do
-        request = create(:request)
-        invitee = request.requested_feedbacks.first.giver
-        decorator_for(request, request.user).header.should =~ /#{invitee.email}/
-      end
+      decorator_for(request, request.user).header
+      fake_request_decorator.should have_received(:header).with(request.user)
     end
 
-    context 'for feedback' do
-      it "contains receiver's email in giver's stream" do
-        feedback = create(:feedback)
-        decorator_for(feedback, feedback.giver).header.should =~ /#{feedback.receiver.email}/
-      end
+    it 'calls feedback decorator when resource is a feedback' do
+      feedback = create(:feedback)
+      fake_feedback_decorator = double(header: double(html_safe: true))
+      FeedbackDecorator.stub(:new).and_return(fake_feedback_decorator)
 
-      it "contains giver's email for receiver's stream" do
-        feedback = create(:feedback)
-        decorator_for(feedback, feedback.receiver).header.should =~ /#{feedback.giver.email}/
-      end
+      decorator_for(feedback, feedback.giver).header
+      fake_feedback_decorator.should have_received(:header).with(feedback.giver)
     end
   end
 
@@ -88,5 +80,9 @@ describe HistoryEventDecorator do
   def decorator_for(resource, user)
     event = HistoryEvent.new(resource: resource, user_id: user.id)
     HistoryEventDecorator.new(event)
+  end
+
+  def regex_for_profile_link(text)
+    /a href.+>#{text}/
   end
 end

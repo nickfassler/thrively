@@ -7,8 +7,9 @@ describe RequestedFeedback do
   it { should_not allow_mass_assignment_of(:created_at) }
   it { should_not allow_mass_assignment_of(:updated_at) }
   it { should_not allow_mass_assignment_of(:request_id) }
+  it { should_not allow_mass_assignment_of(:giver_id) }
 
-  it { should validate_presence_of(:giver) }
+  it { should validate_presence_of(:giver_id) }
 
   describe '#create_history_event' do
     it 'creates a history event for feedback giver' do

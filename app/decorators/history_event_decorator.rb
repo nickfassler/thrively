@@ -22,36 +22,21 @@ class HistoryEventDecorator < Draper::Base
   end
 
   def header
-    if resource.respond_to?(:receiver)
-      if resource.receiver == model.user
-        "#{resource.class} from #{resource.giver.email}"
-      else
-        "#{resource.class} to #{resource.receiver.email}"
-      end
-    elsif resource.respond_to?(:user)
-      if resource.user == model.user
-        "You requested feeback from: #{resource.requested_feedbacks.map(&:giver_email).join(', ')}"
-      else
-        "#{resource.user.email} requests feedback from you"
-      end
-    end
+    resource_decorator.header(model.user).html_safe
   end
 
   def body
-    h.content_tag :div do
-      if resource.respond_to?(:topic)
-        h.concat(
-          h.content_tag(
-            :div,
-            h.link_to(resource.topic, h.new_feedback_path(request_id: resource.id))
-        ))
-      end
+    h.content_tag :div, class: 'body' do
+      h.concat resource_decorator.topic
+
       if resource.respond_to?(:message)
         h.concat h.content_tag :div, resource.message
       end
+
       if resource.respond_to?(:plus)
         h.concat h.content_tag :div, resource.plus
       end
+
       if resource.respond_to?(:delta)
         h.concat h.content_tag :div, resource.delta
       end
@@ -60,7 +45,11 @@ class HistoryEventDecorator < Draper::Base
 
   private
 
+  def resource_decorator
+    @resource_decorator ||= resource.decorator
+  end
+
   def resource
-    history_event.resource
+    @resource ||= history_event.resource
   end
 end
