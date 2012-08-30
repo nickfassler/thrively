@@ -31,7 +31,7 @@ feature 'Dashboard' do
     end
 
     within '.request.received' do
-      page.should have_content('from you')
+      page.should have_content("from #{user2.email}")
       page.should have_content(request_to.topic)
     end
   end

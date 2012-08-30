@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   has_many :history_events, order: 'created_at DESC'
 
   def stream_events
-    history_events.order('created_at DESC')
+    history_events.order('created_at DESC').includes(:resource, :user)
   end
 end

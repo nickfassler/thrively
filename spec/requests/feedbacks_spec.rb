@@ -31,12 +31,27 @@ feature 'Feedbacks' do
     last_sent_email.should be_nil
   end
 
+  scenario 'User leaves feedback for another user' do
+    request_for(from: @receiver, to: @giver)
+
+    sign_in_as @giver
+    click_link @receiver.email
+    fill_in 'Topic', with: 'Daily standup'
+    fill_in 'Did well', with: 'Good attitude'
+    fill_in 'Improve', with: 'Need more smiles'
+    click_button 'Send'
+
+    current_path.should == dashboard_path
+    last_sent_email.to.should include(@receiver.email)
+    page.should have_content('Feedback was successful')
+
+    within('.feedback') do
+      page.should have_content('Daily standup')
+    end
+  end
+
   scenario 'User leaves feedback for a specific request' do
-    request = create(:request,
-      user: @receiver,
-      requested_feedbacks:
-        [build(:requested_feedback, giver: @giver, request: request)]
-    )
+    request = request_for(from: @receiver, to: @giver)
 
     sign_in_as @giver
     click_link request.topic
@@ -46,10 +61,22 @@ feature 'Feedbacks' do
 
     current_path.should == dashboard_path
     last_sent_email.to.should include(@receiver.email)
+    page.should have_content('Feedback was successful')
 
-    within('.app-box-content') do
-      page.should have_content('Feedback was successful')
+    within('.feedback') do
+      page.should have_content(request.topic)
       page.should have_content('Good attitude')
     end
+  end
+
+  private
+
+  def request_for(options = {})
+    create(
+      :request,
+      user: options[:from],
+      requested_feedbacks:
+        [build(:requested_feedback, giver: options[:to], request: request)]
+    )
   end
 end
