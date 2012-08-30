@@ -13,26 +13,26 @@ feature 'Dashboard' do
 
     within '.feedback.received' do
       page.should have_content("from #{user2.email}")
-      page.should have_content(received_feedback.subject)
+      page.should have_content(received_feedback.topic)
       page.should have_content(received_feedback.plus)
       page.should have_content(received_feedback.delta)
     end
 
     within '.feedback.sent' do
       page.should have_content("to #{user2.email}")
-      page.should have_content(given_feedback.subject)
+      page.should have_content(given_feedback.topic)
       page.should have_content(given_feedback.plus)
       page.should have_content(given_feedback.delta)
     end
 
     within '.request.sent' do
       page.should have_content("from: #{user2.email}")
-      page.should have_content(request_from.subject)
+      page.should have_content(request_from.topic)
     end
 
     within '.request.received' do
       page.should have_content('from you')
-      page.should have_content(request_to.subject)
+      page.should have_content(request_to.topic)
     end
   end
 end

@@ -54,9 +54,9 @@ describe HistoryEventDecorator do
 
   describe '#body' do
     context 'for request' do
-      it 'contains subject' do
+      it 'contains topic' do
         request = create(:request)
-        decorator_for(request, request.user).body.should =~ /#{request.subject}/
+        decorator_for(request, request.user).body.should =~ /#{request.topic}/
       end
 
       it 'contains message' do
@@ -66,9 +66,9 @@ describe HistoryEventDecorator do
     end
 
     context 'for feedback' do
-      it 'contains subject' do
+      it 'contains topic' do
         feedback = create(:feedback)
-        decorator_for(feedback, feedback.receiver).body.should =~ /#{feedback.subject}/
+        decorator_for(feedback, feedback.receiver).body.should =~ /#{feedback.topic}/
       end
 
       it 'contains plus' do

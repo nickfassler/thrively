@@ -20,7 +20,7 @@ describe Mailer do
 
       body.should include(receiver.email)
       body.should include(request.user.email)
-      body.should include(request.subject)
+      body.should include(request.topic)
       body.should include(request.message)
       body.should include(new_feedback_url(request_id: request.id))
     end
@@ -33,7 +33,7 @@ describe Mailer do
 
       mail.to.should == [feedback.receiver.email]
       mail.from.should == [feedback.giver.email]
-      mail.subject.should == "Feedback on: #{feedback.subject}"
+      mail.subject.should == "Feedback on: #{feedback.topic}"
     end
 
     it 'contructs the body' do
@@ -43,7 +43,7 @@ describe Mailer do
 
       body.should include(feedback.receiver.email)
       body.should include(feedback.giver.email)
-      body.should include(feedback.subject)
+      body.should include(feedback.topic)
       body.should include(feedback.plus)
       body.should include(feedback.delta)
     end

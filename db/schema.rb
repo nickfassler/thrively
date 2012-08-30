@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829224802) do
+ActiveRecord::Schema.define(:version => 20120830192028) do
 
   create_table "feedbacks", :force => true do |t|
-    t.string   "subject"
+    t.string   "topic"
     t.text     "plus"
     t.text     "delta"
     t.integer  "giver_id",      :null => false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20120829224802) do
 
   create_table "requests", :force => true do |t|
     t.integer  "user_id",    :null => false
-    t.string   "subject"
+    t.string   "topic"
     t.text     "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

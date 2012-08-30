@@ -7,7 +7,7 @@ FactoryGirl.define do
     association :receiver, factory: :user
     association :giver, factory: :user
 
-    subject 'Feedback for test'
+    topic 'Feedback for test'
     plus    'Good job'
     delta   'Improve your specs'
   end
@@ -19,7 +19,7 @@ FactoryGirl.define do
   factory :request do
     user
 
-    subject 'Please provide feedback'
+    topic 'Please provide feedback'
     message 'Dear friend, I would like your feedback'
 
     after(:build) do |request|

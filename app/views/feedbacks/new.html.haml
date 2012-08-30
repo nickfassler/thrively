@@ -7,12 +7,12 @@
       %img{ src: "http://placehold.it/60x60", class: "img-polaroid" }
       Email: #{@feedback.receiver_email}
     .topic
-      Topic: #{@feedback.request.subject}
+      Topic: #{@feedback.request.topic}
   - else
     = f.label :receiver_email, 'Email'
     = f.text_field :receiver_email, placeholder: 'Email'
-    = f.label :subject, 'Feedback subject'
-    = f.text_field :subject, placeholder: 'What is the feedback about?'
+    = f.label :topic, 'Topic'
+    = f.text_field :topic, placeholder: 'What is the feedback about?'
 
   = f.label :plus, 'Did well'
   = f.text_area :plus, rows: 2, placeholder: 'Explain what was done well'

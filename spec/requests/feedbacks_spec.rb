@@ -10,7 +10,7 @@ feature 'Feedbacks' do
     sign_in_as @giver
     click_link 'Give Feedback'
     fill_in 'Email', with: @receiver.email
-    fill_in 'Feedback subject', with: 'Test feedback subject'
+    fill_in 'Topic', with: 'Test feedback topic'
     fill_in 'Did well', with: 'Something'
     fill_in 'Improve', with: 'Something'
     click_button 'Send'
@@ -23,7 +23,7 @@ feature 'Feedbacks' do
   scenario 'User must fill in all fields to give feedback' do
     sign_in_as @giver
     click_link 'Give Feedback'
-    fill_in 'Feedback subject', with: 'Test feedback subject'
+    fill_in 'Topic', with: 'Test feedback topic'
     click_button 'Send'
 
     current_path.should == feedbacks_path
@@ -39,7 +39,7 @@ feature 'Feedbacks' do
     )
 
     sign_in_as @giver
-    click_link request.subject
+    click_link request.topic
     fill_in 'Did well', with: 'Good attitude'
     fill_in 'Improve', with: 'Need more smiles'
     click_button 'Send'

@@ -1,5 +1,5 @@
 class Request < ActiveRecord::Base
-  attr_accessible :message, :subject, :emails
+  attr_accessible :message, :topic, :emails
 
   belongs_to :user
   has_many :feedbacks

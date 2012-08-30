@@ -16,7 +16,7 @@ class Mailer < ActionMailer::Base
     mail(
       from: "Full Name via Thrively <#{feedback.giver.email}>",
       to: feedback.receiver.email,
-      subject: "Feedback on: #{feedback.subject}"
+      subject: "Feedback on: #{feedback.topic}"
     )
   end
 end

@@ -39,11 +39,11 @@ class HistoryEventDecorator < Draper::Base
 
   def body
     h.content_tag :div do
-      if resource.respond_to?(:subject)
+      if resource.respond_to?(:topic)
         h.concat(
           h.content_tag(
             :div,
-            h.link_to(resource.subject, h.new_feedback_path(request_id: resource.id))
+            h.link_to(resource.topic, h.new_feedback_path(request_id: resource.id))
         ))
       end
       if resource.respond_to?(:message)
