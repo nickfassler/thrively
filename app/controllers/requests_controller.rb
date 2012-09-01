@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
     @request.user_id = current_user.id
 
     if @request.save
-      @request.requested_feedbacks.each(&:notify)
+      @request.requested_feedbacks.includes(:request, :giver).each(&:notify)
 
       redirect_to dashboard_path,
         flash: { success: 'Feedback request sent successfully' }

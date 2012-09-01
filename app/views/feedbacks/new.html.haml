@@ -25,5 +25,10 @@
 
   = f.label :delta, 'Improve'
   = f.text_area :delta, rows: 2, placeholder: 'Explain areas for improvement'
+  - if signed_out?
+    .guest
+      = f.hidden_field :giver_email
+      Your email: #{@feedback.giver_email}
+      = link_to 'Not you?', sign_in_path
   %br
   = f.submit 'Send', class: 'btn'

@@ -1,12 +1,11 @@
 class Mailer < ActionMailer::Base
   default from: 'noreply@thrive.ly'
 
-  def request_sent(request, receiver)
-    @request = request
-    @receiver = receiver
+  def request_sent(requested_feedback)
+    @requested_feedback = requested_feedback
     mail(
-      from: "Full Name via Thrively <#{request.user.email}>",
-      to: @receiver.email,
+      from: "Full Name via Thrively <#{requested_feedback.request.user.email}>",
+      to: requested_feedback.giver.email,
       subject: 'Please give me feedback with Thrively'
     )
   end

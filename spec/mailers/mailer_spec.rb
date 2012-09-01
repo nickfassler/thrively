@@ -3,26 +3,24 @@ require 'spec_helper'
 describe Mailer do
   describe 'request_sent' do
     it 'contructs the headers' do
-      request = build(:request)
-      receiver = request.requested_feedbacks.first.giver
-      mail = Mailer.request_sent(request, receiver)
+      requested_feedback = create(:requested_feedback)
+      mail = Mailer.request_sent(requested_feedback)
 
-      mail.to.should == [receiver.email]
-      mail.from.should == [request.user.email]
+      mail.to.should == [requested_feedback.giver_email]
+      mail.from.should == [requested_feedback.request.user.email]
       mail.subject.should =~ /Please give me feedback/
     end
 
     it 'contructs the body' do
-      request = build(:request)
-      receiver = request.requested_feedbacks.first.giver
-      mail = Mailer.request_sent(request, receiver)
+      requested_feedback = create(:requested_feedback)
+      mail = Mailer.request_sent(requested_feedback)
       body = mail.parts.last.body
 
-      body.should include(receiver.email)
-      body.should include(request.user.email)
-      body.should include(request.topic)
-      body.should include(request.message)
-      body.should include(new_feedback_url(request_id: request.id))
+      body.should include(requested_feedback.giver_email)
+      body.should include(requested_feedback.request.user.email)
+      body.should include(requested_feedback.request.topic)
+      body.should include(requested_feedback.request.message)
+      body.should include(requested_feedback_url(requested_feedback))
     end
   end
 
