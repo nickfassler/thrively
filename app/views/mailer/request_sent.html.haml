@@ -1,26 +1,27 @@
 %div{style: "font-family: Arial; font-size:12px;"}
-  %p Hi #{@receiver.email},
-  %p #{@request.user.email} would like your feedback.
+  %p Hi #{@requested_feedback.giver.email},
+  %p #{@requested_feedback.request.user.email} would like your feedback.
 
   %table{bgcolor: "#FFFFEE", border: "0", cellpadding: "0", cellspacing: "10",
     style: "border: 1px solid #EEE;", width: "100%"}
     %tr
       %td{style: "font-family: Georgia; color:#333333; font-size:13px;"}
         %div
-          %strong= @request.topic
+          %strong= @requested_feedback.request.topic
           %br
           %br
-          %em= @request.message
+          %em= @requested_feedback.request.message
 
   %p Click the link below to give your feedback on what worked and what could be improved:
   %p
-    = link_to new_feedback_url(request_id: @request.id), new_feedback_url(request_id: @request.id)
+    = link_to requested_feedback_url(@requested_feedback),
+      requested_feedback_url(@requested_feedback)
     /%a{href: "http://thrive.ly/croaky/s093usfgslkdjg"} http://thrive.ly/croaky/s093usfgslkdjg
   %p Thank you.
 
   %hr{style: "height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;"}
     %p
-      = "#{@request.user.email} is using"
+      = "#{@requested_feedback.request.user.email} is using"
       = link_to "Thrively", root_url
       to collect, give, and track feedback.
       %br

@@ -15,7 +15,7 @@ feature 'Feedbacks' do
     fill_in 'Improve', with: 'Something'
     click_button 'Send'
 
-    current_path.should == dashboard_path
+    current_path.should == root_path
     page.should have_content('Feedback was successful')
     last_sent_email.to.should include(@receiver.email)
   end
@@ -41,7 +41,7 @@ feature 'Feedbacks' do
     fill_in 'Improve', with: 'Need more smiles'
     click_button 'Send'
 
-    current_path.should == dashboard_path
+    current_path.should == root_path
     last_sent_email.to.should include(@receiver.email)
     page.should have_content('Feedback was successful')
 
@@ -59,7 +59,7 @@ feature 'Feedbacks' do
     fill_in 'Improve', with: 'Need more smiles'
     click_button 'Send'
 
-    current_path.should == dashboard_path
+    current_path.should == root_path
     last_sent_email.to.should include(@receiver.email)
     page.should have_content('Feedback was successful')
 
@@ -69,7 +69,39 @@ feature 'Feedbacks' do
     end
   end
 
+  scenario 'Guest leaves feedback for a specific request' do
+    guest = create(:guest)
+    request = request_for(to: guest, from: @receiver)
+
+    visit requested_feedback_path(request.requested_feedbacks.first)
+    fill_in 'Did well', with: 'Good attitude'
+    fill_in 'Improve', with: 'Need more smiles'
+    click_button 'Send'
+
+    current_path.should == root_path
+    page.should have_content('Feedback was successful')
+    last_sent_email.to.should include(@receiver.email)
+    last_sent_email.from.should include(guest.email)
+  end
+
+  scenario 'Guest cannot leave feedback if he has not been requested' do
+    request = create(:request, user: @receiver, emails: { '0' => 'guest@example.com' })
+
+    visit requested_feedback_path(request.requested_feedbacks.first)
+    fill_in 'Did well', with: 'Good attitude'
+    fill_in 'Improve', with: 'Need more smiles'
+    click_button 'Send'
+
+    current_path.should == root_path
+    last_sent_email.to.should include(@receiver.email)
+    page.should have_content('Feedback was successful')
+  end
+
   private
+
+  def profile_page_for(user)
+    profile_path(user_id: user.id)
+  end
 
   def request_for(options = {})
     create(

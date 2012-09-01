@@ -16,7 +16,9 @@ class RequestDecorator < Draper::Base
   end
 
   def topic
-    h.content_tag :div,
-      h.link_to(model.topic, h.new_feedback_path(request_id: model.id))
+    h.content_tag :div do
+      h.link_to(
+        model.topic, h.new_feedback_path(feedback: { request_id: model.id }))
+    end
   end
 end

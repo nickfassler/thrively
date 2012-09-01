@@ -1,5 +1,6 @@
 class Feedback < ActiveRecord::Base
-  attr_accessible :plus, :delta, :topic, :receiver_email, :request_id
+  attr_accessible :plus, :delta, :topic, :request_id,
+    :receiver_email, :giver_email
 
   belongs_to :request
   belongs_to :giver, polymorphic: true
@@ -27,6 +28,14 @@ class Feedback < ActiveRecord::Base
   def receiver_email=(email)
     self.receiver = User.where(email: email).first
     self.receiver ||= Guest.where(email: email).first_or_initialize
+  end
+
+  def giver_email=(email)
+    self.giver = Guest.where(email: email).first_or_initialize
+  end
+
+  def giver_email
+    giver.try(:email)
   end
 
   def receiver?(user)
