@@ -23,7 +23,7 @@ class Request < ActiveRecord::Base
   end
 
   def invitees
-    requested_feedbacks.includes(:giver).map(&:giver)
+    requested_feedbacks.includes(:giver).map(&:giver).compact
   end
 
   def sender?(_user)

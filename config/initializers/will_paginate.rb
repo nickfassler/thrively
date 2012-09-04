@@ -14,17 +14,17 @@ module WillPaginate
 
       def page_number(page)
         if page == current_page
-          tag(:li, page, class: 'active')
+          tag :li, link(page, '#'), class: 'active'
         else
-          link(page, page, :rel => rel_value(page))
+          tag :li, link(page, page, rel: rel_value(page))
         end
       end
 
       def previous_or_next_page(page, text, classname)
         if page
-          tag :li, link(text, page, class: classname)
+          tag :li, link(text, page), class: classname
         else
-          tag :li, text, class: classname + ' disabled'
+          tag :li, link(text, '#'), class: classname + ' disabled'
         end
       end
     end
