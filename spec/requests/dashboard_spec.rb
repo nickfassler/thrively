@@ -35,4 +35,21 @@ feature 'Dashboard' do
       page.should have_content(request_to.topic)
     end
   end
+
+  scenario 'User can click on next and previous pages to see more activity' do
+    user1 = create(:user)
+    user2 = create(:user)
+    create(:feedback, receiver: user1, giver: user2, topic: 'Feedback Next')
+    create(:feedback, receiver: user2, giver: user1, topic: 'Feedback Previous')
+    HistoryEvent.per_page = 1
+
+    sign_in_as user1
+    click_link('2')
+
+    page.should have_content('Feedback Next')
+
+    click_link('1')
+
+    page.should have_content('Feedback Previous')
+  end
 end

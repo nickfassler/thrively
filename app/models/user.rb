@@ -8,7 +8,10 @@ class User < ActiveRecord::Base
   has_many :given_feedbacks, as: :giver, class_name: Feedback
   has_many :history_events, order: 'created_at DESC'
 
-  def stream_events
-    history_events.order('created_at DESC').includes(:resource, :user)
+  def stream_events(page)
+    history_events.
+      order('created_at DESC').
+      includes(:resource, :user).
+      page(page)
   end
 end
