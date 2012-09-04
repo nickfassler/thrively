@@ -14,6 +14,7 @@ gem 'pg', '0.14.0'
 gem 'rails', '3.2.8'
 gem 'sass-rails', '3.2.5'
 gem 'thin', '1.4.1'
+gem 'will_paginate', '3.0.3'
 
 group :test do
   gem 'database_cleaner', '0.8.0'
