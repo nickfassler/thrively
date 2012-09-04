@@ -1,3 +1,3 @@
-def regex_for_profile_link(text)
+def regex_for_link(text)
   /a href.+>#{text}/
 end

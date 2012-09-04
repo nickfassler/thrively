@@ -46,9 +46,15 @@ describe HistoryEventDecorator do
 
   describe '#body' do
     context 'for request' do
-      it 'contains topic' do
+      it 'contains link to topic' do
         request = create(:request)
-        decorator_for(request, request.user).body.should =~ /#{request.topic}/
+        decorator = decorator_for(request, request.requested_feedbacks.first.giver)
+        decorator.body.should =~ regex_for_link(request.topic)
+      end
+
+      it 'contains non-link topic when sender is the current user' do
+        request = create(:request)
+        decorator_for(request, request.user).body.should_not =~ regex_for_link(request.topic)
       end
 
       it 'contains message' do
@@ -80,9 +86,5 @@ describe HistoryEventDecorator do
   def decorator_for(resource, user)
     event = HistoryEvent.new(resource: resource, user_id: user.id)
     HistoryEventDecorator.new(event)
-  end
-
-  def regex_for_profile_link(text)
-    /a href.+>#{text}/
   end
 end

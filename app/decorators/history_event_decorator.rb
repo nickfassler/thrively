@@ -27,7 +27,11 @@ class HistoryEventDecorator < Draper::Base
 
   def body
     h.content_tag :div, class: 'body' do
-      h.concat resource_decorator.topic
+      if resource.respond_to?(:sender?) && resource.sender?(model.user)
+        h.concat resource.topic
+      else
+        h.concat resource_decorator.topic
+      end
 
       if resource.respond_to?(:message)
         h.concat h.content_tag :div, resource.message
