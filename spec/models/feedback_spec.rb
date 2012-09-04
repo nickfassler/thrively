@@ -9,15 +9,15 @@ describe Feedback do
   it { should_not allow_mass_assignment_of(:giver_id) }
   it { should_not allow_mass_assignment_of(:receiver_id) }
 
-  it { should validate_presence_of(:receiver_id) }
-  it { should validate_presence_of(:giver_id) }
+  it { should validate_presence_of(:receiver) }
+  it { should validate_presence_of(:giver) }
   it { should validate_presence_of(:topic) }
   it { should validate_presence_of(:plus) }
   it { should validate_presence_of(:delta) }
 
   describe '#receiver_email=' do
-    it 'assigns receiver as guest for never seen email' do
-      feedback = Feedback.new(receiver_email: 'guest@example.com')
+    it 'creates receiver as guest for never seen email' do
+      feedback = create(:feedback, receiver_email: 'guest@example.com')
       feedback.receiver.should be_a Guest
     end
 
