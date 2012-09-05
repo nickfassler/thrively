@@ -10,9 +10,10 @@ class FeedbackDecorator < Draper::Base
   end
 
   def html_for_receiver_email
+    user = model.requester || model.receiver
     h.content_tag :div, class: 'user' do
-      h.concat h.image_tag('http://placehold.it/60x60', class: 'img-polaroid')
-      h.concat "Email: #{model.receiver_email}"
+      h.concat h.image_tag(user.avatar.url(:medium))
+      h.concat user.display_name
     end
   end
 

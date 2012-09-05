@@ -1,6 +1,6 @@
 %div{style: "font-family: Arial; font-size:12px;"}
-  %p Hi #{@feedback.receiver.email},
-  %p #{@feedback.giver.email} has given you feedback with Thrively.
+  %p Hi #{@feedback.receiver.display_name},
+  %p #{@feedback.giver.display_name} has given you feedback with Thrively.
 
   %table{bgcolor: "#F0FFF0", border: "0", cellpadding: "0", cellspacing: "10",
     style: "border: 1px solid #EEE;", width: "100%"}
@@ -26,7 +26,7 @@
 
   %hr{style: "height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;"}
     %p
-      = "#{@feedback.giver.email} is using"
+      = "#{@feedback.giver.display_name} is using"
       = link_to "Thrively", root_url
       to collect, give, and track feedback.
       %br

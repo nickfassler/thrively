@@ -7,7 +7,7 @@ class RequestedFeedback < ActiveRecord::Base
   validates :giver_id, presence: true
 
   def giver_email
-    giver.email
+    giver.try(:email)
   end
 
   def create_history_event

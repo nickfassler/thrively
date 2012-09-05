@@ -1,0 +1,14 @@
+- content_for :title, 'Profile'
+
+.pull-right
+  = link_to 'Edit', edit_user_path(current_user)
+
+.profile
+  .avatar
+    = image_tag current_user.avatar.url(:medium)
+  .first_name
+    First name: #{current_user.first_name}
+  .last_name
+    Last name: #{current_user.last_name}
+  .email
+    Email: #{current_user.email}

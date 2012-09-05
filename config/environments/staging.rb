@@ -9,4 +9,16 @@ Thrively::Application.configure do
   config.consider_all_requests_local = false
   config.i18n.fallbacks = true
   config.serve_static_assets = false
+
+  config.paperclip_defaults = {
+    storage: :fog,
+    fog_credentials: {
+      provider: 'AWS',
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    },
+    fog_public: true,
+    fog_directory: 'thrively',
+    path: ":rails_env/:class/:attachment/:id/:style/:filename"
+   }
 end
