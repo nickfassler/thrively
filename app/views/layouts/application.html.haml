@@ -20,12 +20,10 @@
                 = link_to 'Sign in', sign_in_path
         - if signed_in?
           .action-btns.pull-right
-            %a{ href: new_feedback_path, class: 'btn btn-success btn-large'}
-              %i.icon-gift
-              Give Feedback
-            %a{ href: new_request_path, class: 'btn btn-success btn-large'}
-              %i.icon-heart
+            %a{ href: new_request_path, class: 'btn btn-info btn-large'}
               Request Feedback
+            %a{ href: new_feedback_path, class: 'btn btn-primary btn-large'}
+              Give Feedback
 
   #main-content.container
     .app-box

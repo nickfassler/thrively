@@ -19,4 +19,8 @@ class FeedbackDecorator < Draper::Base
   def topic
     h.content_tag :div, model.topic
   end
+
+  def icon
+    h.content_tag :i, nil, class: 'icon-retweet'
+  end
 end
