@@ -21,6 +21,10 @@ class HistoryEventDecorator < Draper::Base
     classes
   end
 
+  def icon
+    resource_decorator.icon
+  end
+
   def header
     resource_decorator.header(model.user).html_safe
   end

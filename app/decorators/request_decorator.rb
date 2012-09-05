@@ -21,4 +21,8 @@ class RequestDecorator < Draper::Base
         model.topic, h.new_feedback_path(feedback: { request_id: model.id }))
     end
   end
+
+  def icon
+    h.content_tag :i, nil, class: 'icon-bullhorn'
+  end
 end
