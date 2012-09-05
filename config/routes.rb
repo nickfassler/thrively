@@ -8,12 +8,11 @@ Thrively::Application.routes.draw do
   end
 
   resource :dashboard, only: :show
-  resources :requests, only: [:new, :create]
   resources :feedbacks, only: [:new, :create]
+  resources :requests, only: [:new, :create]
   resources :requested_feedbacks, only: :show
+  resources :users, only: [:show, :edit, :update]
 
   match '/request' => 'requests#new'
   match '/give' => 'feedbacks#new', as: :give_feedback
-  match '/:user_id' => 'feedbacks#new', as: :profile,
-    constraints: { user_id: /\d+/ }
 end

@@ -13,11 +13,11 @@
         = link_to 'Thrively', root_path, class: 'brand'
         .pull-right
           %ul.nav
-            %li
-              - if signed_in?
-                = link_to 'Sign out', sign_out_path, method: :delete
-              - else
-                = link_to 'Sign in', sign_in_path
+            - if signed_in?
+              %li= link_to 'Profile', user_path(current_user)
+              %li= link_to 'Sign out', sign_out_path, method: :delete
+            - else
+              %li= link_to 'Sign in', sign_in_path
         - if signed_in?
           .action-btns.pull-right
             %a{ href: new_request_path, class: 'btn btn-info btn-large'}

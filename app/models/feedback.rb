@@ -16,13 +16,13 @@ class Feedback < ActiveRecord::Base
 
   def copy_attributes_from_request
     if request
-      self.receiver = request.user
+      self.receiver = requester
       self.topic = request.topic
     end
   end
 
   def receiver_email
-    (request && request.user.email) || receiver.try(:email)
+    (request && requester.email) || receiver.try(:email)
   end
 
   def receiver_email=(email)
@@ -40,5 +40,9 @@ class Feedback < ActiveRecord::Base
 
   def receiver?(user)
     receiver == user
+  end
+
+  def requester
+    request.try(:user)
   end
 end
