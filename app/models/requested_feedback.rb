@@ -11,9 +11,7 @@ class RequestedFeedback < ActiveRecord::Base
   end
 
   def create_history_event
-    if giver.is_a? User
-      HistoryEvent.create(resource: request, user_id: giver.id)
-    end
+    giver.create_history_event_for(request)
   end
 
   def notify

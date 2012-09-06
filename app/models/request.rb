@@ -29,4 +29,8 @@ class Request < ActiveRecord::Base
   def sender?(_user)
     user == _user
   end
+
+  def create_history_event
+    user.create_history_event_for(self)
+  end
 end

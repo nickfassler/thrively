@@ -45,4 +45,9 @@ class Feedback < ActiveRecord::Base
   def requester
     request.try(:user)
   end
+
+  def create_history_event
+    giver.create_history_event_for(self)
+    receiver.create_history_event_for(self)
+  end
 end
