@@ -7,15 +7,11 @@ class User < ActiveRecord::Base
   has_many :requested_feedbacks, as: :giver
   has_many :given_feedbacks, as: :giver, class_name: Feedback
   has_many :received_feedbacks, as: :receiver, class_name: Feedback
-  has_many :history_events, order: 'created_at DESC'
+  has_many :history_events, as: :owner, order: 'created_at DESC'
 
   has_attached_file :avatar,
     styles: { medium: '80x80#', small: '50x50#' },
     default_url: 'avatar_missing.png'
-
-  def stream_events(page = nil)
-    history_events.order('created_at DESC').includes(:resource,:user).page(page)
-  end
 
   def display_name
     if first_name.present?
@@ -31,7 +27,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_history_event_for(resource)
-    history_events.create(resource: resource)
+  def sender_of?(resource)
+    resource.giver == self
   end
 end

@@ -9,7 +9,7 @@ class Request < ActiveRecord::Base
   validates :user, presence: true
 
   def emails=(email_list)
-    email_list.each do |_, email|
+    email_list.each do |email|
       if email.present?
         user_or_guest = User.where(email: email).first
         user_or_guest ||= Guest.where(email: email).first_or_create
@@ -26,11 +26,7 @@ class Request < ActiveRecord::Base
     requested_feedbacks.includes(:giver).map(&:giver).compact
   end
 
-  def sender?(_user)
-    user == _user
-  end
-
-  def create_history_event
-    user.create_history_event_for(self)
+  def giver
+    user
   end
 end

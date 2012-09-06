@@ -10,10 +10,6 @@ class RequestedFeedback < ActiveRecord::Base
     giver.try(:email)
   end
 
-  def create_history_event
-    giver.create_history_event_for(request)
-  end
-
   def notify
     Mailer.request_sent(self).deliver
   end

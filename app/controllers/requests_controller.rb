@@ -6,7 +6,8 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(params[:request].update(emails: params[:emails]))
+    params[:request].update(emails: params[:emails].values)
+    @request = Request.new(params[:request])
     @request.user_id = current_user.id
 
     if @request.save

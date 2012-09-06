@@ -5,12 +5,9 @@ class Guest < ActiveRecord::Base
   has_many :given_feedbacks, as: :giver, class_name: Feedback
   has_many :received_feedbacks, as: :receiver, class_name: Feedback
   has_many :requested_feedbacks, as: :giver
+  has_many :history_events, as: :owner
 
   def display_name
     email
-  end
-
-  def create_history_event_for(resource)
-    # no-op
   end
 end

@@ -41,7 +41,7 @@ describe UserObserver do
       guest = create(:guest)
       given_feedback = create(:feedback, giver: guest)
       received_feedback = create(:feedback, receiver: guest)
-      requested_feedback = create(:requested_feedback, giver: guest)
+      request = create(:request, emails: [guest.email])
 
       user = create(:user, email: guest.email)
 

@@ -2,6 +2,7 @@ class FeedbackObserver < ActiveRecord::Observer
   observe Feedback
 
   def after_create(record)
-    record.create_history_event
+    HistoryEvent.create(resource: record, owner: record.giver)
+    HistoryEvent.create(resource: record, owner: record.receiver)
   end
 end

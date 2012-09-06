@@ -38,16 +38,7 @@ class Feedback < ActiveRecord::Base
     giver.try(:email)
   end
 
-  def receiver?(user)
-    receiver == user
-  end
-
   def requester
     request.try(:user)
-  end
-
-  def create_history_event
-    giver.create_history_event_for(self)
-    receiver.create_history_event_for(self)
   end
 end

@@ -7,13 +7,9 @@ class UserObserver < ActiveRecord::Observer
     if guest
       record.transaction do
         record.given_feedbacks = guest.given_feedbacks
-        record.given_feedbacks.each(&:create_history_event)
-
         record.received_feedbacks = guest.received_feedbacks
-        record.received_feedbacks.each(&:create_history_event)
-
         record.requested_feedbacks = guest.requested_feedbacks
-        record.requested_feedbacks.each(&:create_history_event)
+        record.history_events = guest.history_events
 
         guest.destroy
       end

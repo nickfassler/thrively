@@ -4,21 +4,11 @@ class HistoryEventDecorator < Draper::Base
   def html_classes
     classes = ['well', resource.class.name.underscore]
 
-    if resource.respond_to?(:receiver)
-      if resource.receiver == model.user
-        classes << 'received'
-      else
-        classes << 'sent'
-      end
-    elsif resource.respond_to?(:user)
-      if resource.user == model.user
-        classes << 'sent'
-      else
-        classes << 'received'
-      end
+    if model.owner.sender_of?(resource)
+      classes << 'sent'
+    else
+      classes << 'received'
     end
-
-    classes
   end
 
   def icon
@@ -26,12 +16,12 @@ class HistoryEventDecorator < Draper::Base
   end
 
   def header
-    resource_decorator.header(model.user).html_safe
+    resource_decorator.header(model.owner).html_safe
   end
 
   def body
     h.content_tag :div, class: 'body' do
-      if resource.respond_to?(:sender?) && resource.sender?(model.user)
+      if model.owner.sender_of?(resource)
         h.concat resource.topic
       else
         h.concat resource_decorator.topic
