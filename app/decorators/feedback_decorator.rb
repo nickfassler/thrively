@@ -13,7 +13,7 @@ class FeedbackDecorator < Draper::Base
     user = feedback.requester || feedback.receiver
     h.content_tag :div, class: 'user' do
       h.concat h.image_tag(user.avatar.url(:medium))
-      h.concat user.display_name
+      h.concat user.name
     end
   end
 

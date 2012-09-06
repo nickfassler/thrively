@@ -35,7 +35,7 @@ feature 'Feedbacks' do
     request_for(from: @receiver, to: @giver)
 
     sign_in_as @giver
-    click_link @receiver.email
+    click_link @receiver.name
     fill_in 'Topic', with: 'Daily standup'
     fill_in 'Did well', with: 'Good attitude'
     fill_in 'Improve', with: 'Need more smiles'

@@ -30,12 +30,20 @@ class Feedback < ActiveRecord::Base
     self.receiver ||= Guest.where(email: email).first_or_initialize
   end
 
+  def receiver_name
+    receiver.try(:name)
+  end
+
   def giver_email=(email)
     self.giver = Guest.where(email: email).first_or_initialize
   end
 
   def giver_email
     giver.try(:email)
+  end
+
+  def giver_name
+    giver.try(:name)
   end
 
   def requester

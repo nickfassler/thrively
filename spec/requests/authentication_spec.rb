@@ -1,10 +1,28 @@
 require 'spec_helper'
 
 feature 'Authenticaton' do
-  scenario 'User signs up for an account and is taken to their dashboard' do
+  scenario 'User must fill in all fields on sign up form' do
     navigate_to_sign_up
+    fill_in 'Name', with: 'Test User'
     fill_in 'Email', with: 'user@example.com'
     fill_in 'Password', with: 'password'
+    click_button 'Sign up'
+
+    page.should have_content("Username can't be blank")
+
+    fill_in 'Name', with: ''
+    fill_in 'Username', with: 'test_user'
+    click_button 'Sign up'
+
+    page.should have_content("Name can't be blank")
+  end
+
+  scenario 'User signs up for an account and is taken to their dashboard' do
+    navigate_to_sign_up
+    fill_in 'Name', with: 'Test User'
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Username', with: 'test_user'
     click_button 'Sign up'
 
     page.should have_content('Stream')
@@ -28,8 +46,10 @@ feature 'Authenticaton' do
     feedback2 = create(:feedback, receiver: guest, topic: 'Intreview')
 
     navigate_to_sign_up
+    fill_in 'Name', with: 'Converted Guest'
     fill_in 'Email', with: guest.email
     fill_in 'Password', with: 'password'
+    fill_in 'Username', with: 'converted_guest'
     click_button 'Sign up'
 
     within('.app-box-content') do

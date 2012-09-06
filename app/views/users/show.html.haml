@@ -6,9 +6,9 @@
 .profile
   .avatar
     = image_tag current_user.avatar.url(:medium)
-  .first_name
-    First name: #{current_user.first_name}
-  .last_name
-    Last name: #{current_user.last_name}
+  .name
+    Full name: #{current_user.name}
   .email
     Email: #{current_user.email}
+  .username
+    Username: #{current_user.username}
