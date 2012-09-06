@@ -14,6 +14,18 @@ class RequestedFeedback < ActiveRecord::Base
     giver.try(:name)
   end
 
+  def requester
+    request.user
+  end
+
+  def requester_name
+    requester.name
+  end
+
+  def requester_email
+    requester.email
+  end
+
   def notify
     Mailer.request_sent(self).deliver
   end

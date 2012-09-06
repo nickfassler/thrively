@@ -1,6 +1,6 @@
 %div{style: "font-family: Arial; font-size:12px;"}
   %p Hi #{@requested_feedback.giver_name},
-  %p #{@requested_feedback.request.user_name} would like your feedback.
+  %p #{@requested_feedback.requester_name} would like your feedback.
 
   %table{bgcolor: "#FFFFEE", border: "0", cellpadding: "0", cellspacing: "10",
     style: "border: 1px solid #EEE;", width: "100%"}
@@ -21,7 +21,7 @@
 
   %hr{style: "height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;"}
     %p
-      = "#{@requested_feedback.request.user_name} is using"
+      = "#{@requested_feedback.requester_name} is using"
       = link_to "Thrively", root_url
       to collect, give, and track feedback.
       %br
