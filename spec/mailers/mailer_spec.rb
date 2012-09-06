@@ -7,7 +7,7 @@ describe Mailer do
       mail = Mailer.request_sent(requested_feedback)
 
       mail.to.should == [requested_feedback.giver_email]
-      mail.from.should == [requested_feedback.request.user.email]
+      mail.from.should == [requested_feedback.requester_email]
       mail.subject.should =~ /Please give me feedback/
     end
 
@@ -17,7 +17,7 @@ describe Mailer do
       body = mail.parts.last.body
 
       body.should include(requested_feedback.giver_name)
-      body.should include(requested_feedback.request.user_name)
+      body.should include(requested_feedback.requester_name)
       body.should include(requested_feedback.request.topic)
       body.should include(requested_feedback.request.message)
       body.should include(requested_feedback_url(requested_feedback))
