@@ -29,4 +29,8 @@ class Request < ActiveRecord::Base
   def giver
     user
   end
+
+  def user_name
+    user.name
+  end
 end

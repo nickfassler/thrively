@@ -8,8 +8,8 @@ feature 'UserProfile' do
     visit user_path(user)
 
     page.should have_content(user.email)
-    page.should have_content(user.first_name)
-    page.should have_content(user.last_name)
+    page.should have_content(user.name)
+    page.should have_content(user.username)
   end
 
   scenario 'User can edit their profile info' do
@@ -18,13 +18,13 @@ feature 'UserProfile' do
     sign_in_as user
     visit user_path(user)
     click_link 'Edit'
-    fill_in 'First name', with: 'Bob'
-    fill_in 'Last name', with: 'Wilson'
+    fill_in 'Name', with: 'Edited User'
+    fill_in 'Username', with: 'test_user'
     click_button 'Save'
 
     current_path.should == user_path(user)
     page.should have_content('Profile was successfully updated')
-    page.should have_content('Bob')
-    page.should have_content('Wilson')
+    page.should have_content('Edited User')
+    page.should have_content('test_user')
   end
 end

@@ -7,7 +7,7 @@ class Guest < ActiveRecord::Base
   has_many :requested_feedbacks, as: :giver
   has_many :history_events, as: :owner
 
-  def display_name
+  def name
     email
   end
 end

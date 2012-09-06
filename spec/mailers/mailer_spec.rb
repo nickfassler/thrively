@@ -16,8 +16,8 @@ describe Mailer do
       mail = Mailer.request_sent(requested_feedback)
       body = mail.parts.last.body
 
-      body.should include(requested_feedback.giver_email)
-      body.should include(requested_feedback.request.user.email)
+      body.should include(requested_feedback.giver_name)
+      body.should include(requested_feedback.request.user_name)
       body.should include(requested_feedback.request.topic)
       body.should include(requested_feedback.request.message)
       body.should include(requested_feedback_url(requested_feedback))
@@ -29,8 +29,8 @@ describe Mailer do
       feedback = build(:feedback)
       mail = Mailer.feedback_given(feedback)
 
-      mail.to.should == [feedback.receiver.email]
-      mail.from.should == [feedback.giver.email]
+      mail.to.should == [feedback.receiver_email]
+      mail.from.should == [feedback.giver_email]
       mail.subject.should == "Feedback on: #{feedback.topic}"
     end
 
@@ -39,8 +39,8 @@ describe Mailer do
       mail = Mailer.feedback_given(feedback)
       body = mail.parts.last.body
 
-      body.should include(feedback.receiver.email)
-      body.should include(feedback.giver.email)
+      body.should include(feedback.receiver_name)
+      body.should include(feedback.giver_name)
       body.should include(feedback.topic)
       body.should include(feedback.plus)
       body.should include(feedback.delta)

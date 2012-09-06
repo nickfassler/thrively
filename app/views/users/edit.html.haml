@@ -2,17 +2,21 @@
 
 .profile
   = form_for current_user do |f|
-    = image_tag current_user.avatar.url(:medium)
-    = f.file_field :avatar
+    .avatar
+      = image_tag current_user.avatar.url(:medium)
+      = f.file_field :avatar
 
-    = f.label :first_name
-    = f.text_field :first_name
+    .name
+      = f.label :name
+      = f.text_field :name
 
-    = f.label :last_name
-    = f.text_field :last_name
+    .email
+      = f.label :email
+      = f.text_field :email
 
-    = f.label :email
-    = f.text_field :email
+    .username
+      = f.label :username
+      = f.text_field :username
 
     .action
       = f.submit 'Save', class: 'btn'
