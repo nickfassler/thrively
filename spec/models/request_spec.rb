@@ -15,7 +15,7 @@ describe Request do
     it 'is a list of emails of guests or users' do
       guest = create(:guest)
       user = create(:user)
-      request = create(:request, emails: { '0' => guest.email, '1' => user.email })
+      request = create(:request, emails: [guest.email, user.email])
 
       request.emails.should include(guest.email, user.email)
     end

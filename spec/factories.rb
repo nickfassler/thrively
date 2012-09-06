@@ -8,8 +8,8 @@ FactoryGirl.define do
     association :giver, factory: :user
 
     topic 'Feedback for test'
-    plus    'Good job'
-    delta   'Improve your specs'
+    plus  'Good job'
+    delta 'Improve your specs'
   end
 
   factory :guest do

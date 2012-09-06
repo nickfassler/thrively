@@ -38,10 +38,6 @@ class Feedback < ActiveRecord::Base
     giver.try(:email)
   end
 
-  def receiver?(user)
-    receiver == user
-  end
-
   def requester
     request.try(:user)
   end

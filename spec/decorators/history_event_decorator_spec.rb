@@ -84,7 +84,7 @@ describe HistoryEventDecorator do
   private
 
   def decorator_for(resource, user)
-    event = HistoryEvent.new(resource: resource, user_id: user.id)
+    event = HistoryEvent.new(resource: resource, owner: user)
     HistoryEventDecorator.new(event)
   end
 end

@@ -6,8 +6,8 @@ feature 'Dashboard' do
     user2 = create(:user)
     received_feedback = create(:feedback, receiver: user, giver: user2)
     given_feedback = create(:feedback, receiver: user2, giver: user)
-    request_from = create(:request, user: user, emails: { '0' => user2.email })
-    request_to = create(:request, user: user2, emails: { '0' => user.email })
+    request_from = create(:request, user: user, emails: [user2.email])
+    request_to = create(:request, user: user2, emails: [user.email])
 
     sign_in_as user
 
