@@ -1,4 +1,4 @@
-- if signed_in?
+- if signed_in? && !Rails.env.test?
   :javascript
     var intercomSettings = {
       app_id: '#{ENV["INTERCOM_APP_ID"]}',
