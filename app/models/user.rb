@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  attr_accessible :email, :password, :avatar, :name, :username
+  attr_accessible :avatar, :email, :invite_token, :password, :name, :username
+  attr_accessor :invite_token
 
+  belongs_to :invite
   has_many :requests
   has_many :requested_feedbacks, as: :giver
   has_many :given_feedbacks, as: :giver, class_name: Feedback

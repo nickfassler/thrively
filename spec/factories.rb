@@ -20,6 +20,11 @@ FactoryGirl.define do
     email
   end
 
+  factory :invite do
+    email
+    user
+  end
+
   factory :request do
     user
 

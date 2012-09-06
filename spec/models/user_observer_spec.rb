@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe UserObserver do
+  describe '#before_validation' do
+    it 'associates with invite when given an invite_token' do
+      invite = create(:invite)
+
+      user = create(:user, invite_token: invite.token)
+
+      user.invite.should == invite
+    end
+  end
+
   describe '#after_create' do
     it 'converts given feedbacks from guest' do
       guest = create(:guest)

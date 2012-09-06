@@ -81,7 +81,7 @@ feature 'Feedbacks' do
     current_path.should == root_path
     page.should have_content('Feedback was successful')
     last_sent_email.to.should include(@receiver.email)
-    last_sent_email.from.should include(guest.email)
+    last_sent_email.reply_to.should include(guest.email)
   end
 
   scenario 'Guest cannot leave feedback if he has not been requested' do

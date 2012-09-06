@@ -15,15 +15,6 @@
   %p Click the link below to give your feedback on what worked and what could be improved:
   %p
     = link_to requested_feedback_url(@requested_feedback),
-      requested_feedback_url(@requested_feedback)
-    /%a{href: "http://thrive.ly/croaky/s093usfgslkdjg"} http://thrive.ly/croaky/s093usfgslkdjg
-  %p Thank you.
+        requested_feedback_url(@requested_feedback)
 
-  %hr{style: "height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;"}
-    %p
-      = "#{@requested_feedback.requester_name} is using"
-      = link_to "Thrively", root_url
-      to collect, give, and track feedback.
-      %br
-      %br
-      \© 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA
+  = render 'footer', sender_name: @requested_feedback.requester_name

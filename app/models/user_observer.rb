@@ -1,6 +1,12 @@
 class UserObserver < ActiveRecord::Observer
   observe User
 
+  def before_validation(record)
+    if record.invite_token
+      record.invite = Invite.find_by_token!(record.invite_token)
+    end
+  end
+
   def after_create(record)
     guest = Guest.where(email: record.email).first
 

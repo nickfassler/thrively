@@ -1,5 +1,7 @@
 - content_for :title, 'Feedback Stream'
 
+= link_to 'Invite a friend', new_invite_path
+
 - @events.each do |event|
   %div{ class: event.html_classes }
     = event.icon

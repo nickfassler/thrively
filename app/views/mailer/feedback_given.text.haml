@@ -17,9 +17,4 @@ Go to your Thrively account to view this feedback, request more feedback, or giv
 \
 http://thrive.ly/
 \
-Thank you.
-\
-= "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-#{@feedback.giver_name} is using Thrively to collect, give, and track feedback: http://thrive.ly/
-\
-Copyright 2012 - Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA
+= render 'footer', sender_name: @feedback.giver_name

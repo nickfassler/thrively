@@ -1,0 +1,8 @@
+- content_for :title, 'Invite a friend'
+
+= form_for @invite do |f|
+  = f.label :email, 'Email'
+  = f.text_field :email, placeholder: 'Email'
+
+  %br
+  = f.submit 'Invite', class: 'btn'
