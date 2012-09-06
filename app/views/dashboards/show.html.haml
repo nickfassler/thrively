@@ -1,5 +1,8 @@
 - content_for :title, 'Feedback Stream'
 
+- if current_user.has_remaining_invites?
+  = link_to 'Invite a friend', new_invite_path
+
 - @events.each do |event|
   %div{ class: event.html_classes }
     = event.icon

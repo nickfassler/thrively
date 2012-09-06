@@ -1,0 +1,10 @@
+%div{style: 'font-family: Arial; font-size:12px;'}
+  %p Hi,
+  %p #{@user.name} has invited you to try Thrively.
+
+  %p Click the link below to accept the invitation:
+  %p
+    = link_to accept_url(invite: @invite.token),
+        accept_url(invite: @invite.token)
+
+  = render 'footer', sender_name: @user.name

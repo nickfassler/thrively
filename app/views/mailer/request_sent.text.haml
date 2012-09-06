@@ -11,9 +11,4 @@ Click the link below to give your feedback on what worked and what could be impr
 \
 #{requested_feedback_url(@requested_feedback)}
 \
-Thank you.
-\
-= "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-#{@requested_feedback.requester_name} is using Thrively to collect, give, and track feedback: http://thrive.ly/
-\
-Copyright 2012 - Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA
+= render 'footer', sender_name: @requested_feedback.requester_name

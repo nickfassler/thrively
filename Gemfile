@@ -4,6 +4,7 @@ ruby '1.9.3'
 
 gem 'bootstrap-sass', '2.0.4.0'
 gem 'clearance', '1.0.0.rc1'
+gem 'delayed_job_active_record', '0.3.2'
 gem 'draper', '0.17.0'
 gem 'fog', '1.5.0'
 gem 'haml', '3.2.0.beta.3'

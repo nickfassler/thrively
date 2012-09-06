@@ -28,7 +28,7 @@ describe HistoryEventDecorator do
     it 'calls request decorator when resource is a request' do
       request = create(:request)
       fake_request_decorator = double(header: double(html_safe: true))
-      RequestDecorator.stub(:new).and_return(fake_request_decorator)
+      RequestDecorator.stub(new: fake_request_decorator)
 
       decorator_for(request, request.user).header
       fake_request_decorator.should have_received(:header).with(request.user)
@@ -37,7 +37,7 @@ describe HistoryEventDecorator do
     it 'calls feedback decorator when resource is a feedback' do
       feedback = create(:feedback)
       fake_feedback_decorator = double(header: double(html_safe: true))
-      FeedbackDecorator.stub(:new).and_return(fake_feedback_decorator)
+      FeedbackDecorator.stub(new: fake_feedback_decorator)
 
       decorator_for(feedback, feedback.giver).header
       fake_feedback_decorator.should have_received(:header).with(feedback.giver)

@@ -22,13 +22,5 @@
   %p
     = link_to "Go to your Thrively account", root_url
     to view this feedback, request more feedback, or give feedback to others.
-  %p Thank you.
 
-  %hr{style: "height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;"}
-    %p
-      = "#{@feedback.giver_name} is using"
-      = link_to "Thrively", root_url
-      to collect, give, and track feedback.
-      %br
-      %br
-      \© 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA
+  = render 'footer', sender_name: @feedback.giver_name

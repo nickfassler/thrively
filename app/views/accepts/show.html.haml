@@ -1,0 +1,24 @@
+- content_for :title, 'Sign up'
+
+= render 'application/form_errors', object: @user
+
+= form_for @user do |form|
+  = form.hidden_field :invite_token, value: @invite.token
+
+  .name
+    = form.label :name
+    = form.text_field :name, placeholder: 'Your first and last name'
+
+  .email
+    = form.label :email
+    = form.text_field :email, value: @invite.email
+
+  .password
+    = form.label :password
+    = form.password_field :password, placeholder: 'Something you will remember'
+
+  .username
+    = form.label :username
+    = form.text_field :username, placeholder: 'You can change this later'
+
+  = form.submit 'Sign up', class: 'btn'

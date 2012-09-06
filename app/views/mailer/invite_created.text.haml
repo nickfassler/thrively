@@ -1,0 +1,10 @@
+Hi,
+\
+#{@user.name} has invited you to try Thrively.
+\
+Follow the link below to accept the invitation:
+\
+= link_to accept_url(invite: @invite.token),
+    accept_url(invite: @invite.token)
+\
+= render 'footer', sender_name: @user.name
