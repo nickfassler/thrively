@@ -1,7 +1,7 @@
 module RequestHelper
   def email_form_fields
     html_options = { class: 'email', placeholder: 'Email', 'data-id' => 0 }
-    content_tag :div do
+    content_tag :div, class: 'recipients' do
       concat label_tag('emails_0', 'Recipients')
 
       if @request.emails.empty?
