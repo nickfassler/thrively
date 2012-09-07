@@ -8,7 +8,11 @@ class InvitesController < ApplicationController
   def create
     @invite = Invite.new(params[:invite])
     @invite.user = current_user
-    @invite.save
-    redirect_to root_path
+
+    if @invite.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 end

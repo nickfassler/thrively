@@ -1,0 +1,4 @@
+- if object.errors.present?
+  .alert.alert-error
+    - object.errors.full_messages.each do |error_text|
+      .error= error_text

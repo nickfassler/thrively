@@ -1,5 +1,7 @@
 - content_for :title, 'Invite a friend'
 
+= render 'application/form_errors', object: @invite
+
 = form_for @invite do |f|
   = f.label :email, 'Email'
   = f.text_field :email, placeholder: 'Email'

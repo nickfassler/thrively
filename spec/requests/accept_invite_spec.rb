@@ -5,12 +5,23 @@ feature 'Accept invite' do
     user = create(:user, remaining_invites: 1)
     friend_email = 'friend@example.com'
     sign_in_as(user)
+
     invite_friend(user, friend_email)
+
     received_invite?(user, friend_email)
 
     accept_invite(Invite.last)
 
     viewing_dashboard?
+  end
+
+  scenario 'user types invalid email' do
+    user = create(:user, remaining_invites: 1)
+    sign_in_as(user)
+
+    invite_friend_with_invalid_email(user)
+
+    invalid_email?
   end
 
   scenario 'from user without remaining invites' do
@@ -59,6 +70,12 @@ feature 'Accept invite' do
     Delayed::Worker.new.work_off
   end
 
+  def invite_friend_with_invalid_email(user)
+    click_link 'Invite a friend'
+    fill_in 'Email', with: 'invalidemail'
+    click_button 'Invite'
+  end
+
   def accept_invite(invite)
     visit accept_url(invite: invite.token)
     fill_in 'Name', with: 'Accepted Invite User'
@@ -96,5 +113,9 @@ feature 'Accept invite' do
 
   def cannot_invite?
     page.should_not have_content('Invite a friend')
+  end
+
+  def invalid_email?
+    page.should have_content('Email is not an email')
   end
 end

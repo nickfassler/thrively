@@ -3,7 +3,7 @@ class Invite < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :email, presence: true
+  validates :email, presence: true, email: true
 
   before_validation :set_token
   after_create :enqueue_invite_created_job

@@ -3,7 +3,7 @@ class UserObserver < ActiveRecord::Observer
 
   def before_validation(record)
     if record.invite_token
-      record.invite = Invite.find_by_token!(record.invite_token)
+      record.invite = Invite.where(token: record.invite_token).first!
     end
   end
 
