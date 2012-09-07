@@ -10,4 +10,8 @@ class Guest < ActiveRecord::Base
   def name
     email
   end
+
+  def send_thank_you_email(feedback_receiver)
+    Mailer.thank_you(self, feedback_receiver).deliver
+  end
 end

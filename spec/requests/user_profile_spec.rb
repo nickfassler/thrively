@@ -5,7 +5,7 @@ feature 'UserProfile' do
     user = create(:user)
 
     sign_in_as user
-    visit user_path(user)
+    click_link 'Profile'
 
     page.should have_content(user.email)
     page.should have_content(user.name)
@@ -16,7 +16,7 @@ feature 'UserProfile' do
     user = create(:user)
 
     sign_in_as user
-    visit user_path(user)
+    click_link 'Profile'
     click_link 'Edit'
     fill_in 'Name', with: 'Edited User'
     fill_in 'Username', with: 'test_user'
@@ -26,5 +26,21 @@ feature 'UserProfile' do
     page.should have_content('Profile was successfully updated')
     page.should have_content('Edited User')
     page.should have_content('test_user')
+  end
+
+  scenario 'User receives an email when editing their email address' do
+    user = create(:user)
+    reset_email
+
+    sign_in_as user
+    click_link 'Profile'
+    click_link 'Edit'
+    fill_in 'Email', with: 'edited_user@example.com'
+    click_button 'Save'
+
+    current_path.should == user_path(user)
+    page.should have_content('edited_user@example.com')
+    last_sent_email.to.should include('edited_user@example.com')
+    last_sent_email.subject.should include('Your updated settings')
   end
 end

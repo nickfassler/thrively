@@ -16,6 +16,7 @@ class Mailer < ActionMailer::Base
 
   def request_sent(requested_feedback)
     @requested_feedback = requested_feedback
+
     mail(
       from: from_text(requested_feedback.requester),
       reply_to: requested_feedback.request.user.email,
@@ -26,11 +27,43 @@ class Mailer < ActionMailer::Base
 
   def feedback_given(feedback)
     @feedback = feedback
+
     mail(
       from: from_text(feedback.giver),
       reply_to: feedback.giver.email,
       to: feedback.receiver_email,
       subject: "Feedback on: #{feedback.topic}"
+    )
+  end
+
+  def welcome(user)
+    @user = user
+
+    mail(
+      to: user.email,
+      from: 'Thrively <support@thrive.ly>',
+      subject: 'Welcome to Thrively!'
+    )
+  end
+
+  def thank_you(guest, feedback_receiver)
+    @guest = guest
+    @feedback_receiver = feedback_receiver
+
+    mail(
+      to: guest.email,
+      from: 'Thrively <support@thrive.ly>',
+      subject: "Thanks for giving feedback to #{feedback_receiver.name}"
+    )
+  end
+
+  def email_changed(user)
+    @user = user
+
+    mail(
+      to: user.email,
+      from: 'Thrively <support@thrive.ly>',
+      subject: 'Your updated settings on Thrively'
     )
   end
 

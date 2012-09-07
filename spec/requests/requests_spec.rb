@@ -20,13 +20,14 @@ feature 'Requests' do
   end
 
   scenario 'User can create feedback request with multiple emails', js: true  do
-    @giver2 = create(:user, email: 'guest2@example.com')
+    giver2 = create(:user, email: 'guest2@example.com')
+    reset_email
 
     sign_in_as @requester
     click_link 'Request Feedback'
     fill_in_email(@giver.email)
     click_link 'add'
-    fill_in_email(@giver2.email)
+    fill_in_email(giver2.email)
     click_button 'Send'
 
     current_path.should == dashboard_path
@@ -35,6 +36,8 @@ feature 'Requests' do
   end
 
   scenario 'User cannot submit feedback request without email' do
+    reset_email
+
     sign_in_as @requester
     click_link 'Request Feedback'
     click_button 'Send'
@@ -45,6 +48,8 @@ feature 'Requests' do
   end
 
   scenario 'User cannot submit feedback with invalid email' do
+    reset_email
+
     sign_in_as @requester
     click_link 'Request Feedback'
     fill_in_email('bad@email')

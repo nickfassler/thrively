@@ -15,7 +15,6 @@ class FeedbacksController < ApplicationController
     end
 
     if @feedback.save
-      Mailer.feedback_given(@feedback).deliver
       redirect_to root_path, flash: { success: 'Feedback was successful' }
     else
       @receiver_provided = params[:receiver_provided]

@@ -21,6 +21,8 @@ feature 'Feedbacks' do
   end
 
   scenario 'User must fill in all fields to give feedback' do
+    reset_email
+
     sign_in_as @giver
     click_link 'Give Feedback'
     fill_in 'Topic', with: 'Test feedback topic'
@@ -51,6 +53,7 @@ feature 'Feedbacks' do
   end
 
   scenario 'User leaves feedback for a specific request' do
+    reset_email
     request = request_for(from: @receiver, to: @giver)
 
     sign_in_as @giver
@@ -60,16 +63,19 @@ feature 'Feedbacks' do
     click_button 'Send'
 
     current_path.should == root_path
-    last_sent_email.to.should include(@receiver.email)
     page.should have_content('Feedback was successful')
 
     within('.feedback') do
       page.should have_content(request.topic)
       page.should have_content('Good attitude')
     end
+
+    sent_emails.should have(1).items
+    last_sent_email.to.should include(@receiver.email)
   end
 
   scenario 'Guest leaves feedback for a specific request' do
+    reset_email
     guest = create(:guest)
     request = request_for(to: guest, from: @receiver)
 
@@ -80,8 +86,11 @@ feature 'Feedbacks' do
 
     current_path.should == root_path
     page.should have_content('Feedback was successful')
-    last_sent_email.to.should include(@receiver.email)
-    last_sent_email.reply_to.should include(guest.email)
+
+    sent_emails.should have(2).items
+    sent_emails.first.to.should include(@receiver.email)
+    sent_emails.first.from.should include(guest.email)
+    last_sent_email.to.should include(guest.email)
   end
 
   scenario 'Guest cannot leave feedback if he has not been requested' do
