@@ -14,7 +14,7 @@
         .pull-right
           %ul.nav
             - if signed_in?
-              %li= link_to 'Profile', user_path(current_user)
+              %li= link_to 'Profile', current_user
               %li= link_to 'Sign out', sign_out_path, method: :delete
             - else
               %li= link_to 'Sign in', sign_in_path

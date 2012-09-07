@@ -16,9 +16,20 @@
 @import 'font-awesome';
 
 body {
+  background-color: #D7E7EF; 
   background-image: image-url('bg-texture.png');
   background-repeat: repeat;
-  background-color: #D7E7EF; 
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #BBBBBB;
+  border-bottom: 1px solid #ffffff;
+  margin: 18px 0;
+}
+
+footer {
+  margin-bottom: 20px; 
 }
 
 #main-content {
@@ -37,42 +48,31 @@ body {
   }
 }
 
-hr {
-  margin: 18px 0;
-  border: 0;
-  border-top: 1px solid #BBBBBB;
-  border-bottom: 1px solid #ffffff;
-}
-
-footer {
-  margin-bottom: 20px; 
-}
-
 .footer-nav {
-  text-align: right; 
   font-size: 11px;
+  text-align: right; 
 
   #footer-help {
     text-decoration: none; 
   }
 
   .footer-bar {
-    padding: 0 15px;
     color: white;
+    padding: 0 15px;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4);
   }
 
   #fbicon {
     background: transparent image-url('flw-facebook-icon.png') scroll no-repeat left center;
-    padding: 2px 0px 2px 20px;
     margin-left: 5px;
+    padding: 2px 0px 2px 20px;
     text-decoration: none; 
   }
 
   #twicon {
     background: transparent image-url('flw-twitter-icon.png') scroll no-repeat left center;
-    padding: 2px 0px 2px 20px;
     margin-left: 5px;
+    padding: 2px 0px 2px 20px;
     text-decoration: none;
   }
 }

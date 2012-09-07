@@ -7,28 +7,28 @@
   }
 
   #hero-image {
-    margin-left: 40px;
     float: right;
+    margin-left: 40px;
   }
 }
 
 .features {
 
   .feature-item {
-    text-align: center;
     margin-top: 10px;
+    text-align: center;
 
     i {
-      font-size: 5em;
       color: #4C83D6;
+      font-size: 5em;
     }
 
     p {
-      margin-top: 15px;
+      color: #333;
       font-size: 16px;
       line-height: 22px;
+      margin-top: 15px;
       padding: 0 8px;
-      color: #333;
     }
   }
 }
