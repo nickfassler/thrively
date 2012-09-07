@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     styles: { medium: '80x80#', small: '50x50#' },
     default_url: 'avatar_missing.png'
 
+  def has_remaining_invites?
+    remaining_invites > 0
+  end
+
   def sender_of?(resource)
     resource.giver == self
   end

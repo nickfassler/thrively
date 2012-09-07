@@ -13,6 +13,14 @@ feature 'Accept invite' do
     viewing_dashboard?
   end
 
+  scenario 'from user without remaining invites' do
+    user = create(:user, remaining_invites: 0)
+    friend_email = 'friend@example.com'
+    sign_in_as(user)
+
+    cannot_invite?
+  end
+
   scenario 'user does not fill in required fields' do
     user = create(:user, remaining_invites: 1)
     sign_in_as(user)
@@ -84,5 +92,9 @@ feature 'Accept invite' do
 
   def viewing_dashboard?
     page.should have_content('Stream')
+  end
+
+  def cannot_invite?
+    page.should_not have_content('Invite a friend')
   end
 end

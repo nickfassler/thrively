@@ -16,4 +16,12 @@ describe User do
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:username) }
+
+  describe '#has_remaining_invites?' do
+    it 'is true when invites remain' do
+      user = build_stubbed(:user, remaining_invites: 1)
+
+      user.should have_remaining_invites
+    end
+  end
 end
