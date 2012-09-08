@@ -1,7 +1,6 @@
 class Mailer < ActionMailer::Base
-  THRIVELY_EMAIL_ADDRESS = 'app@thrive.ly'
-
-  default reply_to: THRIVELY_EMAIL_ADDRESS
+  SUPPORT_ADDRESS = 'support@thrive.ly'
+  SUPPORT_FROM_FIELD = "Thrively <#{SUPPORT_ADDRESS}>"
 
   def invite_created(invite)
     @invite = invite
@@ -41,7 +40,7 @@ class Mailer < ActionMailer::Base
 
     mail(
       to: user.email,
-      from: 'Thrively <support@thrive.ly>',
+      from: SUPPORT_FROM_FIELD,
       subject: 'Welcome to Thrively!'
     )
   end
@@ -52,7 +51,7 @@ class Mailer < ActionMailer::Base
 
     mail(
       to: guest.email,
-      from: 'Thrively <support@thrive.ly>',
+      from: SUPPORT_FROM_FIELD,
       subject: "Thanks for giving feedback to #{feedback_receiver.name}"
     )
   end
@@ -62,7 +61,7 @@ class Mailer < ActionMailer::Base
 
     mail(
       to: user.email,
-      from: 'Thrively <support@thrive.ly>',
+      from: SUPPORT_FROM_FIELD,
       subject: 'Your updated settings on Thrively'
     )
   end
@@ -70,6 +69,6 @@ class Mailer < ActionMailer::Base
   private
 
   def from_text(sender)
-    "#{sender.name} via Thrively <#{THRIVELY_EMAIL_ADDRESS}>"
+    "#{sender.name} via Thrively <#{SUPPORT_ADDRESS}>"
   end
 end

@@ -88,9 +88,13 @@ feature 'Feedbacks' do
     page.should have_content('Feedback was successful')
 
     sent_emails.should have(2).items
-    sent_emails.first.to.should include(@receiver.email)
-    sent_emails.first.from.should include(guest.email)
-    last_sent_email.to.should include(guest.email)
+
+    feedback_received_email = sent_emails.first
+    thank_you_email = last_sent_email
+
+    feedback_received_email.to.should include(@receiver.email)
+    feedback_received_email.reply_to.should include(guest.email)
+    thank_you_email.to.should include(guest.email)
   end
 
   scenario 'Guest cannot leave feedback if he has not been requested' do

@@ -12,50 +12,43 @@ describe UserObserver do
   end
 
   describe '#after_create' do
-    it 'converts given feedbacks from guest' do
-      guest = create(:guest)
-      given_feedback = create(:feedback, giver: guest)
+    it 'converts guest associations when guest exists' do
+      user = build_stubbed(:user)
+      guest = double(:guest, to_user: nil)
+      Guest.stub_chain(:where, first: guest)
 
-      user = create(:user, email: guest.email)
+      UserObserver.instance.after_create(user)
 
-      user.given_feedbacks.should == [given_feedback]
+      guest.should have_received(:to_user)
     end
 
-    it 'converts received feedbacks from guest' do
-      guest = create(:guest)
-      received_feedback = create(:feedback, receiver: guest)
+    it 'sends a welcome email' do
+      user = build_stubbed(:user)
+      Mailer.stub_chain(:welcome, :deliver)
+      UserObserver.instance.after_create(user)
 
-      user = create(:user, email: guest.email)
+      Mailer.should have_received(:welcome).with(user)
+    end
+  end
 
-      user.received_feedbacks.should == [received_feedback]
+  describe '#after_update' do
+    it 'sends an email if email address was changed' do
+      user = build_stubbed(:user)
+      user.email = 'changed@example.com'
+      Mailer.stub_chain(:email_changed, :deliver)
+
+      UserObserver.instance.after_update(user)
+
+      Mailer.should have_received(:email_changed).with(user)
     end
 
-    it 'converts requested_feedbacks from guest' do
-      guest = create(:guest)
-      requested_feedback = create(:requested_feedback, giver: guest)
+    it 'does not send an email if email address was unchanged' do
+      user = create(:user)
+      Mailer.stub(:email_changed, :deliver)
 
-      user = create(:user, email: guest.email)
+      UserObserver.instance.after_update(user)
 
-      user.requested_feedbacks.should == [requested_feedback]
-    end
-
-    it 'deletes the guest' do
-      guest = create(:guest)
-
-      create(:user, email: guest.email)
-
-      expect { guest.reload }.to raise_error(ActiveRecord::RecordNotFound)
-    end
-
-    it 'generates history events' do
-      guest = create(:guest)
-      given_feedback = create(:feedback, giver: guest)
-      received_feedback = create(:feedback, receiver: guest)
-      request = create(:request, emails: [guest.email])
-
-      user = create(:user, email: guest.email)
-
-      user.should have(3).history_events
+      Mailer.should_not have_received(:email_changed).with(user)
     end
   end
 end

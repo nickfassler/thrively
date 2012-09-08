@@ -26,21 +26,6 @@ class User < ActiveRecord::Base
     resource.giver == self
   end
 
-  def convert_from_guest
-    guest = Guest.where(email: email).first
-
-    if guest
-      transaction do
-        self.given_feedbacks = guest.given_feedbacks
-        self.received_feedbacks = guest.received_feedbacks
-        self.requested_feedbacks = guest.requested_feedbacks
-        self.history_events = guest.history_events
-
-        guest.destroy
-      end
-    end
-  end
-
   def send_thank_you_email(feedback_receiver)
     # no-op
   end

@@ -101,7 +101,7 @@ feature 'Accept invite' do
   end
 
   def received_invite?(user, friend_email)
-    last_sent_email.from.should include(Mailer::THRIVELY_EMAIL_ADDRESS)
+    last_sent_email.from.should include(Mailer::SUPPORT_ADDRESS)
     last_sent_email.reply_to.should include(user.email)
     last_sent_email.to.should include(friend_email)
     last_sent_email_body.should include(accept_url(invite: Invite.last.token))

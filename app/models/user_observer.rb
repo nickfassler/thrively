@@ -8,7 +8,8 @@ class UserObserver < ActiveRecord::Observer
   end
 
   def after_create(user)
-    user.convert_from_guest
+    guest = Guest.where(email: user.email).first
+    guest.try(:to_user)
 
     Mailer.welcome(user).deliver
   end

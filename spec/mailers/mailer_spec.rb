@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe Mailer do
+  describe 'SUPPORT_ADDRESS' do
+    it 'is the correct value' do
+      Mailer::SUPPORT_ADDRESS.should == 'support@thrive.ly'
+    end
+  end
+
   describe 'invite_created' do
     it 'contructs the headers' do
       invite = create(:invite)
@@ -8,7 +14,7 @@ describe Mailer do
       mail = Mailer.invite_created(invite)
 
       mail.to.should == [invite.email]
-      mail.from.should == [Mailer::THRIVELY_EMAIL_ADDRESS]
+      mail.from.should == [Mailer::SUPPORT_ADDRESS]
       mail.reply_to.should == [invite.user.email]
       mail.subject.should =~ /invite you to Thrively/
     end
@@ -30,7 +36,7 @@ describe Mailer do
       mail = Mailer.request_sent(requested_feedback)
 
       mail.to.should == [requested_feedback.giver_email]
-      mail.from.should == [Mailer::THRIVELY_EMAIL_ADDRESS]
+      mail.from.should == [Mailer::SUPPORT_ADDRESS]
       mail.reply_to.should == [requested_feedback.requester_email]
       mail.subject.should =~ /Please give me feedback/
     end
@@ -56,7 +62,7 @@ describe Mailer do
       mail = Mailer.feedback_given(feedback)
 
       mail.to.should == [feedback.receiver_email]
-      mail.from.should == [Mailer::THRIVELY_EMAIL_ADDRESS]
+      mail.from.should == [Mailer::SUPPORT_ADDRESS]
       mail.reply_to.should == [feedback.giver_email]
       mail.subject.should == "Feedback on: #{feedback.topic}"
     end
@@ -81,7 +87,7 @@ describe Mailer do
       mail = Mailer.welcome(user)
 
       mail.to.should == [user.email]
-      mail.from.should == ['support@thrive.ly']
+      mail.from.should == [Mailer::SUPPORT_ADDRESS]
       mail.subject.should == 'Welcome to Thrively!'
     end
 
@@ -92,7 +98,7 @@ describe Mailer do
 
       body.should include(user.name)
       body.should include(new_request_url)
-      body.should include('support@thrive.ly')
+      body.should include(Mailer::SUPPORT_ADDRESS)
     end
   end
 
@@ -103,7 +109,7 @@ describe Mailer do
       mail = Mailer.thank_you(guest, feedback.receiver)
 
       mail.to.should == [guest.email]
-      mail.from.should == ['support@thrive.ly']
+      mail.from.should == [Mailer::SUPPORT_ADDRESS]
       mail.subject.
         should == "Thanks for giving feedback to #{feedback.receiver_name}"
     end
@@ -115,7 +121,7 @@ describe Mailer do
       body = mail.parts.last.body
 
       body.should include("feedback to #{feedback.receiver_name}")
-      body.should include('support@thrive.ly')
+      body.should include(Mailer::SUPPORT_ADDRESS)
     end
   end
 
@@ -125,7 +131,7 @@ describe Mailer do
       mail = Mailer.email_changed(user)
 
       mail.to.should == [user.email]
-      mail.from.should == ['support@thrive.ly']
+      mail.from.should == [Mailer::SUPPORT_ADDRESS]
       mail.subject.should == 'Your updated settings on Thrively'
     end
 
@@ -139,7 +145,7 @@ describe Mailer do
       body.should include(user.email)
       body.should include(user.name)
       body.should include('just updated your email')
-      body.should include('support@thrive.ly')
+      body.should include(Mailer::SUPPORT_ADDRESS)
     end
   end
 end

@@ -28,7 +28,7 @@ feature 'UserProfile' do
     page.should have_content('test_user')
   end
 
-  scenario 'User receives an email when editing their email address' do
+  scenario 'User receives an email when changing their email address' do
     user = create(:user)
     reset_email
 
