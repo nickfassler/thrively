@@ -1,0 +1,19 @@
+%div{ style: 'font-family: Arial; font-size:12px;' }
+  %p{ style: 'margin: 10px 0;' }
+    Hello!
+  %p{ style: 'margin: 10px 0;' }
+    Thank you for giving feedback to #{@feedback_receiver.name} using
+    #{link_to 'Thrively', root_url}.
+  %p{ style: 'margin: 10px 0;' }
+    If you did not give this feedback, or you are confused why you received this
+    message, please contact us at #{Mailer::SUPPORT_ADDRESS}.
+  %p{ style: 'margin: 10px 0;' }
+    Yours for the feedback revolution,
+  %p{ style: 'margin: 10px 0; color: #666;' }
+    Nick Fassler, CEO and Founder of Thrively
+  %hr{ style: 'height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;'}
+  Thrively is currently in our private beta test with a small group of users,
+  but you can #{link_to 'request an invite', root_url} to be notified as soon
+  as we are ready for you.
+
+  &copy; 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA

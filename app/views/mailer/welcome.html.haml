@@ -1,0 +1,24 @@
+Hello #{@user.name}!
+\
+Thanks for signing up for Thrively's private beta test. We are excited to have
+you join our community.
+\
+You were selected to try Thrively because we really value your opinion. If you
+have any ideas, questions, or other feedback, please contact us at:
+#{Mailer::SUPPORT_ADDRESS}.
+\
+It's easy to get started with Thrively: why don't you try
+#{link_to 'requesting feedback', new_request_url} or
+#{link_to 'giving feedback', new_feedback_url} to a colleague, friend, client,
+mentor, or anyone you want. And while you're at it, you can also
+#{link_to 'upload a profile photo', edit_user_url(@user)} of yourself.
+\
+Yours for the feedback revolution,
+\
+Nick Fassler, CEO and Founder of Thrively
+\
+%hr
+If you are confused why you received this message, or are having any trouble
+with your Thrively account, please contact us at #{Mailer::SUPPORT_ADDRESS}.
+\
+&copy; 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA

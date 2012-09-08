@@ -1,24 +1,22 @@
 class UserObserver < ActiveRecord::Observer
   observe User
 
-  def before_validation(record)
-    if record.invite_token
-      record.invite = Invite.where(token: record.invite_token).first!
+  def before_validation(user)
+    if user.invite_token
+      user.invite = Invite.where(token: user.invite_token).first!
     end
   end
 
-  def after_create(record)
-    guest = Guest.where(email: record.email).first
+  def after_create(user)
+    guest = Guest.where(email: user.email).first
+    guest.try(:to_user)
 
-    if guest
-      record.transaction do
-        record.given_feedbacks = guest.given_feedbacks
-        record.received_feedbacks = guest.received_feedbacks
-        record.requested_feedbacks = guest.requested_feedbacks
-        record.history_events = guest.history_events
+    Mailer.welcome(user).deliver
+  end
 
-        guest.destroy
-      end
+  def after_update(user)
+    if user.email_changed?
+      Mailer.email_changed(user).deliver
     end
   end
 end

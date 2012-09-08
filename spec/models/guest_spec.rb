@@ -12,4 +12,57 @@ describe Guest do
       with_message(/is not an email/)
   }
   it { should validate_format_of(:email).with('user@example.com') }
+
+  describe '#to_user' do
+    it 'converts given feedbacks' do
+      converted_user_with_association(:feedback, :giver).
+        should have(1).given_feedback
+    end
+
+    it 'converts received feedbacks' do
+      converted_user_with_association(:feedback, :receiver).
+        should have(1).received_feedback
+    end
+
+    it 'converts requested feedbacks' do
+      converted_user_with_association(:requested_feedback, :giver).
+        should have(1).requested_feedback
+    end
+
+    it 'converts history events' do
+      guest = create(:guest)
+      given_feedback = create(:feedback, giver: guest)
+      received_feedback = create(:feedback, receiver: guest)
+      request = create(:request, emails: [guest.email])
+
+      ActiveRecord::Base.observers.disable :user_observer do
+        create(:user, email: guest.email)
+      end
+
+      guest.to_user.should have(3).history_events
+    end
+
+    it 'deletes the guest' do
+      guest = create(:guest)
+      create(:user, email: guest.email)
+
+      guest.to_user
+
+      expect { guest.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    private
+
+    def converted_user_with_association(resource_sym, role)
+      guest = build_stubbed(:guest)
+      guest.stub(:destroy)
+      create(resource_sym, role => guest)
+
+      ActiveRecord::Base.observers.disable :user_observer do
+        create(:user, email: guest.email)
+      end
+
+      guest.to_user
+    end
+  end
 end

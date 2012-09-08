@@ -10,4 +10,27 @@ class Guest < ActiveRecord::Base
   def name
     email
   end
+
+  def send_thank_you_email(feedback_receiver)
+    Mailer.thank_you(self, feedback_receiver).deliver
+  end
+
+  def to_user
+    user = User.where(email: email).first
+
+    if user
+      transaction do
+        user.given_feedbacks = given_feedbacks
+        user.received_feedbacks = received_feedbacks
+        user.requested_feedbacks = requested_feedbacks
+        user.history_events = history_events
+
+        destroy
+      end
+    else
+      raise 'Cannot convert because user record does not exist'
+    end
+
+    user
+  end
 end
