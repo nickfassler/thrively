@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(:version => 20120907172957) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "username"
     t.integer  "remaining_invites",                  :default => 0, :null => false
+    t.string   "username"
     t.integer  "invite_id"
   end
 

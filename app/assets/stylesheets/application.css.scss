@@ -16,7 +16,7 @@
 @import 'font-awesome';
 
 body {
-  background-color: #D7E7EF; 
+  background-color: #D7E7EF;
   background-image: image-url('bg-texture.png');
   background-repeat: repeat;
 }
@@ -29,7 +29,7 @@ hr {
 }
 
 footer {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 #main-content {
@@ -50,10 +50,10 @@ footer {
 
 .footer-nav {
   font-size: 11px;
-  text-align: right; 
+  text-align: right;
 
   #footer-help {
-    text-decoration: none; 
+    text-decoration: none;
   }
 
   .footer-bar {
@@ -66,7 +66,7 @@ footer {
     background: transparent image-url('flw-facebook-icon.png') scroll no-repeat left center;
     margin-left: 5px;
     padding: 2px 0px 2px 20px;
-    text-decoration: none; 
+    text-decoration: none;
   }
 
   #twicon {

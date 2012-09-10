@@ -2,54 +2,54 @@ require 'spec_helper'
 
 feature 'Dashboard' do
   scenario 'User can see their activity stream on the dasboard' do
-    user = create(:user)
-    user2 = create(:user)
-    received_feedback = create(:feedback, receiver: user, giver: user2)
-    given_feedback = create(:feedback, receiver: user2, giver: user)
-    request_from = create(:request, user: user, emails: [user2.email])
-    request_to = create(:request, user: user2, emails: [user.email])
+    you = create(:user)
+    friend = create(:user)
+    received_feedback = create(:feedback, receiver: you, giver: friend)
+    given_feedback = create(:feedback, receiver: friend, giver: you)
+    request_from = create(:request, user: you, emails: [friend.email])
+    request_to = create(:request, user: friend, emails: [you.email])
 
-    sign_in_as user
+    sign_in_as you
 
     within '.feedback.received' do
-      page.should have_content("from #{user2.name}")
+      page.should have_content("#{friend.name} gave feedback to you")
       page.should have_content(received_feedback.topic)
       page.should have_content(received_feedback.plus)
       page.should have_content(received_feedback.delta)
     end
 
     within '.feedback.sent' do
-      page.should have_content("to #{user2.name}")
-      page.should have_content(given_feedback.topic)
-      page.should have_content(given_feedback.plus)
-      page.should have_content(given_feedback.delta)
+      page.should have_content("You gave feedback to #{friend.name}")
+      page.should_not have_content(given_feedback.topic)
+      page.should_not have_content(given_feedback.plus)
+      page.should_not have_content(given_feedback.delta)
     end
 
     within '.request.sent' do
-      page.should have_content("from: #{user2.name}")
-      page.should have_content(request_from.topic)
+      page.should have_content("You requested feedback from #{friend.name}")
+      page.should_not have_content(request_from.topic)
     end
 
     within '.request.received' do
-      page.should have_content("from #{user2.name}")
+      page.should have_content("#{friend.name} requested feedback from you")
       page.should have_content(request_to.topic)
     end
   end
 
   scenario 'User can click on next and previous pages to see more activity' do
-    user1 = create(:user)
-    user2 = create(:user)
-    create(:feedback, receiver: user1, giver: user2, topic: 'Feedback Next')
-    create(:feedback, receiver: user2, giver: user1, topic: 'Feedback Previous')
+    you = create(:user)
+    friend = create(:user)
+    create(:feedback, receiver: you, giver: friend)
+    create(:feedback, receiver: friend, giver: you)
     HistoryEvent.per_page = 1
 
-    sign_in_as user1
+    sign_in_as you
     click_link('2')
 
-    page.should have_content('Feedback Next')
+    page.should have_content("#{friend.name} gave feedback to you")
 
     click_link('1')
 
-    page.should have_content('Feedback Previous')
+    page.should have_content("You gave feedback to #{friend.name}")
   end
 end

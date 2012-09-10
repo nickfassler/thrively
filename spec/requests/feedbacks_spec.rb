@@ -48,7 +48,7 @@ feature 'Feedbacks' do
     page.should have_content('Feedback was successful')
 
     within('.feedback') do
-      page.should have_content('Daily standup')
+      page.should have_content("You gave feedback to #{@receiver.name}")
     end
   end
 
@@ -66,8 +66,7 @@ feature 'Feedbacks' do
     page.should have_content('Feedback was successful')
 
     within('.feedback') do
-      page.should have_content(request.topic)
-      page.should have_content('Good attitude')
+      page.should have_content("You gave feedback to #{@receiver.name}")
     end
 
     sent_emails.should have(1).items

@@ -48,15 +48,15 @@ feature 'Accept invite' do
 
   scenario 'when a guest with prior feedbacks' do
     guest = create(:guest)
-    feedback1 = create(:feedback, giver: guest, topic: 'Meeting')
-    feedback2 = create(:feedback, receiver: guest, topic: 'Intreview')
+    given_feedback = create(:feedback, giver: guest)
+    received_feedback = create(:feedback, receiver: guest)
     invite = create(:invite, email: guest.email)
 
     accept_invite(invite)
 
     within('.app-box-content') do
-      page.should have_content(feedback1.topic)
-      page.should have_content(feedback2.topic)
+      page.should have_content("You gave feedback to #{given_feedback.receiver.name}")
+      page.should have_content("#{received_feedback.giver.name} gave feedback to you")
     end
   end
 
