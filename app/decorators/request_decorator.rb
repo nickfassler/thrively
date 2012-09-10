@@ -3,7 +3,7 @@ class RequestDecorator < Draper::Base
 
   def header(current_user)
     if current_user.sender_of?(request)
-      text = "You requested feedback from: "
+      text = "You requested feedback from "
 
       profile_links = request.invitees.map do |invitee|
         invitee.decorator.link_to_profile
@@ -11,12 +11,12 @@ class RequestDecorator < Draper::Base
 
       text += profile_links.join(', ')
     else
-      "Received feedback request from #{request.user.decorator.link_to_profile}"
+      "#{request.user.decorator.link_to_profile} requested feedback from you"
     end
   end
 
   def topic
-    h.content_tag :div do
+    h.content_tag :div, class: 'topic' do
       h.link_to(
         request.topic,
         h.new_feedback_path(feedback: { request_id: request.id })

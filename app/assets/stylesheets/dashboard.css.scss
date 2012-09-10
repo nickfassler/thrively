@@ -39,3 +39,17 @@
     padding: 20px 30px;
   }
 }
+
+.feedback, .request {
+  margin-bottom: 20px;
+
+  i {
+    font-size: 26px;
+    margin-right: 5px;
+  }
+
+  .topic {
+    margin-top: 6px;
+    font-weight: bold;
+  }
+}

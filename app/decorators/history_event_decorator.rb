@@ -2,7 +2,7 @@ class HistoryEventDecorator < Draper::Base
   decorates :history_event
 
   def html_classes
-    classes = ['well', resource.class.name.underscore]
+    classes = [resource.class.name.underscore]
 
     if model.owner.sender_of?(resource)
       classes << 'sent'

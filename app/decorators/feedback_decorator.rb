@@ -3,9 +3,9 @@ class FeedbackDecorator < Draper::Base
 
   def header(current_user)
     if current_user.sender_of?(feedback)
-      "#{Feedback} given to #{feedback.receiver.decorator.link_to_profile}"
+      "You gave feedback to #{feedback.receiver.decorator.link_to_profile}"
     else
-      "#{Feedback} received from #{feedback.giver.decorator.link_to_profile}"
+      "#{feedback.giver.decorator.link_to_profile} gave feedback to you"
     end
   end
 
@@ -18,7 +18,7 @@ class FeedbackDecorator < Draper::Base
   end
 
   def topic
-    h.content_tag :div, feedback.topic
+    h.content_tag :div, feedback.topic, class: 'topic'
   end
 
   def icon
