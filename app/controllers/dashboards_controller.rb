@@ -2,8 +2,7 @@ class DashboardsController < ApplicationController
   before_filter :authorize
 
   def show
-    @events = HistoryEventDecorator.decorate(
-      current_user.history_events.includes(:resource, :owner).page(params[:page])
-    )
+    @events = current_user.history_events.includes(:resource, :owner).
+      page(params[:page])
   end
 end

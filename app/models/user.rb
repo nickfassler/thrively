@@ -22,10 +22,6 @@ class User < ActiveRecord::Base
     remaining_invites > 0
   end
 
-  def sender_of?(resource)
-    resource.giver == self
-  end
-
   def send_thank_you_email(feedback_receiver)
     # no-op
   end

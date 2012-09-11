@@ -4,10 +4,6 @@
   = link_to 'Invite a friend', new_invite_path
 
 - @events.each do |event|
-  %div{ class: event.html_classes }
-    = event.icon
-    = event.header
-    - unless current_user.sender_of?(event.resource)
-      = event.body
+  = render event.name_for(current_user), resource: event.resource
 
 = will_paginate @events

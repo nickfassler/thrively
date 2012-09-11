@@ -1,0 +1,4 @@
+.request.sent
+  %i.icon-bullhorn
+  You requested feedback from
+  = raw resource.invitees.map { |invitee| invitee.decorator.link_to_profile }.join(', ')

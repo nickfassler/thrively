@@ -24,6 +24,11 @@ FactoryGirl.define do
     email
   end
 
+  factory :history_event do
+    association :owner, factory: :user
+    association :resource, factory: :feedback
+  end
+
   factory :invite do
     email
     user
