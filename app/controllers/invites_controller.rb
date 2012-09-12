@@ -10,7 +10,7 @@ class InvitesController < ApplicationController
     @invite.user = current_user
 
     if @invite.save
-      redirect_to root_path
+      redirect_to root_path, flash: { success: 'Invite sent' }
     else
       render :new
     end

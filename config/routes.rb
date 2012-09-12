@@ -13,6 +13,7 @@ Thrively::Application.routes.draw do
   resources :invites, only: [:new, :create]
   resources :requests, only: [:new, :create]
   resources :requested_feedbacks, only: :show
+  resource :session, only: [:create]
   resources :users, only: [:new, :create, :show, :edit, :update]
 
   match '/request' => 'requests#new'

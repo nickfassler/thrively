@@ -1,4 +1,6 @@
 - content_for :title, 'Sign up'
+- content_for :meta do
+  <meta name='ROBOTS' content='NOINDEX, NOFOLLOW'>
 
 = render 'application/form_errors', object: @user
 
