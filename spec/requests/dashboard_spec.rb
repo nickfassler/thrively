@@ -20,19 +20,21 @@ feature 'Dashboard' do
 
     within '.feedback.sent' do
       page.should have_content("You gave feedback to #{friend.name}")
-      page.should_not have_content(given_feedback.topic)
+      page.should have_content(given_feedback.topic)
       page.should_not have_content(given_feedback.plus)
       page.should_not have_content(given_feedback.delta)
     end
 
     within '.request.sent' do
       page.should have_content("You requested feedback from #{friend.name}")
-      page.should_not have_content(request_from.topic)
+      page.should have_content(request_from.topic)
+      page.should_not have_content(request_from.message)
     end
 
     within '.request.received' do
       page.should have_content("#{friend.name} requested feedback from you")
       page.should have_content(request_to.topic)
+      page.should have_content(request_to.message)
     end
   end
 

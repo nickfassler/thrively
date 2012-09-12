@@ -1,9 +1,13 @@
-%div{style: "font-family: Arial; font-size:12px;"}
-  %p Hi #{@feedback.receiver_name},
-  %p #{@feedback.giver_name} has given you feedback with Thrively.
+%div{ style: 'font-family: Arial,sans-serif; font-size:13px;' }
+
+  %p{ style: 'margin: 0 0 1.6em 0;' }
+    Hi #{@feedback.receiver_name},
+
+  %p{ style: 'margin: 0 0 1.6em 0;' }
+    #{@feedback.giver_name} has given you feedback with Thrively.
 
   %table{bgcolor: "#F0FFF0", border: "0", cellpadding: "0", cellspacing: "10",
-    style: "border: 1px solid #EEE;", width: "100%"}
+    width: "100%", style: "border: 1px solid #EEE; margin: 0 0 1.6em 0;"}
     %tr
       %td{style: "font-family: Georgia;color:#333333; font-size:13px;"}
         %div
@@ -19,8 +23,25 @@
           %br
           %em= @feedback.delta
 
-  %p
-    = link_to 'Go to Thrively', root_url
+  %p{ style: 'margin: 0 0 1.6em 0;' }
+    - if @feedback.receiver_type == 'User'
+      = link_to 'Go to your Thrively account', root_url
+    - else
+      = link_to 'Request an invite to the Thrively private beta', root_url
     to view this feedback, request more feedback, or give feedback to others.
 
-  = render 'footer', sender_name: @feedback.giver_name
+  %p{ style: 'margin: 0 0 1.6em 0;' } 
+    Thank you.
+
+  %hr{style: 'height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;'}
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      - if @feedback.giver_type == 'User'
+        #{@feedback.giver_name} is using
+        = link_to 'Thrively', root_url
+        to collect, give, and track feedback.
+      - else
+        If you have any ideas or concerns for Thrively, please contact us at
+        #{Mailer::SUPPORT_ADDRESS}.
+      
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      \© 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA

@@ -16,9 +16,15 @@
 @import 'font-awesome';
 
 body {
+  font-size: 13px;
   background-color: #D7E7EF;
   background-image: image-url('bg-texture.png');
   background-repeat: repeat;
+}
+
+.action-btns .btn {
+  font-size: 15px;
+  margin: 5px 10px 0 0;
 }
 
 hr {
@@ -46,6 +52,10 @@ footer {
   input {
     border: 1px solid red;
   }
+}
+
+.pagination {
+  clear: both;
 }
 
 .footer-nav {

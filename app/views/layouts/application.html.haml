@@ -8,7 +8,7 @@
   = csrf_meta_tags
 
 %body
-  .navbar.navbar-fixed-top
+  .navbar.navbar-fixed-top.navbar-inverse
     .navbar-inner
       .container
         = link_to 'Thrively', root_path, class: 'brand'
@@ -21,9 +21,9 @@
               %li= link_to 'Sign in', sign_in_path
         - if signed_in?
           .action-btns.pull-right
-            %a{ href: new_request_path, class: 'btn btn-info btn-large'}
+            %a{ href: new_request_path, class: 'btn btn-info'}
               Request Feedback
-            %a{ href: new_feedback_path, class: 'btn btn-primary btn-large'}
+            %a{ href: new_feedback_path, class: 'btn btn-primary'}
               Give Feedback
 
   #main-content.container

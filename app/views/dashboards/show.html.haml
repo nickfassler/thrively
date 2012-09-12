@@ -3,7 +3,8 @@
 - if current_user.has_remaining_invites?
   = link_to 'Invite a friend', new_invite_path
 
-- @events.each do |event|
-  = render event.name_for(current_user), resource: event.resource
+.events
+  - @events.each do |event|
+    = render event.name_for(current_user), resource: event.resource
 
 = will_paginate @events

@@ -1,9 +1,13 @@
-%div{style: "font-family: Arial; font-size:12px;"}
-  %p Hi #{@requested_feedback.giver_name},
-  %p #{@requested_feedback.requester_name} would like your feedback.
+%div{ style: 'font-family: Arial,sans-serif; font-size:13px;' }
 
-  %table{bgcolor: "#FFFFEE", border: "0", cellpadding: "0", cellspacing: "10",
-    style: "border: 1px solid #EEE;", width: "100%"}
+  %p{ style: 'margin: 0 0 1.6em 0;' }
+    Hi #{@requested_feedback.giver_name},
+
+  %p{ style: 'margin: 0 0 1.6em 0;' }
+    #{@requested_feedback.requester_name} would like your feedback.
+
+  %table{bgcolor: "#FFFFEE", border: "0", cellpadding: "0", cellspacing: "10", 
+    width: "100%", style: "border: 1px solid #EEE; margin: 0 0 1.6em 0;"}
     %tr
       %td{style: "font-family: Georgia; color:#333333; font-size:13px;"}
         %div
@@ -12,8 +16,10 @@
           %br
           %em= @requested_feedback.request.message
 
-  %p Click the link below to give your feedback on what worked and what could be improved:
-  %p
+  %p{ style: 'margin: 0 0 1.6em 0;' }
+    Click the link below to give your feedback on what worked and what could be improved:
+
+  %p{ style: 'margin: 0 0 1.6em 0;' }
     = link_to requested_feedback_url(@requested_feedback),
         requested_feedback_url(@requested_feedback)
 

@@ -18,4 +18,8 @@ Thrively::Application.routes.draw do
 
   match '/request' => 'requests#new'
   match '/give' => 'feedbacks#new', as: :give_feedback
+
+  if Rails.env.development?
+    mount Mailer::Preview => 'mail_view'
+  end
 end

@@ -22,3 +22,4 @@ tags
 !.keep
 vendor/bundler_gems
 .env
+bin

@@ -1,8 +1,14 @@
 .request.received
-  %i.icon-bullhorn
-  = resource.user.decorator.link_to_profile
-  requested feedback from you on
-  = link_to resource.topic,
-      new_feedback_path(feedback: { request_id: resource.id })
-  .message
-    = resource.message
+  .history-icon
+    %i.icon-bullhorn
+  .history-content
+    .title
+      = resource.user.decorator.link_to_profile
+      requested feedback from you
+      %span.timestamp
+        #{time_ago_in_words(resource.created_at)} ago
+    .topic
+      = link_to resource.topic,
+        new_feedback_path(feedback: { request_id: resource.id })
+    .message
+      = resource.message
