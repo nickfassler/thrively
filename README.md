@@ -27,7 +27,9 @@ Set up the project's dependencies.
 Add Heroku remotes for staging and production environments.
 
     git remote add staging git@heroku.com:<app>-staging.git
+    git checkout -b staging --track staging/master
     git remote add production git@heroku.com:<app>-production.git
+    git checkout -b production --track production/master
 
 Use [Heroku config](https://github.com/ddollar/heroku-config) to get `ENV`
 variables.
@@ -142,16 +144,6 @@ Restart the dynos if migrations were run.
 
 Test the feature in browser.
 
-Delete your remote feature branch.
-
-    git push origin :[branch]
-
-Delete your local feature branch.
-
-    git branch -d [branch]
-
-Close pull request and comment `Merged.`
-
 Deploy to production.
 
     git checkout production
@@ -172,6 +164,16 @@ Watch logs and metrics dashboards. If the feature is working, merge into master.
     git log production..master
     git merge production --ff-only
     git push origin master
+
+Delete your remote feature branch.
+
+    git push origin :[branch]
+
+Delete your local feature branch.
+
+    git branch -d [branch]
+
+Close pull request and comment `Merged.`
 
 Use scripts from [thoughtbot/dotfiles](http://github.com/thoughtbot/dotfiles)
 to quickly access the Heroku console, backup the production database, and
