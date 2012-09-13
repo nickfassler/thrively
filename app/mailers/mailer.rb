@@ -45,14 +45,14 @@ class Mailer < ActionMailer::Base
     )
   end
 
-  def thank_you(guest, feedback_receiver)
-    @guest = guest
-    @feedback_receiver = feedback_receiver
+  def thank_you(feedback)
+    @guest = feedback.giver
+    @feedback_receiver = feedback.receiver
 
     mail(
-      to: guest.email,
+      to: @guest.email,
       from: SUPPORT_FROM_FIELD,
-      subject: "Thanks for giving feedback to #{feedback_receiver.name}"
+      subject: "Thanks for giving feedback to #{@feedback_receiver.name}"
     )
   end
 

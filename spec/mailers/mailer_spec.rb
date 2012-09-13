@@ -105,8 +105,8 @@ describe Mailer do
   describe 'thank_you' do
     it 'contructs the headers' do
       guest = build_stubbed(:guest)
-      feedback = build_stubbed(:feedback)
-      mail = Mailer.thank_you(guest, feedback.receiver)
+      feedback = build_stubbed(:feedback, giver: guest)
+      mail = Mailer.thank_you(feedback)
 
       mail.to.should == [guest.email]
       mail.from.should == [Mailer::SUPPORT_ADDRESS]
@@ -117,7 +117,7 @@ describe Mailer do
     it 'constructs the body' do
       guest = build_stubbed(:guest)
       feedback = build_stubbed(:feedback)
-      mail = Mailer.thank_you(guest, feedback.receiver)
+      mail = Mailer.thank_you(feedback)
       body = mail.parts.last.body
 
       body.should include("feedback to #{feedback.receiver_name}")

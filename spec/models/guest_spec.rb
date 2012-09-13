@@ -31,15 +31,16 @@ describe Guest do
 
     it 'converts history events' do
       guest = create(:guest)
-      given_feedback = create(:feedback, giver: guest)
-      received_feedback = create(:feedback, receiver: guest)
-      request = create(:request, emails: [guest.email])
+      history_event_one = create(:history_event, owner: guest)
+      history_event_two = create(:history_event, owner: guest)
+      guest.reload
 
       ActiveRecord::Base.observers.disable :user_observer do
         create(:user, email: guest.email)
       end
 
-      guest.to_user.should have(3).history_events
+      guest.to_user.history_events.should ==
+        [history_event_one, history_event_two]
     end
 
     it 'deletes the guest' do

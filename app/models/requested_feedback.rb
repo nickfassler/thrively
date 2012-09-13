@@ -25,8 +25,4 @@ class RequestedFeedback < ActiveRecord::Base
   def requester_email
     requester.email
   end
-
-  def notify
-    Mailer.request_sent(self).deliver
-  end
 end

@@ -9,7 +9,7 @@ describe InviteCreatedJob do
 
       should enqueue_delayed_job('InviteCreatedJob').
         with_attributes(invite_id: invite.id).
-        priority(1)
+        priority(2)
     end
   end
 
@@ -17,8 +17,7 @@ describe InviteCreatedJob do
     it 'emails owner' do
       invite = build_stubbed(:invite)
       Invite.stub(find: invite)
-      mailer = double('mailer', deliver: true)
-      Mailer.stub(invite_created: mailer)
+      Mailer.stub_chain(:invite_created, :deliver)
 
       InviteCreatedJob.new(invite.id).perform
 

@@ -22,6 +22,12 @@ RSpec.configure do |config|
     reset_email
     DatabaseCleaner.clean
   end
+
+  Delayed::Worker.delay_jobs = true
+
+  config.before(:each, type: :request) do
+    Delayed::Worker.delay_jobs = false
+  end
 end
 
 Capybara.javascript_driver = :webkit

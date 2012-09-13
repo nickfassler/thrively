@@ -4,51 +4,43 @@ describe UserObserver do
   describe '#before_validation' do
     it 'associates with invite when given an invite_token' do
       invite = create(:invite)
+      user = build_stubbed(:user, invite_token: invite.token)
 
-      user = create(:user, invite_token: invite.token)
+      UserObserver.instance.before_validation(user)
 
       user.invite.should == invite
     end
   end
 
   describe '#after_create' do
-    it 'converts guest associations when guest exists' do
+    it 'enqueues a UserCreatedJob' do
       user = build_stubbed(:user)
-      guest = double(:guest, to_user: nil)
-      Guest.stub_chain(:where, first: guest)
+      UserCreatedJob.stub(:enqueue)
 
       UserObserver.instance.after_create(user)
 
-      guest.should have_received(:to_user)
-    end
-
-    it 'sends a welcome email' do
-      user = build_stubbed(:user)
-      Mailer.stub_chain(:welcome, :deliver)
-      UserObserver.instance.after_create(user)
-
-      Mailer.should have_received(:welcome).with(user)
+      UserCreatedJob.should_not have_received(:enqueue)
     end
   end
 
   describe '#after_update' do
-    it 'sends an email if email address was changed' do
-      user = build_stubbed(:user)
+    it 'enqueues EmailChangedJob if email address was changed' do
+      user = build(:user)
       user.email = 'changed@example.com'
-      Mailer.stub_chain(:email_changed, :deliver)
+      EmailChangedJob.stub(:enqueue)
 
       UserObserver.instance.after_update(user)
 
-      Mailer.should have_received(:email_changed).with(user)
+      EmailChangedJob.should have_received(:enqueue).with(user)
     end
 
     it 'does not send an email if email address was unchanged' do
-      user = create(:user)
-      Mailer.stub(:email_changed, :deliver)
+      user = build_stubbed(:user)
+      EmailChangedJob.stub(:enqueue)
 
       UserObserver.instance.after_update(user)
 
-      Mailer.should_not have_received(:email_changed).with(user)
+      EmailChangedJob.should_not have_received(:enqueue)
     end
   end
 end

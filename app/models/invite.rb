@@ -6,7 +6,7 @@ class Invite < ActiveRecord::Base
   validates :email, presence: true, email: true
 
   before_validation :set_token
-  after_create :enqueue_invite_created_job
+  after_create :enqueue_job
 
   private
 
@@ -14,7 +14,7 @@ class Invite < ActiveRecord::Base
     self.token = SecureRandom.hex(8)
   end
 
-  def enqueue_invite_created_job
-    InviteCreatedJob.enqueue self
+  def enqueue_job
+    InviteCreatedJob.enqueue(self)
   end
 end

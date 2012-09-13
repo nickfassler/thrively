@@ -5,22 +5,16 @@ feature 'Accept invite' do
     user = create(:user, remaining_invites: 1)
     friend_email = 'friend@example.com'
     sign_in_as(user)
-
     invite_friend(user, friend_email)
-
     received_invite?(user, friend_email)
-
     accept_invite(Invite.last)
-
     viewing_dashboard?
   end
 
   scenario 'user types invalid email' do
     user = create(:user, remaining_invites: 1)
     sign_in_as(user)
-
     invite_friend_with_invalid_email(user)
-
     invalid_email?
   end
 
@@ -28,7 +22,6 @@ feature 'Accept invite' do
     user = create(:user, remaining_invites: 0)
     friend_email = 'friend@example.com'
     sign_in_as(user)
-
     cannot_invite?
   end
 
@@ -36,13 +29,9 @@ feature 'Accept invite' do
     user = create(:user, remaining_invites: 1)
     sign_in_as(user)
     invite_friend(user, 'friend@example.com')
-
     accept_invite_without_username(Invite.last)
-
     page.should have_content("Username can't be blank")
-
     accept_invite_without_name(Invite.last)
-
     page.should have_content("Name can't be blank")
   end
 
@@ -51,7 +40,6 @@ feature 'Accept invite' do
     given_feedback = create(:feedback, giver: guest)
     received_feedback = create(:feedback, receiver: guest)
     invite = create(:invite, email: guest.email)
-
     accept_invite(invite)
 
     within('.app-box-content') do
@@ -67,7 +55,6 @@ feature 'Accept invite' do
     fill_in 'Email', with: friend_email
     click_button 'Invite'
     click_link 'Sign out'
-    Delayed::Worker.new.work_off
   end
 
   def invite_friend_with_invalid_email(user)

@@ -11,10 +11,6 @@ class Guest < ActiveRecord::Base
     email
   end
 
-  def send_thank_you_email(feedback_receiver)
-    Mailer.thank_you(self, feedback_receiver).deliver
-  end
-
   def to_user
     user = User.where(email: email).first
 

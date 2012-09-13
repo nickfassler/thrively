@@ -21,8 +21,4 @@ class User < ActiveRecord::Base
   def has_remaining_invites?
     remaining_invites > 0
   end
-
-  def send_thank_you_email(feedback_receiver)
-    # no-op
-  end
 end

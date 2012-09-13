@@ -8,15 +8,12 @@ class UserObserver < ActiveRecord::Observer
   end
 
   def after_create(user)
-    guest = Guest.where(email: user.email).first
-    guest.try(:to_user)
-
-    Mailer.welcome(user).deliver
+    UserCreatedJob.enqueue(user)
   end
 
   def after_update(user)
     if user.email_changed?
-      Mailer.email_changed(user).deliver
+      EmailChangedJob.enqueue(user)
     end
   end
 end

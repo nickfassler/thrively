@@ -3,6 +3,10 @@ module MailerMacros
     ActionMailer::Base.deliveries
   end
 
+  def sent_email_with_subject(regex)
+    sent_emails.detect { |email| email.subject =~ regex }
+  end
+
   def last_sent_email
     ActionMailer::Base.deliveries.last
   end

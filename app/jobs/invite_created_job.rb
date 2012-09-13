@@ -1,8 +1,8 @@
 class InviteCreatedJob < Struct.new(:invite_id)
-  PRIORITY = 1
+  PRIORITY = 2
 
   def self.enqueue(invite)
-    Delayed::Job.enqueue new(invite.id), priority: PRIORITY
+    Delayed::Job.enqueue(new(invite.id), priority: PRIORITY)
   end
 
   def perform

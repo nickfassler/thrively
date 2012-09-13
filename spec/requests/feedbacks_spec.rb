@@ -69,7 +69,6 @@ feature 'Feedbacks' do
       page.should have_content("You gave feedback to #{@receiver.name}")
     end
 
-    sent_emails.should have(1).items
     last_sent_email.to.should include(@receiver.email)
   end
 
@@ -77,8 +76,9 @@ feature 'Feedbacks' do
     reset_email
     guest = create(:guest)
     request = request_for(to: guest, from: @receiver)
+    requested_feedback = request.requested_feedbacks.first
 
-    visit requested_feedback_path(request.requested_feedbacks.first)
+    visit requested_feedback_path(requested_feedback)
     fill_in 'Did well', with: 'Good attitude'
     fill_in 'Improve', with: 'Need more smiles'
     click_button 'Send'
@@ -86,9 +86,7 @@ feature 'Feedbacks' do
     current_path.should == root_path
     page.should have_content('Feedback was successful')
 
-    sent_emails.should have(2).items
-
-    feedback_received_email = sent_emails.first
+    feedback_received_email = sent_email_with_subject(/Feedback on/)
     thank_you_email = last_sent_email
 
     feedback_received_email.to.should include(@receiver.email)

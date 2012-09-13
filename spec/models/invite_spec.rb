@@ -10,10 +10,12 @@ describe Invite do
   it { should_not allow_mass_assignment_of(:user_id) }
 
   it { should validate_presence_of(:email) }
-  it {
+
+  it do
     should_not validate_format_of(:email).with('user@example').
       with_message(/is not an email/)
-  }
+  end
+
   it { should validate_format_of(:email).with('user@example.com') }
 
   describe '.create' do
