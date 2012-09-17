@@ -4,7 +4,7 @@ Thrively::Application.routes.draw do
   end
 
   constraints Clearance::Constraints::SignedOut.new do
-    root to: 'high_voltage/pages#show', :id => 'marketing'
+    root to: 'high_voltage/pages#show', id: 'marketing'
   end
 
   resource :accept, only: :show
@@ -16,8 +16,12 @@ Thrively::Application.routes.draw do
   resource :session, only: [:create]
   resources :users, only: [:new, :create, :show, :edit, :update]
 
-  match '/request' => 'requests#new'
-  match '/give' => 'feedbacks#new', as: :give_feedback
+  match '/about', to: 'high_voltage/pages#show', id: 'about', as: :about
+  match '/give', to: 'feedbacks#new', as: :new_feedback
+  match '/jobs', to: 'high_voltage/pages#show', id: 'jobs', as: :jobs
+  match '/privacy', to: 'high_voltage/pages#show', id: 'privacy', as: :privacy
+  match '/request', to: 'requests#new', as: :new_request
+  match '/sign_up', to: 'high_voltage/pages#show', id: 'marketing', as: :sign_up
 
   if Rails.env.development?
     mount Mailer::Preview => 'mail_view'
