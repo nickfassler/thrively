@@ -2,8 +2,9 @@
 
 .app-box.pages.privacy
   .app-box-head
-    %h1 #{yield(:title)}
+    %h1
+      = yield :title
   .app-box-content
     = render 'flashes'
-    %a.iubenda-nostyle.no-brand.iub-body-embed.iub-legal-only.iubenda-embed{:href => "http://www.iubenda.com/privacy-policy/314743", :style => "margin-right:20px", :title => "Privacy Policy"} 
+    %a.iubenda-nostyle.no-brand.iub-body-embed.iub-legal-only.iubenda-embed{href: 'http://www.iubenda.com/privacy-policy/314743', style: 'margin-right:20px', title: 'Privacy Policy'}
       Privacy Policy
