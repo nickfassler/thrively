@@ -3,18 +3,18 @@
   .row
     .span4 &copy; Thrively 2012
     .span8.footer-nav
-      %a#footer-help{:href => "#"}
+      %a#footer-help{href: '#'}
         %span.label.label-warning Help
       %span.footer-bar &#124;
-      %a{:href => "/pages/marketing"} Sign up
+      = link_to 'Sign up', sign_up_path
       %span.footer-bar &#124;
-      %a{:href => "/pages/about"} About
+      = link_to 'About', about_path
       %span.footer-bar &#124;
-      %a{:href => "/pages/jobs"} Jobs
+      = link_to 'Jobs', jobs_path
       %span.footer-bar &#124;
-      %a.iubenda-nostyle.no-brand.iubenda-embed{:href => "http://www.iubenda.com/privacy-policy/314743", 
-        :style => "margin-right:20px", :title => "Privacy Policy"}>Privacy
-      %a.footer-icon{:href => "http://facebook.com/thrively"}
-        = image_tag('flw-facebook-icon.png', :title => 'Thrively on Facebook', :alt => 'Facebook')
-      %a.footer-icon{:href => "http://twitter.com/thrively"}
-        = image_tag('flw-twitter-icon.png', :title => 'Thrively on Twitter', :alt => 'Twitter')
+      = link_to 'Privacy', 'http://www.iubenda.com/privacy-policy/314743',
+          class: 'iubenda-nostyle no-brand iubenda-embed'
+      = link_to 'http://facebook.com/thrively', class: 'footer-icon' do
+        = image_tag('flw-facebook-icon.png', title: 'Thrively on Facebook', alt: 'Facebook')
+      = link_to 'http://twitter.com/thrively', class: 'footer-icon' do
+        = image_tag('flw-twitter-icon.png', title: 'Thrively on Twitter', alt: 'Twitter')
