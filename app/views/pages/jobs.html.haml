@@ -1,0 +1,15 @@
+- content_for :title, 'Jobs at Thrively'
+
+.app-box.pages
+  .app-box-head
+    %h1
+      = yield :title
+  .app-box-content
+    = render 'flashes'
+
+    %h3
+      Thrively is always looking for amazing people
+    %p
+      Are you a developer, designer, marketing whiz, or do you
+      have some other unique talent you'd like to show us?
+      Please contact us at #{mail_to 'jobs@thrive.ly', 'jobs@thrive.ly'}.

@@ -16,10 +16,15 @@
 @import 'font-awesome';
 
 body {
-  font-size: 13px;
   background-color: #D7E7EF;
   background-image: image-url('bg-texture.png');
   background-repeat: repeat;
+  color: #333;
+  font-size: 13px;
+}
+
+p {
+  margin-bottom: 1.3em;
 }
 
 .action-btns .btn {
@@ -64,12 +69,26 @@ footer {
 
   #footer-help {
     text-decoration: none;
+
+    .label {
+      font-size: 11px;
+    }
   }
 
   .footer-bar {
     color: white;
     padding: 0 12px;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4);
+  }
+
+  .footer-icon {
+    margin-left: 5px;
+    text-decoration: none;
+    vertical-align: 1px;
+  }
+
+  .iubenda-embed {
+    margin-right:20px;
   }
 
   #fbicon {
