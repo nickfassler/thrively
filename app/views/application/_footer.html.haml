@@ -6,12 +6,15 @@
       %a#footer-help{:href => "#"}
         %span.label.label-warning Help
       %span.footer-bar &#124;
-      %a{:href => "#"} Sign up
+      %a{:href => "/pages/marketing"} Sign up
       %span.footer-bar &#124;
-      %a{:href => "#"} About
+      %a{:href => "/pages/about"} About
       %span.footer-bar &#124;
-      %a{:href => "#"} Privacy
+      %a{:href => "/pages/jobs"} Jobs
       %span.footer-bar &#124;
-      %a{:href => "#", :style => "margin-right:20px"} Contact us
-      %a#fbicon{:href => "http://facebook.com/thrively"}
-      %a#twicon{:href => "http://twitter.com/thrively"}
+      %a.iubenda-nostyle.no-brand.iubenda-embed{:href => "http://www.iubenda.com/privacy-policy/314743", 
+        :style => "margin-right:20px", :title => "Privacy Policy"}>Privacy
+      %a.footer-icon{:href => "http://facebook.com/thrively"}
+        = image_tag('flw-facebook-icon.png', :title => 'Thrively on Facebook', :alt => 'Facebook')
+      %a.footer-icon{:href => "http://twitter.com/thrively"}
+        = image_tag('flw-twitter-icon.png', :title => 'Thrively on Twitter', :alt => 'Twitter')

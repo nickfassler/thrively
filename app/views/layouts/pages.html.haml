@@ -2,7 +2,7 @@
 
 %head
   %meta(charset='UTF-8')
-  %title Thrively#{": #{yield(:title)}" if yield(:title).present?}
+  %title Thrively #{"| #{yield(:title)}" if yield(:title).present?}
   = stylesheet_link_tag :application, media: 'all'
   = csrf_meta_tags
 
@@ -20,7 +20,6 @@
               %li= link_to 'Sign in', sign_in_path
 
   #main-content.container
-    = render 'flashes'
     = yield
 
     = render 'footer'

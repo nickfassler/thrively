@@ -1,0 +1,17 @@
+- content_for :title, 'About Us'
+
+.app-box.pages
+  .app-box-head
+    %h1 #{yield(:title)}
+  .app-box-content
+    = render 'flashes'
+    
+    %h3 
+      Thrively is passionate about feedback
+    %p 
+      Thrively was founded in October 2011 at the University of Michigan. We 
+      have since relocated to San Francisco, CA, and launched our private 
+      closed beta in September 2012.
+    %p
+      We'd love to hear from you, so please
+      #{mail_to Mailer::SUPPORT_ADDRESS, 'contact us'}.
