@@ -22,9 +22,9 @@
         - if signed_in?
           .action-btns.pull-right
             %a{ href: new_request_path, class: 'btn btn-info'}
-              Request Feedback
+              = t('.request_button')
             %a{ href: new_feedback_path, class: 'btn btn-primary'}
-              Give Feedback
+              = t('.give_button')
 
   #main-content.container
     .app-box

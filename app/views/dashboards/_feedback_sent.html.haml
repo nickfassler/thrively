@@ -2,7 +2,7 @@
   .history-icon
     %i.icon-retweet
   .history-content
-    You gave feedback to #{resource.receiver.decorator.link_to_profile}
-    about "#{resource.topic}"
-    %span.timestamp
-      #{time_ago_in_words(resource.created_at)} ago
+    = t('.title_html',
+        user: resource.receiver.decorator.link_to_profile,
+        topic: resource.topic,
+        time: time_ago_in_words(resource.created_at))

@@ -1,4 +1,5 @@
 class Mailer < ActionMailer::Base
+  JOBS_ADDRESS = 'jobs@thrive.ly'
   SUPPORT_ADDRESS = 'support@thrive.ly'
   SUPPORT_FROM_FIELD = "Thrively <#{SUPPORT_ADDRESS}>"
 

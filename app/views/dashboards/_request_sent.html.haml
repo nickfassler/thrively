@@ -2,8 +2,7 @@
   .history-icon
     %i.icon-bullhorn
   .history-content
-    You requested feedback from
-    = raw resource.invitees.map { |invitee| invitee.decorator.link_to_profile }.join(', ')
-    about "#{resource.topic}"
-    %span.timestamp
-      #{time_ago_in_words(resource.created_at)} ago
+    = t('.title_html',
+        user: raw(resource.invitees.map { |invitee| invitee.decorator.link_to_profile }.join(', ')),
+        topic: resource.topic,
+        time: time_ago_in_words(resource.created_at))

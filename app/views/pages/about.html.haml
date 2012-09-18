@@ -1,4 +1,4 @@
-- content_for :title, 'About Us'
+- content_for :title, t('.page_title')
 
 .app-box.pages
   .app-box-head
@@ -8,9 +8,8 @@
     = render 'flashes'
 
     %h3
-      Thrively is passionate about feedback
+      = t('.subtitle')
     %p
-      = t('.origin_story_html')
+      = t('.origin_story')
     %p
-      We'd love to hear from you, so please
-      #{mail_to Mailer::SUPPORT_ADDRESS, 'contact us'}.
+      = t('.contact_us_html', mail_link: mail_to(Mailer::SUPPORT_ADDRESS, Mailer::SUPPORT_ADDRESS))
