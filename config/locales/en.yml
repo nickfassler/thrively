@@ -2,4 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  pages:
+    about:
+      origin_story_html:
+        Thrively was founded in October 2011 at the University of Michigan. We
+        have since relocated to <strong>San Francisco, CA</strong>
+        and launched our private closed beta in September 2012.
