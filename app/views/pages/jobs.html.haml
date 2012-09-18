@@ -8,8 +8,6 @@
     = render 'flashes'
 
     %h3
-      Thrively is always looking for amazing people
+      = t('.jobs_title_html')
     %p
-      Are you a developer, designer, marketing whiz, or do you
-      have some other unique talent you'd like to show us?
-      Please contact us at #{mail_to 'jobs@thrive.ly', 'jobs@thrive.ly'}.
+      = t('.contact_us_html', mail_link: mail_to(Mailer::JOBS_ADDRESS, Mailer::JOBS_ADDRESS))

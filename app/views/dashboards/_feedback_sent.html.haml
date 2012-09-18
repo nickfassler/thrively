@@ -2,7 +2,9 @@
   .history-icon
     %i.icon-retweet
   .history-content
-    You gave feedback to #{resource.receiver.decorator.link_to_profile}
-    about "#{resource.topic}"
+    = t('.feedback_sent_pre_html')
+    #{resource.receiver.decorator.link_to_profile}
+    = t('.feedback_sent_post_html')
+    "#{resource.topic}"
     %span.timestamp
       #{time_ago_in_words(resource.created_at)} ago

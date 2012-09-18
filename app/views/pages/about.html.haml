@@ -8,9 +8,8 @@
     = render 'flashes'
 
     %h3
-      Thrively is passionate about feedback
+      = t('.about_title_html')
     %p
       = t('.origin_story_html')
     %p
-      We'd love to hear from you, so please
-      #{mail_to Mailer::SUPPORT_ADDRESS, 'contact us'}.
+      = t('.contact_us_html', mail_link: mail_to(Mailer::SUPPORT_ADDRESS, Mailer::SUPPORT_ADDRESS))

@@ -2,8 +2,9 @@
   .history-icon
     %i.icon-bullhorn
   .history-content
-    You requested feedback from
+    = t('.request_sent_pre_html')
     = raw resource.invitees.map { |invitee| invitee.decorator.link_to_profile }.join(', ')
-    about "#{resource.topic}"
+    = t('.request_sent_post_html') 
+    "#{resource.topic}"
     %span.timestamp
       #{time_ago_in_words(resource.created_at)} ago
