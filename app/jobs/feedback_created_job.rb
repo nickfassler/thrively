@@ -7,6 +7,7 @@ class FeedbackCreatedJob < Struct.new(:feedback_id)
 
   def perform
     create_history_event_for_feedback_giver
+    delete_old_request_history_event_for_feedback_giver
     create_history_event_for_feedback_receiver
     deliver_feedback
     deliver_thank_you_to_guest_feedback_giver
@@ -16,6 +17,12 @@ class FeedbackCreatedJob < Struct.new(:feedback_id)
 
   def create_history_event_for_feedback_giver
     HistoryEvent.create(resource: feedback, owner: feedback.giver)
+  end
+
+  def delete_old_request_history_event_for_feedback_giver
+    if feedback.request
+      HistoryEvent.for(feedback.request, feedback.giver).delete
+    end
   end
 
   def create_history_event_for_feedback_receiver

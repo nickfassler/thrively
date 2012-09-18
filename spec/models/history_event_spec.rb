@@ -32,4 +32,13 @@ describe HistoryEvent do
       history_event.name_for(Guest.new).should == 'request_received'
     end
   end
+
+  describe '.for' do
+    it 'finds history event by resource and owner' do
+      history_event = create(:history_event)
+
+      HistoryEvent.for(history_event.resource, history_event.owner).should ==
+        history_event
+    end
+  end
 end

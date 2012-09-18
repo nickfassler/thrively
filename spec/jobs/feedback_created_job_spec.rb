@@ -22,6 +22,17 @@ describe FeedbackCreatedJob do
       HistoryEvent.all.map(&:owner).should == [feedback.giver, feedback.receiver]
     end
 
+    it 'deletes old request history event for feedback giver' do
+      request = create(:request)
+      Delayed::Worker.new.work_off
+      feedback_giver = request.invitees.first
+      feedback = create(:feedback, request: request, giver: feedback_giver)
+
+      FeedbackCreatedJob.new(feedback.id).perform
+
+      HistoryEvent.for(request, feedback_giver).should be_nil
+    end
+
     it 'delivers feedback' do
       feedback = build_stubbed(:feedback)
       Feedback.stub(find: feedback)
