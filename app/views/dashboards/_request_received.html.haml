@@ -3,10 +3,9 @@
     %i.icon-bullhorn
   .history-content
     .title
-      = resource.user.decorator.link_to_profile
-      = t('.request_received_post_html')
-      %span.timestamp
-        #{time_ago_in_words(resource.created_at)} ago
+      = t('.title_html',
+        user: resource.user.decorator.link_to_profile,
+        time: time_ago_in_words(resource.created_at))
     .topic
       = link_to resource.topic,
         new_feedback_path(feedback: { request_id: resource.id })

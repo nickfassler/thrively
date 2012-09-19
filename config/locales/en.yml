@@ -4,22 +4,25 @@
 en:
   dashboards:
     feedback_received:
-      feedback_received_post_html: "gave feedback to you"
+      title_html: 
+        '%{user} gave feedback to you <span class="timestamp">%{time} ago</span>'
     feedback_sent:
-      feedback_sent_pre_html: "You gave feedback to"
-      feedback_sent_post_html: "about"
+      title_html:
+        'You gave feedback to %{user} about "%{topic}" <span class="timestamp">%{time} ago</span>'
     request_received:
-      request_received_post_html: "requested feedback from you"
+      title_html:
+        '%{user} requested feedback from you <span class="timestamp">%{time} ago</span>'
     request_sent:
-      request_sent_pre_html: "You requested feedback from"
-      request_sent_post_html: "about"
+      title_html:
+        'You requested feedback from %{user} about "%{topic}" <span class="timestamp">%{time} ago</span>'
   layouts:
     application:
       request_button: "Request Feedback"
       give_button: "Give Feedback"
   pages:
     about:
-      about_title_html: 
+      page_title: "About Us"
+      subtitle_html: 
         "Thrively is passionate about feedback"
       contact_us_html: 
         "We'd love to hear from you, so please contact us at:
@@ -29,25 +32,35 @@ en:
         have since relocated to San Francisco, CA and launched our private
         closed beta in September 2012."
     jobs:
-      jobs_title_html: 
+      page_title: "Jobs at Thrively"
+      subtitle_html: 
         "Thrively is always looking for amazing people"
       contact_us_html: 
         "Are you a developer, designer, marketing whiz, or do you have some
         other unique talent you'd like to show us? Please contact us at:
         %{mail_link}."
     marketing:
+      page_title: "Radically Simple Feedback"
       app_title: Thrively
       app_subtitle: 
         "Radically simple feedback"
       app_description_html: 
-        "Easily exchange professional feedback with anyone with an email address."
+        "Easily exchange professional feedback with anyone with an email
+        address."
       call_to_action_html:
         " Sign up to request an invite to Thrively:"
       feature_item_feedback_html: 
-        "Collect feedback from your colleagues, peers, and mentors—even if they don't have a Thrively account!"
+        "Collect feedback from your colleagues, peers, and mentors—even if they
+        don't have a Thrively account!"
       feature_item_free_html:
         "Thrively will always be free for individuals. No credit card needed."
       feature_item_team_html:
-        "Make sure your team stays on track with frequent, timely, and honest 360-degree feedback."
+        "Make sure your team stays on track with frequent, timely, and honest
+        360-degree feedback."
+    privacy:
+      page_title: "Privacy Policy"
+    terms:
+      page_title: "Terms of Service"
+        
 
 

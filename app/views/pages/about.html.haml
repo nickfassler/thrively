@@ -1,4 +1,4 @@
-- content_for :title, 'About Us'
+- content_for :title, t('.page_title')
 
 .app-box.pages
   .app-box-head
@@ -8,7 +8,7 @@
     = render 'flashes'
 
     %h3
-      = t('.about_title_html')
+      = t('.subtitle_html')
     %p
       = t('.origin_story_html')
     %p

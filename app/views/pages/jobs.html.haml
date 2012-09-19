@@ -1,4 +1,4 @@
-- content_for :title, 'Jobs at Thrively'
+- content_for :title, t('.page_title')
 
 .app-box.pages
   .app-box-head
@@ -8,6 +8,6 @@
     = render 'flashes'
 
     %h3
-      = t('.jobs_title_html')
+      = t('.subtitle_html')
     %p
       = t('.contact_us_html', mail_link: mail_to(Mailer::JOBS_ADDRESS, Mailer::JOBS_ADDRESS))

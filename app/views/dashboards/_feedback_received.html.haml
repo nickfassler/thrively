@@ -3,10 +3,9 @@
     %i.icon-retweet
   .history-content
     .title
-      #{resource.giver.decorator.link_to_profile} 
-      = t('.feedback_received_post_html')
-      %span.timestamp
-        #{time_ago_in_words(resource.created_at)} ago
+      = t('.title_html',
+        user: resource.giver.decorator.link_to_profile,
+        time: time_ago_in_words(resource.created_at))
     .topic
       = resource.topic
     .plus
