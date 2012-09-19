@@ -19,14 +19,14 @@ WHAT TO IMPROVE
   Request an invite to the Thrively private beta to view this feedback, request
   more feedback, or give feedback to others.
 \
-http://thrive.ly/
+= root_url
 \
 Thank you.
 \
 = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 - if @feedback.giver_type == 'User'
   #{@feedback.giver_name} is using Thrively to collect, give, and track feedback.
-  http://thrive.ly/
+  = root_url
 - else
   If you have any ideas or concerns for Thrively, please contact us at
   #{Mailer::SUPPORT_ADDRESS}.

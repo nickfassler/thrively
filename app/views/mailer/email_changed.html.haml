@@ -1,25 +1,25 @@
 %div{ style: 'font-family: Arial,sans-serif; font-size:13px;' }
   %p{ style: 'margin: 0 0 1.6em 0;' }
     Hello #{@user.name}!
-  
+
   %p{ style: 'margin: 0 0 1.6em 0;' }
     It looks like you just updated your email address on Thrively.
-  
+
   %p{ style: 'margin: 0 0 1.6em 0;' }
     Old email: #{@user.email_was}
     %br/
     New email: #{@user.email}
-  
+
   %p{ style: 'margin: 0 0 1.6em 0;' }
     Thanks for using Thrively!
-  
+
   %p{ style: 'margin: 0 0 1.6em 0; color: #666;' }
     Nick Fassler, CEO and Founder of Thrively
-  
+
   %hr{ style: 'height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;'}
   %p{ style: 'margin: 0 0 1.6em 0;' }
     If you are confused why you received this message, or are having any trouble
     with your Thrively account, please contact us at #{Mailer::SUPPORT_ADDRESS}.
-  
+
   %p{ style: 'margin: 0 0 1.6em 0;' }
     &copy; 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA
