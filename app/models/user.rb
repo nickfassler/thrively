@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def has_remaining_invites?
     remaining_invites > 0
   end
+
+  def stream
+    history_events.includes(:resource, :owner)
+  end
 end

@@ -8,8 +8,6 @@ class Request < ActiveRecord::Base
   validates :requested_feedbacks, presence: true
   validates :user, presence: true
 
-  after_create :enqueue_job
-
   def emails=(email_list)
     email_list.each do |email|
       if email.present?
@@ -34,11 +32,5 @@ class Request < ActiveRecord::Base
 
   def user_name
     user.name
-  end
-
-  private
-
-  def enqueue_job
-    RequestCreatedJob.enqueue(self)
   end
 end

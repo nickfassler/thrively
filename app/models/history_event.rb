@@ -15,4 +15,13 @@ class HistoryEvent < ActiveRecord::Base
       "#{resource_name}_received"
     end
   end
+
+  def self.for(resource, owner)
+    where(
+      resource_type: resource.class,
+      resource_id: resource.id,
+      owner_type: owner.class,
+      owner_id: owner.id
+    ).first
+  end
 end

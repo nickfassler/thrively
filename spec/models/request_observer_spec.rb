@@ -1,16 +1,14 @@
 require 'spec_helper'
 
 describe RequestObserver do
-  it 'records creation of request for each party' do
-    request = create(:request)
+  describe '#after_create' do
+    it 'enqueues a RequestCreatedJob' do
+      request = build_stubbed(:request)
+      RequestCreatedJob.stub(:enqueue)
 
-    HistoryEvent.all.each do |event|
-      event = HistoryEvent.first
-      event.resource_type.should == 'Request'
-      event.resource_id.should == request.id
+      RequestObserver.instance.after_create(request)
+
+      RequestCreatedJob.should have_received(:enqueue).with(request)
     end
-
-    HistoryEvent.first.owner.should == request.user
-    HistoryEvent.last.owner.should == request.requested_feedbacks.first.giver
   end
 end
