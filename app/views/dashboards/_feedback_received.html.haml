@@ -4,8 +4,8 @@
   .history-content
     .title
       = t('.title_html',
-        user: resource.giver.decorator.link_to_profile,
-        time: time_ago_in_words(resource.created_at))
+          user: resource.giver.decorator.link_to_profile,
+          time: time_ago_in_words(resource.created_at))
     .topic
       = resource.topic
     .plus

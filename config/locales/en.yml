@@ -1,10 +1,7 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   dashboards:
     feedback_received:
-      title_html: 
+      title_html:
         '%{user} gave feedback to you <span class="timestamp">%{time} ago</span>'
     feedback_sent:
       title_html:
@@ -17,50 +14,55 @@ en:
         'You requested feedback from %{user} about "%{topic}" <span class="timestamp">%{time} ago</span>'
   layouts:
     application:
-      request_button: "Request Feedback"
-      give_button: "Give Feedback"
+      request_button:
+        "Request Feedback"
+      give_button:
+        "Give Feedback"
   pages:
     about:
-      page_title: "About Us"
-      subtitle_html: 
+      page_title:
+        "About Us"
+      subtitle:
         "Thrively is passionate about feedback"
-      contact_us_html: 
-        "We'd love to hear from you, so please contact us at:
-        %{mail_link}."
-      origin_story_html:
+      origin_story:
         "Thrively was founded in October 2011 at the University of Michigan. We
         have since relocated to San Francisco, CA and launched our private
         closed beta in September 2012."
+      contact_us_html:
+        "We'd love to hear from you, so please contact us at:
+        %{mail_link}."
     jobs:
-      page_title: "Jobs at Thrively"
-      subtitle_html: 
+      page_title:
+        "Jobs at Thrively"
+      subtitle:
         "Thrively is always looking for amazing people"
-      contact_us_html: 
+      contact_us_html:
         "Are you a developer, designer, marketing whiz, or do you have some
         other unique talent you'd like to show us? Please contact us at:
         %{mail_link}."
     marketing:
-      page_title: "Radically Simple Feedback"
-      app_title: Thrively
-      app_subtitle: 
+      page_title:
+        "Radically Simple Feedback"
+      app_title:
+        "Thrively"
+      app_subtitle:
         "Radically simple feedback"
-      app_description_html: 
+      app_description:
         "Easily exchange professional feedback with anyone with an email
         address."
-      call_to_action_html:
+      call_to_action:
         " Sign up to request an invite to Thrively:"
-      feature_item_feedback_html: 
+      feature_item_feedback:
         "Collect feedback from your colleagues, peers, and mentors—even if they
         don't have a Thrively account!"
-      feature_item_free_html:
+      feature_item_free:
         "Thrively will always be free for individuals. No credit card needed."
-      feature_item_team_html:
+      feature_item_team:
         "Make sure your team stays on track with frequent, timely, and honest
         360-degree feedback."
     privacy:
-      page_title: "Privacy Policy"
+      page_title:
+        "Privacy Policy"
     terms:
-      page_title: "Terms of Service"
-        
-
-
+      page_title:
+        "Terms of Service"

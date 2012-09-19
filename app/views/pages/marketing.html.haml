@@ -4,28 +4,28 @@
 .hero-unit
   #hero-image
     = image_tag "thrively_desktop.png"
-  %h1 
+  %h1
     = t('.app_title')
   %br/
-  %h2 
+  %h2
     = t('.app_subtitle')
-  %p 
-    = t('.app_description_html') 
+  %p
+    = t('.app_description')
   %form.form-inline
-    = t('.call_to_action_html') 
+    = t('.call_to_action')
     %br/
     %input.span4.input-large.email{name: 'EMAIL', placeholder: 'email address', required: '', type: 'email', value: ''}
     %input.btn.btn-primary.btn-large{name: 'subscribe', type: 'submit', value: 'Request invite'}
 .row.features
   .span4.feature-item
     %i.icon-retweet
-    %p 
-      = t('.feature_item_feedback_html')
+    %p
+      = t('.feature_item_feedback')
   .span4.feature-item
     %i.icon-gift
-    %p 
-      = t('.feature_item_free_html')
+    %p
+      = t('.feature_item_free')
   .span4.feature-item
     %i.icon-group
-    %p 
-      = t('.feature_item_team_html')
+    %p
+      = t('.feature_item_team')
