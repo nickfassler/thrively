@@ -30,9 +30,16 @@ feature 'Accept invite' do
     sign_in_as(user)
     invite_friend(user, 'friend@example.com')
     accept_invite_without_username(Invite.last)
-    page.should have_content("Username can't be blank")
+
+    within('.username') do
+      page.should have_content("can't be blank")
+    end
+
     accept_invite_without_name(Invite.last)
-    page.should have_content("Name can't be blank")
+
+    within('.name') do
+      page.should have_content("can't be blank")
+    end
   end
 
   scenario 'when a guest with prior feedbacks' do
@@ -103,6 +110,8 @@ feature 'Accept invite' do
   end
 
   def invalid_email?
-    page.should have_content('Email is not an email')
+    within('.email') do
+      page.should have_content('is not an email')
+    end
   end
 end

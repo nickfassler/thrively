@@ -29,7 +29,7 @@ feature 'Feedbacks' do
     click_button 'Send'
 
     current_path.should == feedbacks_path
-    page.should have_content('There is an error')
+    page.should have_content("Can't be blank")
     last_sent_email.should be_nil
   end
 

@@ -1,6 +1,6 @@
 - content_for :title, 'Give Feedback'
 
-= form_for @feedback do |f|
+= semantic_form_for @feedback do |f|
   - if @feedback.request
     = f.hidden_field :request_id
     = @feedback.decorator.html_for_receiver_email
@@ -11,27 +11,26 @@
     = hidden_field_tag :receiver_provided, true
     = f.hidden_field :receiver_email
 
-    = f.label :topic, 'Topic'
-    = f.text_field :topic, placeholder: 'What is the feedback about?'
+    = f.input :topic, placeholder: 'What is the feedback about?'
   - else
-    = f.label :receiver_email, 'Email'
-    = f.text_field :receiver_email, placeholder: 'Email'
+    = f.input :receiver_email, label: 'Email', placeholder: 'Email', as: :email
 
-    = f.label :topic, 'Topic'
-    = f.text_field :topic, placeholder: 'What is the feedback about?'
+    = f.input :topic, placeholder: 'What is the feedback about?'
 
-  = f.label :plus, 'Did well'
-  = f.text_area :plus, rows: 2, placeholder: 'Explain what was done well'
+  = f.input :plus, label: 'Did well',
+      placeholder: 'Explain what was done well', input_html: { rows: 2 }
 
-  = f.label :delta, 'Improve'
-  = f.text_area :delta, rows: 2, placeholder: 'Explain areas for improvement'
+  = f.input :delta, label: 'Improve',
+      placeholder: 'Explain areas for improvement', input_html: { rows: 2 }
+
   - if signed_out?
     .guest
       = f.hidden_field :giver_email
       Your email: #{@feedback.giver_email}
       = link_to 'Not you?', sign_in_path
   %br
-  = f.submit 'Send', class: 'btn'
+  = f.action :submit, label: 'Send', class: 'btn'
+
   - if signed_out?
     .terms
       = t('.terms_html',

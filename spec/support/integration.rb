@@ -1,5 +1,5 @@
 def fill_in_email(email)
-  all('form input.email').last.set(email)
+  find("input[name*='email']").set(email)
 end
 
 def sign_in_as(user)

@@ -1,13 +1,15 @@
 - content_for :title, 'Request Feedback'
 
-= form_for @request do |f|
-  = email_form_fields
-
-  = f.label :topic, 'Feedback Topic'
-  = f.text_field :topic
-
-  = f.label :message, 'Email Message'
-  = f.text_area :message, rows: 2
+= semantic_form_for @request do |f|
+  = f.input :emails, collection: @friends_emails,
+      input_html: chosen_input_html(multiple: true),
+      wrapper_html: chosen_wrapper_html
+  = f.input :topic
+  = f.input :message, label: 'Email Message'
 
   %br
   = f.submit 'Send', class: 'btn'
+
+- content_for :javascript do
+  :javascript
+    $('.chzn-select').chosen({create_option: true});

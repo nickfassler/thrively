@@ -1,22 +1,12 @@
 - content_for :title, 'Edit Profile'
 
 .profile
-  = form_for current_user do |f|
+  = semantic_form_for current_user do |f|
     .avatar
       = image_tag current_user.avatar.url(:medium)
       = f.file_field :avatar
 
-    .name
-      = f.label :name
-      = f.text_field :name
-
-    .email
-      = f.label :email
-      = f.text_field :email
-
-    .username
-      = f.label :username
-      = f.text_field :username
-
-    .action
-      = f.submit 'Save', class: 'btn'
+    = f.input :name
+    = f.input :email
+    = f.input :username
+    = f.action :submit, label: 'Save', class: 'btn'

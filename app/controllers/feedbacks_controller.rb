@@ -18,7 +18,6 @@ class FeedbacksController < ApplicationController
       redirect_to root_path, flash: { success: 'Feedback was successful' }
     else
       @receiver_provided = params[:receiver_provided]
-      flash.now[:error] = 'There is an error in your input'
       render action: 'new'
     end
   end

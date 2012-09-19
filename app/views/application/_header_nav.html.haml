@@ -1,0 +1,9 @@
+%ul.nav
+  - if signed_in?
+    %li.support
+      %a{ href: '#', id: 'Intercom' }
+        = t('.support_link_html')
+    %li= link_to 'Profile', current_user
+    %li= link_to 'Sign out', sign_out_path, method: :delete
+  - else
+    %li= link_to 'Sign in', sign_in_path

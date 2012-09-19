@@ -2,28 +2,22 @@
 - content_for :meta do
   <meta name='ROBOTS' content='NOINDEX, NOFOLLOW'>
 
-= render 'application/form_errors', object: @user
-
-= form_for @user do |form|
+= semantic_form_for @user do |form|
   = form.hidden_field :invite_token, value: @invite.token
 
   .name
-    = form.label :name
-    = form.text_field :name, placeholder: 'Your first and last name'
+    = form.input :name, placeholder: 'Your first and last name'
 
   .email
-    = form.label :email
-    = form.text_field :email, value: @invite.email
+    = form.input :email, input_html: { value: @invite.email }
 
   .password
-    = form.label :password
-    = form.password_field :password, placeholder: 'Something you will remember'
+    = form.input :password, placeholder: 'Something you will remember'
 
   .username
-    = form.label :username
-    = form.text_field :username, placeholder: 'You can change this later'
+    = form.input :username, placeholder: 'You can change this later'
 
-  = form.submit 'Sign up', class: 'btn'
+  = form.action :submit, label: 'Sign up', class: 'btn'
 
   .terms
     = t('.terms_html',
