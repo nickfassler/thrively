@@ -13,6 +13,12 @@ describe Guest do
   }
   it { should validate_format_of(:email).with('user@example.com') }
 
+  describe '#avatar' do
+    it 'is a NullAvatar' do
+      Guest.new.avatar.should be_kind_of(NullAvatar)
+    end
+  end
+
   describe '#to_user' do
     it 'converts given feedbacks' do
       converted_user_with_association(:feedback, :giver).

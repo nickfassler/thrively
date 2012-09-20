@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :email, :avatar
+  attr_accessible :email
 
   validates :email, presence: true, email: true
   has_many :given_feedbacks, as: :giver, class_name: Feedback
@@ -7,9 +7,9 @@ class Guest < ActiveRecord::Base
   has_many :requested_feedbacks, as: :giver
   has_many :history_events, as: :owner
 
-  has_attached_file :avatar, 
-    styles: { medium: '80x80#', small: '50x50#' },
-    default_url: 'avatar_missing.png'
+  def avatar
+    NullAvatar.new
+  end
 
   def name
     email
