@@ -1,4 +1,8 @@
 en:
+  accepts:
+    show:
+      terms_html:
+        "By clicking \'sign up\', you agree to Thrively\'s %{tos}."
   dashboards:
     feedback_received:
       title_html:
@@ -12,6 +16,10 @@ en:
     request_sent:
       title_html:
         'You requested feedback from %{user} about "%{topic}" <span class="timestamp">%{time} ago</span>'
+  feedbacks:
+    new:
+      terms_html:
+        "By clicking \'send\', you agree to Thrively\'s %{tos}."
   layouts:
     application:
       support_link_html:
