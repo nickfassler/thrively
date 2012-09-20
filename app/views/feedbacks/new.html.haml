@@ -32,3 +32,7 @@
       = link_to 'Not you?', sign_in_path
   %br
   = f.submit 'Send', class: 'btn'
+  - if signed_out?
+    .terms
+      = t('.terms_html',
+          tos: link_to('Terms of Service', terms_path, target: "_blank"))

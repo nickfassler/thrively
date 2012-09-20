@@ -24,3 +24,7 @@
     = form.text_field :username, placeholder: 'You can change this later'
 
   = form.submit 'Sign up', class: 'btn'
+
+  .terms
+    = t('.terms_html',
+        tos: link_to('Terms of Service', terms_path, target: "_blank"))
