@@ -1,6 +1,8 @@
 .request.received
   .history-icon
     %i.icon-bullhorn
+  .avatar
+    = image_tag resource.user.avatar.url(:small)
   .history-content
     .title
       = t('.title_html',
@@ -11,3 +13,8 @@
         new_feedback_path(feedback: { request_id: resource.id })
     .message
       = resource.message
+    .request-btn
+      %a{ href: new_feedback_path(feedback: { request_id: resource.id }),
+        class: 'btn btn-mini'}
+        Give Feedback
+        %i.icon-share-alt
