@@ -1,6 +1,8 @@
 .feedback.received
   .history-icon
     %i.icon-retweet
+  .avatar
+    = image_tag resource.giver.avatar.url(:small)
   .history-content
     .title
       = t('.title_html',

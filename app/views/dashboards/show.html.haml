@@ -7,4 +7,5 @@
   - @events.each do |event|
     = render event.name_for(current_user), resource: event.resource
 
-= will_paginate @events
+.paginate
+  = will_paginate @events
