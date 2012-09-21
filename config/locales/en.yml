@@ -14,6 +14,8 @@ en:
         'You requested feedback from %{user} about "%{topic}" <span class="timestamp">%{time} ago</span>'
   layouts:
     application:
+      support_link_html:
+        '<i class="icon-envelope"></i> Support'
       request_button:
         "Request Feedback"
       give_button:
