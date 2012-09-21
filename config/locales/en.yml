@@ -19,7 +19,7 @@ en:
   feedbacks:
     new:
       terms_html:
-        "By clicking send, you agree to Thrively\'s %{tos}."
+        "By clicking \'send\', you agree to Thrively\'s %{tos}."
   layouts:
     application:
       request_button:
