@@ -15,21 +15,25 @@
         .pull-right
           %ul.nav
             - if signed_in?
+              %li.support
+                %a{ href: '#', id: 'Intercom'}
+                  = t('.support_link_html')
               %li= link_to 'Profile', current_user
               %li= link_to 'Sign out', sign_out_path, method: :delete
             - else
               %li= link_to 'Sign in', sign_in_path
-        - if signed_in?
-          .action-btns.pull-right
-            %a{ href: new_request_path, class: 'btn btn-info'}
-              = t('.request_button')
-            %a{ href: new_feedback_path, class: 'btn btn-primary'}
-              = t('.give_button')
 
   #main-content.container
     .app-box
       .app-box-head
-        %h1 #{yield(:title)}
+        - if signed_in?
+          .action-btns.pull-right
+            %a{ href: new_request_path, class: 'btn btn-info btn-large'}
+              = t('.request_button')
+            %a{ href: new_feedback_path, class: 'btn btn-primary btn-large'}
+              = t('.give_button')
+        %h1
+          #{yield(:title)}
       .app-box-content
         = render 'flashes'
         = yield
