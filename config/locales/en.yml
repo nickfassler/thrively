@@ -43,6 +43,13 @@ en:
         other unique talent you'd like to show us? Please contact us at:
         %{mail_link}."
     marketing:
+      meta_description:
+        "Thrively makes it extremely simple to exchange feedback from anyone
+        with an email address. Completely free for individuals."
+      meta_keywords:
+        "performance reviews, employee feedback, social performance management,
+        360 reviews, 360 feedback, 360 degree feedback, plus delta,
+        ongoing feedback, thrively, thrive.ly"
       page_title:
         "Radically Simple Feedback"
       app_title:

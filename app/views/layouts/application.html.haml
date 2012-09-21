@@ -3,7 +3,7 @@
 %head
   %meta(charset='UTF-8')
   = yield :meta
-  %title Thrively#{ " | #{yield(:title)}" if yield(:title).present? }
+  %title Thrively#{" | #{yield(:title)}" if yield(:title).present?}
   = stylesheet_link_tag :application, media: 'all'
   = csrf_meta_tags
 
