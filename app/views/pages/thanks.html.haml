@@ -1,6 +1,11 @@
 - content_for :title, t('.page_title')
+- content_for :meta do
+  <meta name='ROBOTS' content='NOINDEX, NOFOLLOW'>
 
-= render 'flashes'
+.alert
+  %button.close{ type: 'button', "data-dismiss" => 'alert' } 
+    ×
+  = t('.signup_success_html')
 .hero-unit
   #hero-image
     = image_tag "thrively_desktop.png"

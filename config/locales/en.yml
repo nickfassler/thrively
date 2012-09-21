@@ -53,7 +53,7 @@ en:
         "Easily exchange professional feedback with anyone with an email
         address."
       call_to_action:
-        " Sign up to request an invite to Thrively:"
+        "Sign up to request an invite to Thrively, and get updates on our launch:"
       feature_item_feedback:
         "Collect feedback from your colleagues, peers, and mentors—even if they
         don't have a Thrively account!"
@@ -68,3 +68,27 @@ en:
     terms:
       page_title:
         "Terms of Service"
+    thanks:
+      signup_success_html:
+        "<strong>Please confirm your email address.</strong> To complete the
+        registration process, please click the link in the email we just sent
+        you."
+      page_title:
+        "Radically Simple Feedback"
+      app_title:
+        "Thrively"
+      app_subtitle:
+        "Radically simple feedback"
+      app_description:
+        "Easily exchange professional feedback with anyone with an email
+        address."
+      call_to_action:
+        "Sign up to request an invite to Thrively, and get updates on our launch:"
+      feature_item_feedback:
+        "Collect feedback from your colleagues, peers, and mentors—even if they
+        don't have a Thrively account!"
+      feature_item_free:
+        "Thrively will always be free for individuals. No credit card needed."
+      feature_item_team:
+        "Make sure your team stays on track with frequent, timely, and honest
+        360-degree feedback."
