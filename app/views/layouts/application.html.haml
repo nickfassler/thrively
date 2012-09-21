@@ -3,7 +3,7 @@
 %head
   %meta(charset='UTF-8')
   = yield :meta
-  %title Thrively#{" | #{yield(:title)}" if yield(:title).present?}
+  %title Thrively#{ " | #{yield(:title)}" if yield(:title).present? }
   = stylesheet_link_tag :application, media: 'all'
   = csrf_meta_tags
 
@@ -16,7 +16,7 @@
           %ul.nav
             - if signed_in?
               %li.support
-                %a{ href: '#', id: 'Intercom'}
+                %a{ href: '#', id: 'Intercom' }
                   = t('.support_link_html')
               %li= link_to 'Profile', current_user
               %li= link_to 'Sign out', sign_out_path, method: :delete
@@ -28,9 +28,9 @@
       .app-box-head
         - if signed_in?
           .action-btns.pull-right
-            %a{ href: new_request_path, class: 'btn btn-info btn-large'}
+            %a{ href: new_request_path, class: 'btn btn-info btn-large' }
               = t('.request_button')
-            %a{ href: new_feedback_path, class: 'btn btn-primary btn-large'}
+            %a{ href: new_feedback_path, class: 'btn btn-primary btn-large' }
               = t('.give_button')
         %h1
           #{yield(:title)}
