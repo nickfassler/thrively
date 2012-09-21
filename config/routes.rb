@@ -23,6 +23,7 @@ Thrively::Application.routes.draw do
   match '/request', to: 'requests#new', as: :new_request
   match '/sign_up', to: 'high_voltage/pages#show', id: 'marketing', as: :sign_up
   match '/terms', to: 'high_voltage/pages#show', id: 'terms', as: :terms
+  match '/thanks', to: 'high_voltage/pages#show', id: 'thanks', as: :thanks
 
   if Rails.env.development?
     mount Mailer::Preview => 'mail_view'
