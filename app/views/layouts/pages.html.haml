@@ -14,11 +14,7 @@
         = link_to 'Thrively', root_path, class: 'brand'
         .pull-right
           %ul.nav
-            - if signed_in?
-              %li= link_to 'Profile', current_user
-              %li= link_to 'Sign out', sign_out_path, method: :delete
-            - else
-              %li= link_to 'Sign in', sign_in_path
+            = render 'header_nav'
 
   #main-content.container
     = yield

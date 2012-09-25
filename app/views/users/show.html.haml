@@ -1,7 +1,7 @@
 - content_for :title, 'Profile'
 
 .pull-right
-  = link_to 'Edit', edit_user_path(current_user)
+  = link_to 'Edit your profile', edit_user_path(current_user), class: 'btn'
 
 .profile
   .avatar

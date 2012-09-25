@@ -13,7 +13,7 @@ feature 'Feedbacks' do
     fill_in 'Topic', with: 'Test feedback topic'
     fill_in 'Did well', with: 'Something'
     fill_in 'Improve', with: 'Something'
-    click_button 'Send'
+    click_button 'Give feedback'
 
     current_path.should == root_path
     page.should have_content('Feedback was successful')
@@ -26,7 +26,7 @@ feature 'Feedbacks' do
     sign_in_as @giver
     click_link 'Give Feedback'
     fill_in 'Topic', with: 'Test feedback topic'
-    click_button 'Send'
+    click_button 'Give feedback'
 
     current_path.should == feedbacks_path
     page.should have_content("can't be blank")
@@ -41,7 +41,7 @@ feature 'Feedbacks' do
     fill_in 'Topic', with: 'Daily standup'
     fill_in 'Did well', with: 'Good attitude'
     fill_in 'Improve', with: 'Need more smiles'
-    click_button 'Send'
+    click_button 'Give feedback'
 
     current_path.should == root_path
     last_sent_email.to.should include(@receiver.email)
@@ -60,7 +60,7 @@ feature 'Feedbacks' do
     click_link request.topic
     fill_in 'Did well', with: 'Good attitude'
     fill_in 'Improve', with: 'Need more smiles'
-    click_button 'Send'
+    click_button 'Give feedback'
 
     current_path.should == root_path
     page.should have_content('Feedback was successful')
@@ -81,7 +81,7 @@ feature 'Feedbacks' do
     visit requested_feedback_path(requested_feedback)
     fill_in 'Did well', with: 'Good attitude'
     fill_in 'Improve', with: 'Need more smiles'
-    click_button 'Send'
+    click_button 'Give feedback'
 
     current_path.should == root_path
     page.should have_content('Feedback was successful')
