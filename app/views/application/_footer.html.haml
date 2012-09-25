@@ -5,6 +5,8 @@
     .span8.footer-nav
       - if signed_out?
         = link_to 'Sign up', sign_up_path
+      - else
+        = link_to 'Features', sign_up_path
       %span.footer-bar &#124;
       = link_to 'About', about_path
       %span.footer-bar &#124;

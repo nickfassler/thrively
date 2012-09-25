@@ -1,37 +1,38 @@
 - content_for :title, 'Give Feedback'
 
-= semantic_form_for @feedback do |f|
-  - if @feedback.request
-    = f.hidden_field :request_id
-    = @feedback.decorator.html_for_receiver_email
-    .topic
-      Topic: #{@feedback.request.topic}
-  - elsif @receiver_provided
-    = @feedback.decorator.html_for_receiver_email
-    = hidden_field_tag :receiver_provided, true
-    = f.hidden_field :receiver_email
+.give-form
+  = semantic_form_for @feedback do |f|
+    - if @feedback.request
+      = f.hidden_field :request_id
+      = @feedback.decorator.html_for_receiver_email
+      .topic
+        Topic: #{@feedback.request.topic}
+    - elsif @receiver_provided
+      = @feedback.decorator.html_for_receiver_email
+      = hidden_field_tag :receiver_provided, true
+      = f.hidden_field :receiver_email
 
-    = f.input :topic, placeholder: 'What is the feedback about?'
-  - else
-    = f.input :receiver_email, label: 'Email', placeholder: 'Email', as: :email
+      = f.input :topic, placeholder: 'What is the feedback about?'
+    - else
+      = f.input :receiver_email, label: 'Email', placeholder: 'Email', as: :email
 
-    = f.input :topic, placeholder: 'What is the feedback about?'
+      = f.input :topic, placeholder: 'What is the feedback about?'
 
-  = f.input :plus, label: 'Did well',
-      placeholder: 'Explain what was done well', input_html: { rows: 2 }
+    = f.input :plus, label: 'Did well',
+        placeholder: 'Explain what was done well. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
-  = f.input :delta, label: 'Improve',
-      placeholder: 'Explain areas for improvement', input_html: { rows: 2 }
+    = f.input :delta, label: 'Improve',
+        placeholder: 'Explain areas for improvement. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
-  - if signed_out?
-    .guest
-      = f.hidden_field :giver_email
-      Your email: #{@feedback.giver_email}
-      = link_to 'Not you?', sign_in_path
-  %br
-  = f.action :submit, label: 'Send', class: 'btn'
+    - if signed_out?
+      .guest
+        = f.hidden_field :giver_email
+        Your email: #{@feedback.giver_email}
+        = link_to 'Not you?', sign_in_path
+    %br
+    = f.action :submit, label: 'Give feedback', class: 'btn'
 
-  - if signed_out?
-    .terms
-      = t('.terms_html',
-          tos: link_to('Terms of Service', terms_path, target: '_blank'))
+    - if signed_out?
+      .terms
+        = t('.terms_html',
+            tos: link_to('Terms of Service', terms_path, target: '_blank'))

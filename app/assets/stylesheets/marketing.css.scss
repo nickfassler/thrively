@@ -1,6 +1,11 @@
 .hero-unit {
   padding: 50px;
 
+  h1 {
+    font-family: 'Dosis', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+  }
+
   .email {
     font-size: 16px; 
     padding: 9px 14px;

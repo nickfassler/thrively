@@ -16,8 +16,15 @@
 
 @import 'bootstrap';
 @import 'font-awesome';
+@import url(http://fonts.googleapis.com/css?family=Dosis:500);
 
 .navbar {
+  .brand {
+    font-family: 'Dosis', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-left: -10px;
+    text-transform: uppercase;
+  }
+
   i {
     font-size: 16px;
     line-height: 13px;
@@ -85,6 +92,39 @@ footer {
 #flash {
   .alert {
     margin: 5px 0 10px 0;
+  }
+}
+
+.profile {
+  font-size: 14px;
+
+  .avatar {
+    margin-bottom: 10px;
+  }
+
+  .edit {
+    margin-top: 25px;
+  }
+}
+
+.give-form, .request-form {
+  border: 0px;
+  font-size: 14px;
+
+  .user {
+    margin-bottom: 20px;
+
+    img {
+      padding-right: 10px;
+    }
+  }
+
+  .topic {
+    margin-bottom: 15px;
+  }
+
+  #feedback_topic, #feedback_plus, #feedback_delta, #request_emails, #request_topic, #request_message {
+    width: 500px;
   }
 }
 
