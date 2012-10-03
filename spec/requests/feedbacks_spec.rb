@@ -11,8 +11,8 @@ feature 'Feedbacks' do
     click_link 'Give Feedback'
     fill_in 'Email', with: @receiver.email
     fill_in 'Topic', with: 'Test feedback topic'
-    fill_in 'Did well', with: 'Something'
-    fill_in 'Improve', with: 'Something'
+    fill_in 'What works', with: 'Something'
+    fill_in 'What to improve', with: 'Something'
     click_button 'Give feedback'
 
     current_path.should == root_path
@@ -39,8 +39,8 @@ feature 'Feedbacks' do
     sign_in_as @giver
     click_link @receiver.name
     fill_in 'Topic', with: 'Daily standup'
-    fill_in 'Did well', with: 'Good attitude'
-    fill_in 'Improve', with: 'Need more smiles'
+    fill_in 'What works', with: 'Good attitude'
+    fill_in 'What to improve', with: 'Need more smiles'
     click_button 'Give feedback'
 
     current_path.should == root_path
@@ -58,8 +58,8 @@ feature 'Feedbacks' do
 
     sign_in_as @giver
     click_link request.topic
-    fill_in 'Did well', with: 'Good attitude'
-    fill_in 'Improve', with: 'Need more smiles'
+    fill_in 'What works', with: 'Good attitude'
+    fill_in 'What to improve', with: 'Need more smiles'
     click_button 'Give feedback'
 
     current_path.should == root_path
@@ -79,8 +79,8 @@ feature 'Feedbacks' do
     requested_feedback = request.requested_feedbacks.first
 
     visit requested_feedback_path(requested_feedback)
-    fill_in 'Did well', with: 'Good attitude'
-    fill_in 'Improve', with: 'Need more smiles'
+    fill_in 'What works', with: 'Good attitude'
+    fill_in 'What to improve', with: 'Need more smiles'
     click_button 'Give feedback'
 
     current_path.should == root_path

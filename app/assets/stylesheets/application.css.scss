@@ -25,6 +25,16 @@
     text-transform: uppercase;
   }
 
+  .beta {
+    color: #E62E00;
+    display: block;
+    float: left;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    margin-left: -35px;
+    padding: 14px 20px 6px 20px;
+  }
+
   i {
     font-size: 16px;
     line-height: 13px;
@@ -95,6 +105,23 @@ footer {
   }
 }
 
+.terms {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.about {
+  h4 {
+    margin: 25px 0 15px 0;
+  }
+
+  .social-icon {
+    margin-left: 5px;
+    text-decoration: none;
+    vertical-align: 2px;
+  }
+}
+
 .profile {
   font-size: 14px;
 
@@ -132,11 +159,6 @@ footer {
   input {
     border: 1px solid red;
   }
-}
-
-.terms {
-  font-size: 12px;
-  margin-top: 10px;
 }
 
 .pagination {
