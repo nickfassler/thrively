@@ -91,7 +91,12 @@
 
   .topic {
     font-weight: bold;
-    margin-top: 6px;
+    margin: 6px 0;
+  }
+
+  .message {
+    font-style: italic;
+    margin-bottom: 18px;
   }
 
   .request-btn {
