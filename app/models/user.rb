@@ -1,15 +1,17 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  attr_accessible :avatar, :email, :invite_token, :password, :name, :username
+  attr_accessible :avatar, :email, :invite_token, :name, :password, :username
   attr_accessor :invite_token
 
+  has_many :given_feedbacks, as: :giver, class_name: Feedback,
+    dependent: :destroy
+  has_many :history_events, as: :owner, dependent: :destroy
   belongs_to :invite
-  has_many :requests
-  has_many :requested_feedbacks, as: :giver
-  has_many :given_feedbacks, as: :giver, class_name: Feedback
-  has_many :received_feedbacks, as: :receiver, class_name: Feedback
-  has_many :history_events, as: :owner, order: 'created_at DESC'
+  has_many :received_feedbacks, as: :receiver, class_name: Feedback,
+    dependent: :destroy
+  has_many :requests, dependent: :destroy
+  has_many :requested_feedbacks, as: :giver, dependent: :destroy
 
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
@@ -31,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def stream
-    history_events.includes(:resource, :owner)
+    history_events.includes(:resource, :owner).order('created_at DESC')
   end
 
   private

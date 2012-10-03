@@ -2,15 +2,16 @@ class Feedback < ActiveRecord::Base
   attr_accessible :plus, :delta, :topic, :request_id,
     :receiver_email, :giver_email
 
-  belongs_to :request
   belongs_to :giver, polymorphic: true
+  has_many :history_events, as: :resource, dependent: :destroy
   belongs_to :receiver, polymorphic: true
+  belongs_to :request
 
-  validates :receiver, presence: true
-  validates :giver, presence: true
-  validates :topic, presence: true
-  validates :plus, presence: true
   validates :delta, presence: true
+  validates :giver, presence: true
+  validates :plus, presence: true
+  validates :receiver, presence: true
+  validates :topic, presence: true
 
   before_validation :copy_attributes_from_request
 

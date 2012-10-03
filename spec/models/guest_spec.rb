@@ -7,6 +7,11 @@ describe Guest do
   it { should_not allow_mass_assignment_of(:created_at) }
   it { should_not allow_mass_assignment_of(:updated_at) }
 
+  it { should have_many(:given_feedbacks).dependent(:destroy) }
+  it { should have_many(:history_events).dependent(:destroy) }
+  it { should have_many(:received_feedbacks).dependent(:destroy) }
+  it { should have_many(:requested_feedbacks).dependent(:destroy) }
+
   it {
     should_not validate_format_of(:email).with('user@example').
       with_message(/is not an email/)
@@ -61,8 +66,7 @@ describe Guest do
     private
 
     def converted_user_with_association(resource_sym, role)
-      guest = build_stubbed(:guest)
-      guest.stub(:destroy)
+      guest = create(:guest)
       create(resource_sym, role => guest)
 
       ActiveRecord::Base.observers.disable :user_observer do

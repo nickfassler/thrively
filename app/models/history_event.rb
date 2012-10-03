@@ -4,6 +4,9 @@ class HistoryEvent < ActiveRecord::Base
   belongs_to :owner, polymorphic: true
   belongs_to :resource, polymorphic: true
 
+  validates :owner, presence: true
+  validates :resource, presence: true
+
   self.per_page = 10
 
   def name_for(user)

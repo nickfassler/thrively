@@ -9,6 +9,11 @@ describe Feedback do
   it { should_not allow_mass_assignment_of(:giver_id) }
   it { should_not allow_mass_assignment_of(:receiver_id) }
 
+  it { should belong_to(:giver) }
+  it { should have_many(:history_events).dependent(:destroy) }
+  it { should belong_to(:receiver) }
+  it { should belong_to(:request) }
+
   it { should validate_presence_of(:receiver) }
   it { should validate_presence_of(:giver) }
   it { should validate_presence_of(:topic) }

@@ -7,12 +7,12 @@ describe User do
   it { should_not allow_mass_assignment_of(:created_at) }
   it { should_not allow_mass_assignment_of(:updated_at) }
 
+  it { should have_many(:given_feedbacks).dependent(:destroy) }
+  it { should have_many(:history_events).dependent(:destroy) }
   it { should belong_to(:invite) }
-  it { should have_many(:requests) }
-  it { should have_many(:requested_feedbacks) }
-  it { should have_many(:given_feedbacks) }
-  it { should have_many(:received_feedbacks) }
-  it { should have_many(:history_events) }
+  it { should have_many(:received_feedbacks).dependent(:destroy) }
+  it { should have_many(:requests).dependent(:destroy) }
+  it { should have_many(:requested_feedbacks).dependent(:destroy) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:username) }

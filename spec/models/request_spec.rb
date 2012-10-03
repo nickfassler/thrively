@@ -8,6 +8,10 @@ describe Request do
   it { should_not allow_mass_assignment_of(:updated_at) }
   it { should_not allow_mass_assignment_of(:user_id) }
 
+  it { should have_many(:feedbacks).dependent(:destroy) }
+  it { should have_many(:requested_feedbacks).dependent(:destroy) }
+  it { should belong_to(:user) }
+
   it { should validate_presence_of(:requested_feedbacks) }
   it { should validate_presence_of(:user) }
 

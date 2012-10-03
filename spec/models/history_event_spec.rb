@@ -7,6 +7,12 @@ describe HistoryEvent do
   it { should_not allow_mass_assignment_of(:created_at) }
   it { should_not allow_mass_assignment_of(:updated_at) }
 
+  it { should belong_to(:owner) }
+  it { should belong_to(:resource) }
+
+  it { should validate_presence_of(:owner) }
+  it { should validate_presence_of(:resource) }
+
   describe '#name_for' do
     it 'is feedback_sent when user sent feedback' do
       feedback = build_stubbed(:feedback)

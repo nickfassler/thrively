@@ -1,9 +1,9 @@
 class Request < ActiveRecord::Base
-  attr_accessible :message, :topic, :emails
+  attr_accessible :emails, :message, :topic
 
+  has_many :feedbacks, dependent: :destroy
+  has_many :requested_feedbacks, dependent: :destroy
   belongs_to :user
-  has_many :feedbacks
-  has_many :requested_feedbacks
 
   validates :requested_feedbacks, presence: true
   validates :user, presence: true
