@@ -4,7 +4,7 @@ class RequestedFeedback < ActiveRecord::Base
   belongs_to :giver, polymorphic: true
   belongs_to :request
 
-  validates :giver_id, presence: true
+  validates :giver, presence: true
 
   def giver_email
     giver.try(:email)

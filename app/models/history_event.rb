@@ -1,4 +1,6 @@
 class HistoryEvent < ActiveRecord::Base
+  self.per_page = 10
+
   attr_accessible :resource, :owner
 
   belongs_to :owner, polymorphic: true
@@ -6,8 +8,6 @@ class HistoryEvent < ActiveRecord::Base
 
   validates :owner, presence: true
   validates :resource, presence: true
-
-  self.per_page = 10
 
   def name_for(user)
     resource_name = resource_type.downcase
