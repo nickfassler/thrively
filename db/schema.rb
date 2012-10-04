@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907172957) do
+ActiveRecord::Schema.define(:version => 20121003231137) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.datetime "created_at",                :null => false
@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(:version => 20120907172957) do
   add_index "feedbacks", ["request_id"], :name => "index_feedbacks_on_request_id"
 
   create_table "guests", :force => true do |t|
-    t.string   "email",      :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "email",                          :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "feedbacks_count", :default => 0, :null => false
   end
 
   create_table "history_events", :force => true do |t|
@@ -102,6 +103,9 @@ ActiveRecord::Schema.define(:version => 20120907172957) do
     t.string   "username"
     t.integer  "remaining_invites",                  :default => 0, :null => false
     t.integer  "invite_id"
+    t.integer  "feedbacks_count",                    :default => 0, :null => false
+    t.integer  "requests_count",                     :default => 0, :null => false
+    t.integer  "invites_count",                      :default => 0, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

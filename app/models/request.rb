@@ -3,7 +3,7 @@ class Request < ActiveRecord::Base
 
   has_many :feedbacks, dependent: :destroy
   has_many :requested_feedbacks, dependent: :destroy
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   validate :validates_emails
   validates :user, presence: true

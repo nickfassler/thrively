@@ -2,7 +2,7 @@ class Feedback < ActiveRecord::Base
   attr_accessible :plus, :delta, :topic, :request_id,
     :receiver_email, :giver_email
 
-  belongs_to :giver, polymorphic: true
+  belongs_to :giver, polymorphic: true, counter_cache: true
   has_many :history_events, as: :resource, dependent: :destroy
   belongs_to :receiver, polymorphic: true
   belongs_to :request
