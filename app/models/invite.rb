@@ -1,7 +1,7 @@
 class Invite < ActiveRecord::Base
   attr_accessible :email
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   validates :email, presence: true, email: true
 

@@ -3,7 +3,7 @@ class Feedback < ActiveRecord::Base
     :receiver_email, :giver_email
 
   belongs_to :request
-  belongs_to :giver, polymorphic: true
+  belongs_to :giver, polymorphic: true, counter_cache: true
   belongs_to :receiver, polymorphic: true
 
   validates :receiver, presence: true

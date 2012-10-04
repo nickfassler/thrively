@@ -1,7 +1,7 @@
 class Request < ActiveRecord::Base
   attr_accessible :message, :topic, :emails
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :feedbacks
   has_many :requested_feedbacks
 
