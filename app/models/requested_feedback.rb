@@ -4,8 +4,6 @@ class RequestedFeedback < ActiveRecord::Base
   belongs_to :giver, polymorphic: true
   belongs_to :request
 
-  validate :validates_giver
-
   def giver_email
     giver.try(:email)
   end
@@ -24,14 +22,5 @@ class RequestedFeedback < ActiveRecord::Base
 
   def requester_email
     requester.email
-  end
-
-  private
-
-  def validates_giver
-    if giver.id.nil?
-      giver.errors.add :emails, 'Invalid'
-      errors.add :base, 'Giver email is invalid'
-    end
   end
 end

@@ -45,6 +45,12 @@ FactoryGirl.define do
         request.requested_feedbacks = [build(:requested_feedback, request: request)]
       end
     end
+
+    factory :request_without_requested_feedbacks do |request|
+      after(:build) do |request|
+        request.requested_feedbacks = []
+      end
+    end
   end
 
   factory :requested_feedback do

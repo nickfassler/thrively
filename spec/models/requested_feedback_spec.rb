@@ -11,24 +11,4 @@ describe RequestedFeedback do
 
   it { should belong_to(:giver) }
   it { should belong_to(:request) }
-
-  describe '#create' do
-    it 'validates when giver present' do
-      guest = create(:guest)
-      requested_feedback = build(:requested_feedback, giver: guest)
-
-      requested_feedback.save
-
-      requested_feedback.should be_valid
-    end
-
-    it 'fails to validate when giver not present' do
-      guest = Guest.new
-      requested_feedback = build(:requested_feedback, giver: guest)
-
-      requested_feedback.save
-
-      requested_feedback.should_not be_valid
-    end
-  end
 end

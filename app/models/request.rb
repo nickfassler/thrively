@@ -5,16 +5,16 @@ class Request < ActiveRecord::Base
   has_many :requested_feedbacks, dependent: :destroy
   belongs_to :user
 
-  validates :requested_feedbacks, presence: true
+  validate :validates_emails
   validates :user, presence: true
 
   def emails=(email_list)
-    email_list.each do |email|
-      if email.present?
-        user_or_guest = User.where(email: email).first
-        user_or_guest ||= Guest.where(email: email).first_or_create
-        requested_feedbacks.build(giver: user_or_guest)
-      end
+    email_list.select do |email|
+      email.present? && email =~ EmailValidator::RFC_SPEC
+    end.each do |email|
+      user_or_guest = User.where(email: email).first
+      user_or_guest ||= Guest.where(email: email).first_or_create
+      requested_feedbacks.build(giver: user_or_guest)
     end
   end
 
@@ -32,5 +32,13 @@ class Request < ActiveRecord::Base
 
   def user_name
     user.name
+  end
+
+  private
+
+  def validates_emails
+    if requested_feedbacks.empty?
+      errors.add(:emails)
+    end
   end
 end

@@ -2,6 +2,7 @@
 
 .request-form
   = semantic_form_for @request do |f|
+    = f.semantic_errors
     = f.input :emails, collection: @friends_emails,
         input_html: chosen_input_html(multiple: true),
         wrapper_html: chosen_wrapper_html,
