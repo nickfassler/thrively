@@ -7,9 +7,20 @@
   .app-box-content
     = render 'flashes'
 
-    %h3
-      = t('.subtitle')
-    %p
-      = t('.origin_story')
-    %p
-      = t('.contact_us_html', mail_link: mail_to(Mailer::SUPPORT_ADDRESS, Mailer::SUPPORT_ADDRESS))
+    .about
+      %h3
+        = t('.subtitle')
+      %p
+        = t('.origin_story')
+      %p
+        = t('.contact_us_html', mail_link: mail_to(Mailer::SUPPORT_ADDRESS, Mailer::SUPPORT_ADDRESS))    
+      %h4
+        = t('.employees_title')
+      %p
+        = t('.nick_title_html')
+        = link_to 'http://twitter.com/greenernick', class: 'social-icon' do
+          = image_tag('flw-twitter-icon.png', title: 'Greenernick on Twitter', alt: '@greenernick')
+        = link_to 'http://www.linkedin.com/in/nickfassler', class: 'social-icon' do
+          = image_tag('linkedin-icon.png', title: 'Nick Fassler on LinkedIn', alt: 'Nick Fassler on LinkedIn')
+        %br
+        = t('.nick_description')

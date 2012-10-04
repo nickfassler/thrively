@@ -5,8 +5,8 @@
     - if @feedback.request
       = f.hidden_field :request_id
       = @feedback.decorator.html_for_receiver_email
-      .topic
-        Topic: #{@feedback.request.topic}
+      .topic #{@feedback.request.topic}
+      .message #{@feedback.request.message}
     - elsif @receiver_provided
       = @feedback.decorator.html_for_receiver_email
       = hidden_field_tag :receiver_provided, true
@@ -18,10 +18,10 @@
 
       = f.input :topic, placeholder: 'What is the feedback about?'
 
-    = f.input :plus, label: 'Did well',
+    = f.input :plus, label: 'What works',
         placeholder: 'Explain what was done well. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
-    = f.input :delta, label: 'Improve',
+    = f.input :delta, label: 'What to improve',
         placeholder: 'Explain areas for improvement. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
     - if signed_out?

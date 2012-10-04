@@ -36,12 +36,21 @@ en:
       subtitle:
         "Thrively is passionate about feedback"
       origin_story:
-        "Thrively was founded in October 2011 at the University of Michigan. We
-        have since relocated to San Francisco, CA and launched our private
-        closed beta in September 2012."
+        "Thrively was founded in October 2011 at the University of Michigan out
+        of a passion to help people thrive in their careers. We have since
+        relocated to San Francisco, CA and launched our private closed beta in
+        September 2012."
       contact_us_html:
         "We'd love to hear from you, so please contact us at:
         %{mail_link}."
+      employees_title:
+        "Who we are"
+      nick_title_html:
+        "<strong>NICK FASSLER, Founder & CEO</strong>"
+      nick_description:
+        "Nick is a growth hacker, aspiring front-end designer and developer,
+        and sustainable MBA. He's worked at two startups and as an online
+        marketer for nonprofits and green businesses."
     jobs:
       page_title:
         "Jobs at Thrively"
@@ -51,6 +60,15 @@ en:
         "Are you a developer, designer, marketing whiz, or do you have some
         other unique talent you'd like to show us? Please contact us at:
         %{mail_link}."
+      job_rails_html:
+        "<strong>Full Stack Developer</strong> &ndash; Ruby? Rails? Haml? Sass?
+        JS? Git? Yup!"
+      job_ux_html:
+        "<strong>UX Designer</strong> &ndash; Wireframe? Story board? User
+        testing? Bootstrap? Hell yeah!"
+      job_community_html:
+        "<strong>Community Manager</strong> &ndash; Blog? Quora? Twitter?
+        Facebook? Let's do it!"
     marketing:
       meta_description:
         "Thrively makes it extremely simple to exchange feedback from anyone
@@ -66,15 +84,17 @@ en:
       app_subtitle:
         "Radically simple feedback"
       app_description:
-        "Easily exchange professional feedback with anyone with an email
-        address."
+        "Easily exchange feedback with anyone with an email address."
       call_to_action:
-        "Sign up to request an invite to Thrively, and get updates on our launch:"
+        "Sign up to request an invite to Thrively and get updates on our launch:"
       feature_item_feedback:
         "Collect feedback from your colleagues, peers, and mentors—even if they
         don't have a Thrively account!"
       feature_item_free:
         "Thrively will always be free for individuals. No credit card needed."
+      feature_item_private_html:
+        "Feedback for you, not them.<br />
+        Your feedback is private and comes with you wherever you go next."
       feature_item_team:
         "Make sure your team stays on track with frequent, timely, and honest
         360-degree feedback."
