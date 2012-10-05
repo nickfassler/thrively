@@ -18,10 +18,12 @@
 
       = f.input :topic, placeholder: 'What is the feedback about?'
 
-    = f.input :plus, label: 'What works',
+    = image_tag('Plus_333_12px.png', class: 'plus', title: 'Plus: what works', alt: 'Plus: what works')
+    = f.input :plus, label: t('.plus'),
         placeholder: 'Explain what was done well. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
-    = f.input :delta, label: 'What to improve',
+    = image_tag('Delta_333_12px.png', class: 'delta', title: 'Delta: what to improve', alt: 'Delta: what to improve')
+    = f.input :delta, label: t('.delta'),
         placeholder: 'Explain areas for improvement. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
     - if signed_out?

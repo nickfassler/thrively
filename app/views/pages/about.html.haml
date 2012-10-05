@@ -24,3 +24,26 @@
           = image_tag('linkedin-icon.png', title: 'Nick Fassler on LinkedIn', alt: 'Nick Fassler on LinkedIn')
         %br
         = t('.nick_description')
+      %p
+        = t('.alex_title_html')
+        = link_to 'http://www.linkedin.com/pub/alexandra-anderson/42/362/3b', class: 'social-icon' do
+          = image_tag('linkedin-icon.png', title: 'Alex Anderson on LinkedIn', alt: 'Alex Anderson on LinkedIn')
+        %br
+        = t('.alex_description')
+      %p 
+        = t('.thoughtbot_description_html')
+        = link_to 'http://thoughtbot.com/', id: 'thoughtbot-logo' do
+          = image_tag('thoughtbot-logo-sm.png', title: 'Thoughtbot', alt: 'Thoughtbot')
+      %h4
+        = t('.advisors_title')
+      %ul
+        %li 
+          = t('.dulworth_description_html')
+        %li 
+          = t('.luque_description_html')
+        %li 
+          = t('.neal_description_html')
+        %li 
+          = t('.wilde_description_html')
+        %li 
+          = t('.wittenberg_description_html')
