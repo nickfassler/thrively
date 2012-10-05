@@ -20,9 +20,20 @@
 
 .navbar {
   .brand {
-    font-family: 'Dosis', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin-left: -10px;
-    text-transform: uppercase;
+    margin-left: 0px;
+    padding: 12px 20px 8px 20px;
+    text-indent:-1000em;
+
+    a.logo {
+      display: block;
+      width: 63px;
+      height: 16px;
+      background-image: image-url('Logo_999_sm.png');
+    }
+
+    a.logo:hover {
+      background-image: image-url('Logo_White_sm.png');
+    }
   }
 
   .beta {
@@ -31,8 +42,8 @@
     float: left;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 12px;
-    margin-left: -35px;
-    padding: 14px 20px 6px 20px;
+    margin-left: -15px;
+    padding: 14px 20px 6px 0px;
   }
 
   i {
@@ -120,6 +131,18 @@ footer {
     text-decoration: none;
     vertical-align: 2px;
   }
+
+  #thoughtbot-logo {
+    margin-left: 3px;
+
+    img {
+      vertical-align: -7px;
+    }
+  }
+
+  ul {
+    margin-bottom: 30px;
+  }
 }
 
 .profile {
@@ -152,6 +175,12 @@ footer {
 
   #feedback_topic, #feedback_plus, #feedback_delta, #request_emails, #request_topic, #request_message {
     width: 500px;
+  }
+
+  .plus, .delta {
+    float: left;
+    margin-right: 4px;
+    margin-top: 4px;
   }
 }
 

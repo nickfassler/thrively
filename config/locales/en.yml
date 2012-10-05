@@ -27,6 +27,10 @@ en:
         "Give Feedback"
   feedbacks:
     new:
+      plus:
+        "What works"
+      delta:
+        "What to improve"
       terms_html:
         "By clicking \'send\', you agree to Thrively\'s %{tos}."
   pages:
@@ -51,6 +55,33 @@ en:
         "Nick is a growth hacker, aspiring front-end designer and developer,
         and sustainable MBA. He's worked at two startups and as an online
         marketer for nonprofits and green businesses."
+      alex_title_html:
+        "<strong>ALEX ANDERSON, Lead Designer</strong>"
+      alex_description:
+        "Alex has a passion for creating brands with a personality. She spent
+        seven years as a designer with Kidrobot, most recently as their Senior
+        Designer and Brand Creative Manager."
+      thoughtbot_description_html:
+        "Developed in 
+        <a href=\"http://rubyonrails.org/\" target=\"_blank\">Ruby on Rails</a>
+        by the fine folks at"
+      advisors_title:
+        "Our advisors"
+      dulworth_description_html:
+        "<strong>MIKE DULWORTH</strong>, CEO of 
+        <a href=\"http://www.executivenetworks.com/\" target=\"_blank\">Executive Networks</a>"
+      luque_description_html:
+        "<strong>LYNEE LUQUE</strong>, HR Business Partners at 
+        <a href=\"http://www.twitter.com/\" target=\"_blank\">Twitter</a>"
+      neal_description_html:
+        "<strong>ANNMARIE NEAL</strong>, <em>former</em> Chief Talent Officer at 
+        <a href=\"http://www.cisco.com/\" target=\"_blank\">Cisco Systems</a>"
+      wilde_description_html:
+        "<strong>KEVIN WILDE</strong>, VP of Org Effectiveness & Chief Learning Officer at 
+        <a href=\"http://www.generalmills.com/\" target=\"_blank\">General Mills</a>"
+      wittenberg_description_html:
+        "<strong>EVAN WITTENBERG</strong>, VP of People at 
+        <a href=\"http://www.box.com/\" target=\"_blank\">Box</a>"
     jobs:
       page_title:
         "Jobs at Thrively"

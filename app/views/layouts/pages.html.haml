@@ -11,7 +11,8 @@
   .navbar.navbar-fixed-top.navbar-inverse
     .navbar-inner
       .container
-        = link_to 'Thrively', root_path, class: 'brand'
+        .brand
+          = link_to 'Thrively', root_path, class: 'logo', title: 'Thrively', alt: 'Thrively'
         .beta beta
         .pull-right
           %ul.nav
