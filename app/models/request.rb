@@ -10,7 +10,7 @@ class Request < ActiveRecord::Base
 
   def emails=(email_list)
     email_list.select do |email|
-      email.present? && email =~ EmailValidator::RFC_SPEC
+      Email.new(email).valid?
     end.each do |email|
       user_or_guest = User.where(email: email).first
       user_or_guest ||= Guest.where(email: email).first_or_create
