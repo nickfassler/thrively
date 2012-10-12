@@ -1,4 +1,5 @@
 Thrively::Application.routes.draw do
+  mount Ventana::Engine => "/ventana"
   constraints Clearance::Constraints::SignedIn.new do
     root to: 'dashboards#show'
   end

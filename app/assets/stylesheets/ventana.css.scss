@@ -1,0 +1,47 @@
+@import 'bootstrap';
+.edit, .save {
+  float: right;
+  margin-right: 5px;
+  opacity: 0;
+border: 1px solid #3371b2;
+  border-color: #3371b2 #2457a3 #164297;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+  -webkit-box-shadow: inset 0 1px 0 0 #64a9f2, 0 1px 2px 0 #b3b3b3;
+  box-shadow: inset 0 1px 0 0 #64a9f2, 0 1px 2px 0 #b3b3b3;
+  color: white;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 1;
+  background-color: #4294f0;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4294f0), color-stop(100%, #0156fe));
+  background-image: -webkit-linear-gradient(top, #4294f0, #0156fe);
+  background-image: -moz-linear-gradient(top, #4294f0, #0156fe);
+  background-image: -ms-linear-gradient(top, #4294f0, #0156fe);
+  background-image: -o-linear-gradient(top, #4294f0, #0156fe);
+  background-image: linear-gradient(top, #4294f0, #0156fe);
+  padding: 5px 16px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #2762bf;
+  -webkit-background-clip: padding-box;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.ventana-block{
+  padding: 5px;
+  @include clearfix();
+}
+.ventana-block:hover{
+  outline: 1px dashed #aae;
+  .edit, .save {
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+    opacity: 1;
+  }
+}
+

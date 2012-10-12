@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
     styles: { medium: '80x80#', small: '50x50#' },
     default_url: 'avatar_missing.png'
 
+  def can_edit?
+    [1].include?(id)
+  end
+
   def friends_emails
     (feedback_receiver_emails + feedback_giver_emails + request_emails).
       flatten.

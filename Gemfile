@@ -19,6 +19,7 @@ gem 'pg', '0.14.0'
 gem 'rails', '3.2.8'
 gem 'sass-rails', '3.2.5'
 gem 'thin', '1.4.1'
+gem 'ventana', git: 'https://github.com/masonforest/ventana'
 gem 'will_paginate', '3.0.3'
 
 group :test do
