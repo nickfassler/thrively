@@ -9,7 +9,7 @@ class Request < ActiveRecord::Base
   validates :user, presence: true
 
   def emails=(email_list)
-    email_list.select do |email|
+    email_list.values.select do |email|
       Email.new(email).valid?
     end.each do |email|
       user_or_guest = User.where(email: email).first

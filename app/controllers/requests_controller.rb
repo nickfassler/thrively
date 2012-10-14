@@ -3,7 +3,6 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    @friends_emails = current_user.friends_emails
   end
 
   def create

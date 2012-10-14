@@ -1,9 +1,19 @@
 module ApplicationHelper
-  def chosen_input_html(options = {})
-    options.merge({ class: 'chzn-select', 'data-placeholder' => 'Select' })
-  end
+  def email_form_fields
+    html_options = { class: 'email', placeholder: 'Email', 'data-id' => 0 }
+    content_tag :div, class: 'recipients' do
+      concat label_tag('emails_0', 'Recipients')
 
-  def chosen_wrapper_html
-    { class: 'chosen-wrapper' }
+      if @request.emails.empty?
+        concat text_field_tag('emails[0]', '', html_options)
+      else
+        @request.emails.each_with_index do |email, index|
+          html_options.update('data-id' => index)
+          concat text_field_tag("emails[#{index}]", email, html_options)
+        end
+      end
+
+      concat link_to('add', '#', id: 'add_recipient')
+    end
   end
 end
