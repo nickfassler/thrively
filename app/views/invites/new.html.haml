@@ -1,5 +1,7 @@
 - content_for :title, 'Invite a friend'
 
+= render 'return_to_dash'
+
 = semantic_form_for @invite do |f|
   .email
     = f.input :email, placeholder: 'Email'

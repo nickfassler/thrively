@@ -11,12 +11,15 @@
  *= require_self
  *= require formtastic-bootstrap
  *= require chosen
- *= require_tree .
  */
 
 @import 'bootstrap';
 @import 'font-awesome';
 @import url(http://fonts.googleapis.com/css?family=Dosis:500);
+@import 'dashboard';
+@import 'marketing';
+@import 'requests';
+@import 'welcome';
 
 .navbar {
   .brand {
@@ -25,10 +28,10 @@
     text-indent:-1000em;
 
     a.logo {
-      display: block;
-      width: 63px;
-      height: 16px;
       background-image: image-url('Logo_999_sm.png');
+      display: block;
+      height: 16px;
+      width: 63px;
     }
 
     a.logo:hover {
@@ -175,6 +178,21 @@ footer {
 
   #feedback_topic, #feedback_plus, #feedback_delta, #request_emails, #request_topic, #request_message {
     width: 500px;
+  }
+
+  .chzn-container {
+    font-size: 14px;
+    width: 514px !important;
+
+    .chzn-drop {
+      width: 512px !important;
+    }
+  }
+
+  .help-block {
+    color: #CC7A00;
+    font-size: 12px;
+    margin-bottom: 16px;
   }
 
   .plus, .delta {

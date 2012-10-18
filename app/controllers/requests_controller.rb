@@ -12,7 +12,7 @@ class RequestsController < ApplicationController
 
     if @request.save
       redirect_to dashboard_path,
-        flash: { success: 'Feedback request sent successfully' }
+        flash: { success: 'Your feedback request was sent successfully' }
     else
       render action: 'new'
     end

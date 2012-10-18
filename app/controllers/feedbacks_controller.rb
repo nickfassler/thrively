@@ -15,7 +15,7 @@ class FeedbacksController < ApplicationController
     end
 
     if @feedback.save
-      redirect_to root_path, flash: { success: 'Feedback was successful' }
+      redirect_to root_path, flash: { success: 'Your feedback was sent successfully' }
     else
       @receiver_provided = params[:receiver_provided]
       render action: 'new'

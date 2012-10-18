@@ -1,5 +1,7 @@
 - content_for :title, 'Edit Profile'
 
+= render 'return_to_dash'
+
 .profile
   = semantic_form_for current_user do |f|
     .avatar

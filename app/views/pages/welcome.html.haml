@@ -1,0 +1,22 @@
+.app-box
+  .app-box-head
+    - if signed_in?
+      - if current_user.requests.empty?
+        .action-btns.pull-right
+          %a{ class: 'btn btn-info btn-large disabled' }
+            = t('.request_button')
+          %a{ class: 'btn btn-primary btn-large disabled' }
+            = t('.give_button')
+      - else
+        .action-btns.pull-right
+          %a{ href: new_request_path, class: 'btn btn-info btn-large' }
+            = t('.request_button')
+          %a{ href: new_feedback_path, class: 'btn btn-primary btn-large' }
+            = t('.give_button')
+    %h1
+      = t('.page_title')
+  .app-box-content
+    = render 'flashes'
+    - if current_user.has_remaining_invites?
+      = link_to 'Invite a friend', new_invite_path  
+    = render 'blank_slate'

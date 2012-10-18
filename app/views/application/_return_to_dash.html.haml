@@ -1,0 +1,6 @@
+- content_for :subheader_nav do
+  - if signed_in?
+    .action-btns.pull-right.back
+      %a{ href: root_path}
+        %i.icon-circle-arrow-left
+        = t ('.return_text')

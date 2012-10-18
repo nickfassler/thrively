@@ -8,7 +8,7 @@ feature 'Accept invite' do
     invite_friend(user, friend_email)
     received_invite?(user, friend_email)
     accept_invite(Invite.last)
-    viewing_dashboard?
+    viewing_welcome?
   end
 
   scenario 'user types invalid email' do
@@ -42,17 +42,20 @@ feature 'Accept invite' do
     end
   end
 
-  scenario 'when a guest with prior feedbacks' do
-    guest = create(:guest)
-    given_feedback = create(:feedback, giver: guest)
-    received_feedback = create(:feedback, receiver: guest)
-    invite = create(:invite, email: guest.email)
+  scenario 'to a guest with prior feedbacks' do
+    guest_name = create(:guest)
+    friend = create(:user)
+    given_feedback = create(:feedback, giver: guest_name)
+    received_feedback = create(:feedback, receiver: guest_name)
+    invite = create(:invite, email: guest_name.email)
     accept_invite(invite)
-
-    within('.app-box-content') do
-      page.should have_content("You gave feedback to #{given_feedback.receiver.name}")
-      page.should have_content("#{received_feedback.giver.name} gave feedback to you")
-    end
+    viewing_welcome?
+    # request_feedback = create(:request, requester: guest_name, emails: [friend.email])
+    #
+    # within('.app-box-content') do
+    #   page.should have_content("You gave feedback to #{given_feedback.receiver.name}")
+    #   page.should have_content("#{received_feedback.giver.name} gave feedback to you")
+    # end
   end
 
   private
@@ -103,6 +106,10 @@ feature 'Accept invite' do
 
   def viewing_dashboard?
     page.should have_content('Stream')
+  end
+
+  def viewing_welcome?
+    page.should have_content('Get started with Thrively')
   end
 
   def cannot_invite?

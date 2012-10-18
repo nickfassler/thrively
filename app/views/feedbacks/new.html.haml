@@ -1,5 +1,7 @@
 - content_for :title, 'Give Feedback'
 
+= render 'return_to_dash'
+
 .give-form
   = semantic_form_for @feedback do |f|
     - if @feedback.request

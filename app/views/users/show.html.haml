@@ -1,5 +1,7 @@
 - content_for :title, 'Profile'
 
+= render 'return_to_dash'
+
 .pull-right
   = link_to 'Edit your profile', edit_user_path(current_user), class: 'btn'
 

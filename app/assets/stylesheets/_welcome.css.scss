@@ -1,0 +1,79 @@
+.welcome {
+   background-color: #FFFFE6;
+   border-top: 3px solid #E6E68A;
+   border-bottom: 3px solid #E6E68A;
+   margin: 20px 0;
+   padding: 10px 25px 20px 25px;
+
+   h1 {
+      text-align: center;
+   }
+
+   h4 {
+      margin-top: 0px;
+   }
+
+   p {
+      margin-bottom: 10px;
+   }
+
+   .row {
+      margin-top: 30px;
+   }
+
+   .icon {
+      color: #999;
+      font-size: 120px;
+      margin-right: 10px;
+      margin-top: 25px;
+      text-align: right;
+   }
+
+   .icon-ok {
+      color: green;
+      margin-left: 3px;
+   }
+}
+
+.userquotes {
+   h4 {
+      margin: 50px 0 25px 0;
+      text-align: center;
+   }
+
+   blockquote {
+      background:#FBE472;
+      border-width: 0;
+      color:#000;
+      margin: 5px 10px 5px 10px;
+      padding:15px;
+      position:relative;
+
+      /* css3 */
+      background:-webkit-gradient(linear, 0 0, 0 100%, from(#f9d835), to(#FBE472));
+      background:-moz-linear-gradient(#f9d835, #FBE472);
+      background:-o-linear-gradient(#f9d835, #FBE472);
+      background:linear-gradient(#f9d835, #FBE472);
+      -moz-border-radius:10px;
+      -webkit-border-radius:10px;
+      border-radius:10px;
+   }
+
+   blockquote:after {
+      border-width:15px 15px 0;
+      border-style:solid;
+      border-color:#FBE472 transparent;
+      bottom:-15px;
+      content:"";
+      display:block;
+      left:50px;
+      position:absolute;
+      width:0;
+   }
+
+   .username {
+      font-style: italic;
+      margin-left: 90px;
+      margin-bottom: 15px;
+   }
+}

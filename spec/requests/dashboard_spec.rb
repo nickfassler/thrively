@@ -47,7 +47,7 @@ feature 'Dashboard' do
     you = create(:user)
     friend = create(:user)
     create(:feedback, receiver: you, giver: friend)
-    create(:feedback, receiver: friend, giver: you)
+    create(:request, user: you, emails: [friend.email])
     HistoryEvent.per_page = 1
 
     sign_in_as(you)
@@ -57,6 +57,6 @@ feature 'Dashboard' do
 
     click_link('1')
 
-    page.should have_content("You gave feedback to #{friend.name}")
+    page.should have_content("You requested feedback from #{friend.name}")
   end
 end

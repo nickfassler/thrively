@@ -6,23 +6,26 @@ feature 'Feedbacks' do
     @giver = create(:user)
   end
 
-  scenario 'User can give feedback to another user' do
+  scenario 'User cannot give feedback before requesting feedback' do
     sign_in_as @giver
-    click_link 'Give Feedback'
-    fill_in 'Email', with: @receiver.email
-    fill_in 'Topic', with: 'Test feedback topic'
-    fill_in 'What works', with: 'Something'
-    fill_in 'What to improve', with: 'Something'
-    click_button 'Give feedback'
+    cannot_give_feedback?
+  end
+
+  scenario 'User can give feedback after requesting feedback' do
+    giver_request = create(:request, user: @giver, emails: [@receiver.email])
+    
+    sign_in_as @giver
+    give_feedback
 
     current_path.should == root_path
-    page.should have_content('Feedback was successful')
+    page.should have_content('Your feedback was sent successfully')
     last_sent_email.to.should include(@receiver.email)
   end
 
   scenario 'User must fill in all fields to give feedback' do
     reset_email
-
+    giver_request = create(:request, user: @giver, emails: [@receiver.email])
+    
     sign_in_as @giver
     click_link 'Give Feedback'
     fill_in 'Topic', with: 'Test feedback topic'
@@ -30,12 +33,13 @@ feature 'Feedbacks' do
 
     current_path.should == feedbacks_path
     page.should have_content("can't be blank")
-    last_sent_email.should be_nil
+    last_sent_email.should_not have_content("Test feedback topic")
   end
 
   scenario 'User leaves feedback for another user' do
-    request_for(from: @receiver, to: @giver)
-
+    receiver_request = request_for(from: @receiver, to: @giver)
+    giver_request = create(:request, user: @giver, emails: [@receiver.email])
+    
     sign_in_as @giver
     click_link @receiver.name
     fill_in 'Topic', with: 'Daily standup'
@@ -45,7 +49,7 @@ feature 'Feedbacks' do
 
     current_path.should == root_path
     last_sent_email.to.should include(@receiver.email)
-    page.should have_content('Feedback was successful')
+    page.should have_content('Your feedback was sent successfully')
 
     within('.feedback') do
       page.should have_content("You gave feedback to #{@receiver.name}")
@@ -54,6 +58,7 @@ feature 'Feedbacks' do
 
   scenario 'User leaves feedback for a specific request' do
     reset_email
+    giver_request = create(:request, user: @giver, emails: [@receiver.email])
     request = request_for(from: @receiver, to: @giver)
 
     sign_in_as @giver
@@ -63,7 +68,7 @@ feature 'Feedbacks' do
     click_button 'Give feedback'
 
     current_path.should == root_path
-    page.should have_content('Feedback was successful')
+    page.should have_content('Your feedback was sent successfully')
 
     within('.feedback') do
       page.should have_content("You gave feedback to #{@receiver.name}")
@@ -74,6 +79,7 @@ feature 'Feedbacks' do
 
   scenario 'Guest leaves feedback for a specific request' do
     reset_email
+    
     guest = create(:guest)
     request = request_for(to: guest, from: @receiver)
     requested_feedback = request.requested_feedbacks.first
@@ -84,7 +90,7 @@ feature 'Feedbacks' do
     click_button 'Give feedback'
 
     current_path.should == root_path
-    page.should have_content('Feedback was successful')
+    page.should have_content('Your feedback was sent successfully')
 
     feedback_received_email = sent_email_with_subject(/Feedback on/)
     thank_you_email = last_sent_email
@@ -112,5 +118,18 @@ feature 'Feedbacks' do
       requested_feedbacks:
         [build(:requested_feedback, giver: options[:to], request: request)]
     )
+  end
+
+  def cannot_give_feedback?
+    page.has_no_link?('Give Feedback')
+  end
+
+  def give_feedback
+    click_link 'Give Feedback'
+    fill_in 'Email', with: @receiver.email
+    fill_in 'Topic', with: 'Test feedback topic'
+    fill_in 'What works', with: 'Something'
+    fill_in 'What to improve', with: 'Something'
+    click_button 'Give feedback'
   end
 end

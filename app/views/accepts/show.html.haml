@@ -8,14 +8,14 @@
   .name
     = form.input :name, placeholder: 'Your first and last name'
 
+  .username
+    = form.input :username, placeholder: 'You can change this later'
+
   .email
     = form.input :email, input_html: { value: @invite.email }
 
   .password
     = form.input :password, placeholder: 'Something you will remember'
-
-  .username
-    = form.input :username, placeholder: 'You can change this later'
 
   = form.action :submit, label: 'Sign up', class: 'btn'
 

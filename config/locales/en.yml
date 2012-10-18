@@ -7,6 +7,54 @@ en:
     header_nav:
       support_link_html:
         '<i class="icon-envelope"></i> Support'
+    blank_slate:
+      request_button:
+        "Request Feedback"
+      give_button:
+        "Give Feedback"
+      page_title:
+        "Welcome to Thrively!"
+      welcome_title:
+        "Get started with Thrively"
+      welcome_action:
+        "Request feedback from anyone with an email address"
+      welcome_text:
+        "Requesting feedback is the easiest way to get started with Thrively.
+        Send a request to anyone with an email address. You can even send a
+        request to a whole group of people!"
+      welcome_button:
+        "Request feedback now"
+      quotes_intro:
+        "Not sure what to get feedback on? Here are some ideas from current
+        Thrively users"
+      quote_chelsea:
+        "I work on a lot of projects as an independent contractor so I don\'t
+        get a lot of consistant feedback over time. I have used Thrively to
+        ask for feedback on everything from my jobs during college to my recent
+        internship at a startup!"
+      name_chelsea:
+        "Chelsea, Ann Arbor"
+      quote_brian:
+        "I\'m using Thrively to get structured feedback from a professional
+        mentor on my career search."
+      name_brian:
+        "Brian, San Francisco"
+      quote_emily:
+        "I\'m using Thrively to get feedback at my new job. Since I just
+        started, I don\'t want to wait for my six month or annual review to
+        know how I\'m doing. Thrively makes it easy for me to track what my
+        new colleagues think I should work on."
+      name_emily:
+        "Emily, Detroit"
+      quote_dan:
+        "I've become addicted to getting feedback via Thrively. I've used it to
+        improve our new hire onboarding, new project kickoff, and project
+        management processes."
+      name_dan:
+        "Dan, San Francisco"
+    return_to_dash:
+      return_text: 
+        "Return to dashboard"
   dashboards:
     feedback_received:
       title_html:
@@ -159,3 +207,10 @@ en:
       feature_item_team:
         "Make sure your team stays on track with frequent, timely, and honest
         360-degree feedback."
+    welcome:
+      request_button:
+        "Request Feedback"
+      give_button:
+        "Give Feedback"
+      page_title:
+        "Welcome to Thrively!"

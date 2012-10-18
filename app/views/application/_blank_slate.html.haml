@@ -1,0 +1,34 @@
+.welcome
+  %h1
+    = t('.welcome_title')
+  .row
+    .icon.span3
+      %i.icon-comments-alt
+    .welcome-action.span7
+      %h4
+        %a{ href: new_request_path} 
+          = t('.welcome_action')
+      %p
+        = t('.welcome_text') 
+      %a{ href: new_request_path, class: 'btn btn-large' }
+        = t('.welcome_button')
+        %i.icon-ok
+  .userquotes
+    %h4
+      = t('.quotes_intro')
+    %blockquote
+      = t('.quote_dan')
+    .username
+      = t('.name_dan')
+    %blockquote
+      = t('.quote_emily')
+    .username
+      = t('.name_emily')
+    %blockquote
+      = t('.quote_brian')
+    .username
+      = t('.name_brian')
+    %blockquote
+      = t('.quote_chelsea')
+    .username
+      = t('.name_chelsea')
