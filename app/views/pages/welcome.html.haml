@@ -17,6 +17,7 @@
       = t('.page_title')
   .app-box-content
     = render 'flashes'
-    - if current_user.has_remaining_invites?
-      = link_to 'Invite a friend', new_invite_path  
+    - if signed_in?
+      - if current_user.has_remaining_invites?
+        = link_to 'Invite a friend', new_invite_path
     = render 'blank_slate'
