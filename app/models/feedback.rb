@@ -28,6 +28,7 @@ class Feedback < ActiveRecord::Base
 
   def receiver_email=(email)
     return if email.blank?
+    email.downcase!
     self.receiver = User.where(email: email).first
     self.receiver ||= Guest.where(email: email).first_or_initialize
   end
