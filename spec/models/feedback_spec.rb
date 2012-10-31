@@ -36,5 +36,10 @@ describe Feedback do
       feedback = create(:feedback, request: request, receiver_email: 'guest@example.com')
       feedback.receiver.should == request.user
     end
+
+    it 'forces emails to always be lower case in the database' do
+      feedback = create(:feedback, receiver_email: 'Guest@example.com')
+      feedback.receiver.email.should == 'guest@example.com'
+    end
   end
 end
