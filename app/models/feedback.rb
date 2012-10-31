@@ -28,8 +28,8 @@ class Feedback < ActiveRecord::Base
 
   def receiver_email=(email)
     return if email.blank?
-    self.receiver = User.where(email: email).first
-    self.receiver ||= Guest.where(email: email).first_or_initialize
+    user_or_guest = UserOrGuest.new(email).find
+    self.receiver = user_or_guest
   end
 
   def receiver_name
