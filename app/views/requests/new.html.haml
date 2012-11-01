@@ -16,6 +16,8 @@
     %br
     = f.submit 'Send request', class: 'btn'
 
+= render 'how_to_request'
+
 - content_for :javascript do
   :javascript
     $('.chzn-select').chosen({create_option: true, create_option_text: 'Add new email'});

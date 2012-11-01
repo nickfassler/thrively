@@ -2,11 +2,12 @@
   .app-box-head
     - if signed_in?
       - if current_user.requests.empty?
-        .action-btns.pull-right
-          %a{ class: 'btn btn-info btn-large disabled' }
-            = t('.request_button')
-          %a{ class: 'btn btn-primary btn-large disabled' }
-            = t('.give_button')
+        -# Currently hiding buttons for new users
+          .action-btns.pull-right
+            %a{ class: 'btn btn-info btn-large disabled' }
+              = t('.request_button')
+            %a{ class: 'btn btn-primary btn-large disabled' }
+              = t('.give_button')
       - else
         .action-btns.pull-right
           %a{ href: new_request_path, class: 'btn btn-info btn-large' }

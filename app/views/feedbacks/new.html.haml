@@ -2,41 +2,44 @@
 
 = render 'return_to_dash'
 
-.give-form
-  = semantic_form_for @feedback do |f|
-    - if @feedback.request
-      = f.hidden_field :request_id
-      = @feedback.decorator.html_for_receiver_email
-      .topic #{@feedback.request.topic}
-      .message #{@feedback.request.message}
-    - elsif @receiver_provided
-      = @feedback.decorator.html_for_receiver_email
-      = hidden_field_tag :receiver_provided, true
-      = f.hidden_field :receiver_email
+.row.give-form
+  .span8
+    = semantic_form_for @feedback do |f|
+      - if @feedback.request
+        = f.hidden_field :request_id
+        = @feedback.decorator.html_for_receiver_email
+        .topic #{@feedback.request.topic}
+        .message #{@feedback.request.message}
+      - elsif @receiver_provided
+        = @feedback.decorator.html_for_receiver_email
+        = hidden_field_tag :receiver_provided, true
+        = f.hidden_field :receiver_email
 
-      = f.input :topic, placeholder: 'What is the feedback about?'
-    - else
-      = f.input :receiver_email, label: 'Email', placeholder: 'Email', as: :email
+        = f.input :topic, placeholder: 'What is the feedback about?'
+      - else
+        = f.input :receiver_email, label: 'Email', placeholder: 'Email', as: :email
 
-      = f.input :topic, placeholder: 'What is the feedback about?'
+        = f.input :topic, placeholder: 'What is the feedback about?'
 
-    = image_tag('Plus_333_12px.png', class: 'plus', title: 'Plus: what works', alt: 'Plus: what works')
-    = f.input :plus, label: t('.plus'),
-        placeholder: 'Explain what was done well. Be specific and provide a detailed example.', input_html: { rows: 3 }
+      = image_tag('Plus_333_12px.png', class: 'plus', title: 'Plus: what works', alt: 'Plus: what works')
+      = f.input :plus, label: t('.plus'),
+          placeholder: 'Explain what was done well. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
-    = image_tag('Delta_333_12px.png', class: 'delta', title: 'Delta: what to improve', alt: 'Delta: what to improve')
-    = f.input :delta, label: t('.delta'),
-        placeholder: 'Explain areas for improvement. Be specific and provide a detailed example.', input_html: { rows: 3 }
+      = image_tag('Delta_333_12px.png', class: 'delta', title: 'Delta: what to improve', alt: 'Delta: what to improve')
+      = f.input :delta, label: t('.delta'),
+          placeholder: 'Explain areas for improvement. Be specific and provide a detailed example.', input_html: { rows: 3 }
 
-    - if signed_out?
-      .guest
-        = f.hidden_field :giver_email
-        Your email: #{@feedback.giver_email}
-        = link_to 'Not you?', sign_in_path
-    %br
-    = f.action :submit, label: 'Give feedback', class: 'btn'
+      - if signed_out?
+        .guest
+          = f.hidden_field :giver_email
+          Your email: #{@feedback.giver_email}
+          = link_to 'Not you?', sign_in_path
+      %br
+      = f.action :submit, label: 'Give feedback', class: 'btn'
 
-    - if signed_out?
-      .terms
-        = t('.terms_html',
-            tos: link_to('Terms of Service', terms_path, target: '_blank'))
+      - if signed_out?
+        .terms
+          = t('.terms_html',
+              tos: link_to('Terms of Service', terms_path, target: '_blank'))
+  .span2.well
+    = t('.blog_link_html')

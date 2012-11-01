@@ -3,3 +3,22 @@
     display: block;
   }
 }
+
+.how-to {
+  hr { 
+    margin-top: 40px;
+  }
+
+  .row {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .span3 {
+    width: 280px;
+  }
+
+  p {
+    margin: 0 10px;
+  }
+}

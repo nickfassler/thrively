@@ -52,6 +52,27 @@ en:
         management processes."
       name_dan:
         "Dan C., San Francisco"
+    how_to_request:
+      title: 
+        "Still confused? Here\'s how Thrively feedback requests work"
+      process_1_subtitle:
+        'Send your feedback request'
+      process_1_text:
+        'Select one or more recipients to request feedback from, choose a
+        feedback topic, and include a short message to give your recipients
+        some context.'
+      process_2_subtitle:
+        'Recipients give you feedback'
+      process_2_text:
+        'Your recipients receive an email from you, and click the link to give
+        you feedback on what works and what to improve (we call this
+        "plus/delta").'
+      process_3_subtitle:
+        'View your feedback'
+      process_3_text:
+        "You\'ll receive your feedback in an email, and can view all the\
+        feedback you\'ve gathered on your Feedback Stream in your Thrively
+        account."
     return_to_dash:
       return_text: 
         "Return to dashboard"
@@ -81,6 +102,10 @@ en:
         "What to improve"
       terms_html:
         "By clicking \'send\', you agree to Thrively\'s %{tos}."
+      blog_link_html:
+        'Need help giving feedback? Check out our blog post on
+        <a href="http://blog.thrive.ly/2012/give-great-feedback/" target="_blank">
+        How to give great feedback</a>.'
   pages:
     about:
       page_title:
