@@ -14,6 +14,16 @@ describe Request do
 
   it { should validate_presence_of(:user) }
 
+  describe '#emails=' do
+    it 'is a list of emails of guests or users' do
+      guest = create(:guest, email: 'Guest@example.com')
+      user = create(:user, email: 'User@example.com')
+      request = create(:request, emails: [guest.email, user.email])
+
+      request.emails.should include('guest@example.com', 'user@example.com')
+    end
+  end
+
   describe '#save' do
     it 'validates when valid emails present' do
       request = build(:request)
@@ -38,16 +48,6 @@ describe Request do
       request.save
 
       request.should_not be_valid
-    end
-  end
-
-  describe '#emails' do
-    it 'is a list of emails of guests or users' do
-      guest = create(:guest)
-      user = create(:user)
-      request = create(:request, emails: [guest.email, user.email])
-
-      request.emails.should include(guest.email, user.email)
     end
   end
 end

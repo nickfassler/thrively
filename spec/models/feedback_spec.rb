@@ -21,20 +21,15 @@ describe Feedback do
   it { should validate_presence_of(:delta) }
 
   describe '#receiver_email=' do
-    it 'creates receiver as guest for never seen email' do
+    it 'finds or initializes the user or guest by email' do
+      user_or_guest = stub('user_or_guest')
+      UserOrGuest.stub(new: user_or_guest)
+      user_or_guest.stub(find: create(:user))
+
       feedback = create(:feedback, receiver_email: 'guest@example.com')
-      feedback.receiver.should be_a Guest
-    end
 
-    it 'assigns receiver as user for existing user email' do
-      feedback = Feedback.new(receiver_email: create(:user).email)
-      feedback.receiver.should be_a User
-    end
-
-    it 'preserves feedback requester as receiver ignoring receiver_email' do
-      request = create(:request)
-      feedback = create(:feedback, request: request, receiver_email: 'guest@example.com')
-      feedback.receiver.should == request.user
+      UserOrGuest.should have_received(:new).with('guest@example.com')
+      user_or_guest.should have_received(:find)
     end
   end
 end
