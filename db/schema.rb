@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108170452) do
+ActiveRecord::Schema.define(:version => 20121012175409) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.datetime "created_at",                :null => false
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(:version => 20121108170452) do
     t.string   "giver_type", :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "hash_id"
   end
 
   create_table "requests", :force => true do |t|

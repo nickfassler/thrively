@@ -24,10 +24,10 @@ class RequestedFeedback < ActiveRecord::Base
     requester.email
   end
 
-  def generate_hash   
-    require 'digest/sha1'
-    salt = "gysh1p2pojfox5tali1zub"
-    Digest::SHA1.hexdigest "#{salt}-#{id}"
-  end
+  # def generate_hash   
+  #   require 'digest/sha1'
+  #   salt = "gysh1p2pojfox5tali1zub"
+  #   Digest::SHA1.hexdigest "#{salt}-#{id}"
+  # end
 
 end
