@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(params[:request])
     @request.user_id = current_user.id
+    @request.requested_feedbacks.each { |requested_feedback| requested_feedback.hash_id = requested_feedback.generate_hash }
 
     if @request.save
       redirect_to dashboard_path,

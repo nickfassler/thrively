@@ -1,11 +1,30 @@
 Hello there!
 \
-#{@user.name} has invited you to try Thrively. Sign up now to begin easily
-exchanging professional feedback with anyone with an email address.
+-# For individual invite (indent to comment out)
+  #{@user.name} has invited you to try Thrively. Sign up now to begin easily
+  exchanging professional feedback with anyone with an email address.
+  \
+  Follow the link below to accept the invitation:
+  \
+  = link_to accept_url(invite: @invite.token),
+      accept_url(invite: @invite.token)
+  \
+  = render 'footer', sender_name: @user.name
+
+-# For mass invite (indent to comment out)
+You've been invited to try the Thrively private beta. Sign up now to begin
+easily exchanging professional feedback with anyone with an email address.
 \
-Follow the link below to accept the invitation:
+Click the link below to get started with Thrively:
 \
 = link_to accept_url(invite: @invite.token),
     accept_url(invite: @invite.token)
 \
-= render 'footer', sender_name: @user.name
+Thank you.
+\
+= "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+Thrively is currently in our private beta test with a small group of users.
+Please contact us at #{Mailer::SUPPORT_ADDRESS} to share your thoughts and
+suggestions.
+\
+Copyright 2012 - Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA

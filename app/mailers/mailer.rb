@@ -3,14 +3,27 @@ class Mailer < ActionMailer::Base
   SUPPORT_ADDRESS = 'support@thrive.ly'
   SUPPORT_FROM_FIELD = "Thrively <#{SUPPORT_ADDRESS}>"
 
+  # INVITE FROM INDIVIDUAL
+  #  def invite_created(invite)
+  #    @invite = invite
+  #    @user = invite.user
+  #    mail(
+  #      from: from_text(@user),
+  #      reply_to: @user.email,
+  #      to: invite.email,
+  #      subject: "I'd like to invite you to Thrively"
+  #    )
+  #  end
+
+  # INVITE FOR MASS EMAIL
   def invite_created(invite)
     @invite = invite
     @user = invite.user
     mail(
-      from: from_text(@user),
-      reply_to: @user.email,
+      from: SUPPORT_FROM_FIELD,
       to: invite.email,
-      subject: "I'd like to invite you to Thrively"
+      # subject: "You've been invited to the Thrively beta"
+      subject: "Reminder: Your invite to the Thrively beta"
     )
   end
 
