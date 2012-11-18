@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  attr_accessible :avatar, :email, :invite_token, :name, :password, :username
+  attr_accessible :avatar_url, :email, :invite_token, :name, :password, :username
   attr_accessor :invite_token
 
   has_many :given_feedbacks, as: :giver, class_name: Feedback,
@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
-
-  has_attached_file :avatar,
-    styles: { medium: '80x80#', small: '50x50#' },
-    default_url: 'avatar_missing.png'
 
   def friends_emails
     (feedback_receiver_emails + feedback_giver_emails + request_emails).

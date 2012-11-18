@@ -10,5 +10,6 @@ Thrively::Application.configure do
   config.assets.debug = true
   config.cache_classes = false
   config.consider_all_requests_local = true
+  config.filepicker_rails.api_key = 'ABXFzuoEBSFWERcpmbVt4z'
   config.whiny_nils = true
 end

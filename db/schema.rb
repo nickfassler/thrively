@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012175409) do
+ActiveRecord::Schema.define(:version => 20121113054102) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.datetime "created_at",                :null => false
@@ -106,17 +106,10 @@ ActiveRecord::Schema.define(:version => 20121012175409) do
     t.integer  "feedbacks_count",                    :default => 0, :null => false
     t.integer  "requests_count",                     :default => 0, :null => false
     t.integer  "invites_count",                      :default => 0, :null => false
+    t.string   "avatar_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-
-  create_table "ventana_editable_contents", :force => true do |t|
-    t.string   "key"
-    t.text     "value"
-    t.string   "content_type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
 
 end

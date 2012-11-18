@@ -5,11 +5,12 @@
 .profile
   = semantic_form_for current_user do |f|
     .avatar
-      = image_tag current_user.avatar.url(:medium)
-      = f.file_field :avatar
+      = filepicker_image_tag current_user.avatar_url, w: 50
+      = f.filepicker_field :avatar_url
 
     = f.input :name
     = f.input :email
     = f.input :username
     = f.input :password, label: 'New Password'
     = f.action :submit, label: 'Save', class: 'btn'
+
