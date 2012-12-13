@@ -12,12 +12,12 @@ FactoryGirl.define do
   end
 
   factory :feedback do
-    association :receiver, factory: :user
     association :giver, factory: :user
+    association :receiver, factory: :user
 
-    topic 'Feedback for test'
-    plus  'Good job'
     delta 'Improve your specs'
+    plus  'Good job'
+    topic 'Feedback for test'
   end
 
   factory :guest do
@@ -37,8 +37,8 @@ FactoryGirl.define do
   factory :request do
     user
 
-    topic 'Please provide feedback'
     message 'Dear friend, I would like your feedback'
+    topic 'Please provide feedback'
 
     after(:build) do |request|
       if request.requested_feedbacks.empty?

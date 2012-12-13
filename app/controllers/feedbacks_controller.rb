@@ -15,7 +15,7 @@ class FeedbacksController < ApplicationController
     end
 
     if @feedback.save
-      redirect_to root_path, flash: { success: 'Your feedback was sent successfully' }
+      redirect_to correct_path, flash: { success: 'Your feedback was sent successfully' }
     else
       @receiver_provided = params[:receiver_provided]
       render action: 'new'
@@ -32,6 +32,14 @@ class FeedbacksController < ApplicationController
       if request && guest
         request.emails.include?(guest.email)
       end
+    end
+  end
+
+  def correct_path
+    if current_user.try(:requests).blank?
+      welcome_path
+    else
+      root_path
     end
   end
 end

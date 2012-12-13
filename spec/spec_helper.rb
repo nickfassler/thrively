@@ -6,10 +6,9 @@ require 'rspec/autorun'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|
-  config.include(MailerMacros)
   config.infer_base_class_for_anonymous_controllers = false
 
   config.after(:each) do
-    reset_email
+    ActionMailer::Base.deliveries = []
   end
 end

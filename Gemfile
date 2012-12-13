@@ -23,7 +23,7 @@ gem 'will_paginate', '3.0.3'
 
 group :test do
   gem 'database_cleaner', '0.8.0'
-  gem 'capybara-webkit', '0.12.1'
+  gem 'capybara-webkit', '0.13.0'
   gem 'factory_girl_rails', '4.0.0'
   gem 'launchy', '2.1.2'
   gem 'rspec-spies', '2.1.0'

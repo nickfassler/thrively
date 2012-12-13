@@ -1,17 +1,17 @@
-class ClearanceBypass
+class ClearanceBackDoor
   def initialize(app)
     @app = app
   end
 
   def call(env)
     @env = env
-    bypass
+    sign_in_through_the_back_door
     @app.call(@env)
   end
 
   private
 
-  def bypass
+  def sign_in_through_the_back_door
     if user_id = params['as']
       @env[:clearance].sign_in User.find(user_id)
     end
@@ -32,7 +32,7 @@ Thrively::Application.configure do
   config.active_support.deprecation = :stderr
   config.cache_classes = true
   config.consider_all_requests_local = true
-  config.middleware.use ClearanceBypass
+  config.middleware.use ClearanceBackDoor
   config.serve_static_assets = true
   config.static_cache_control = 'public, max-age=3600'
   config.whiny_nils = true
