@@ -7,7 +7,7 @@ feature 'Requests' do
   end
 
   scenario 'User can create a feedback request from welcome page' do
-    sign_in_as @requester
+    visit root_path(as: @requester)
 
     viewing_welcome?
     click_link 'Request feedback now'
@@ -23,7 +23,7 @@ feature 'Requests' do
 
   scenario 'User can create a feedback request from dashboard' do
     create_request = create(:request, user: @requester, emails: [@giver.email])
-    sign_in_as @requester
+    visit root_path(as: @requester)
 
     viewing_dashboard?
     click_link 'Request Feedback'
@@ -37,24 +37,11 @@ feature 'Requests' do
     last_sent_email.to.should include(@giver.email)
   end
 
-  # scenario 'User can create feedback request with multiple emails', js: true  do
-  #   giver2 = create(:user, email: 'guest2@example.com')
-  #   reset_email
-
-  #   sign_in_as @requester
-  #   click_link 'Request Feedback'
-  #   select "#{@giver.email},#{giver2.email}", from: 'request[emails][]'
-
-  #   current_path.should == dashboard_path
-  #   page.should have_content('Feedback request sent successfully')
-  #   sent_emails.should have(2).items
-  # end
-
   scenario 'User cannot submit feedback request without email' do
     create_request = create(:request, user: @requester, emails: [@giver.email])
     reset_email
 
-    sign_in_as @requester
+    visit root_path(as: @requester)
     click_link 'Request Feedback'
     click_button 'Send'
 
@@ -66,7 +53,7 @@ feature 'Requests' do
     create_request = create(:request, user: @requester, emails: [@giver.email])
     reset_email
 
-    sign_in_as @requester
+    visit root_path(as: @requester)
     click_link 'Request Feedback'
     fill_in_email('bad@email')
     click_button 'Send'

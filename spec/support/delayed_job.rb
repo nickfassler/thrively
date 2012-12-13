@@ -1,7 +1,7 @@
 module DelayedJob
   module Matchers
     def enqueue_delayed_job(handler)
-      DelayedJobMatcher.new handler
+      DelayedJobMatcher.new(handler)
     end
 
     class DelayedJobMatcher
@@ -70,5 +70,17 @@ module DelayedJob
         job.payload_object
       end
     end
+  end
+end
+
+RSpec.configure do |config|
+  config.include(DelayedJob::Matchers)
+
+  config.before(:each) do
+    Delayed::Worker.delay_jobs = true
+  end
+
+  config.before(:each, type: :request) do
+    Delayed::Worker.delay_jobs = false
   end
 end

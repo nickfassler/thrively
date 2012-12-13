@@ -7,7 +7,7 @@ feature 'Dashboard' do
     request_from_you = create(:request, user: you, emails: [friend.email])
     request_to_you = create(:request, user: friend, emails: [you.email])
 
-    sign_in_as(you)
+    visit root_path(as: you)
 
     within '.request.sent' do
       page.should have_content("You requested feedback from #{friend.name}")
@@ -50,7 +50,7 @@ feature 'Dashboard' do
     create(:request, user: you, emails: [friend.email])
     HistoryEvent.per_page = 1
 
-    sign_in_as(you)
+    visit root_path(as: you)
     click_link('2')
 
     page.should have_content("#{friend.name} gave feedback to you")

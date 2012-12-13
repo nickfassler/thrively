@@ -4,7 +4,7 @@ feature 'Accept invite' do
   scenario 'from user with remaining invites' do
     user = create(:user, remaining_invites: 1)
     friend_email = 'friend@example.com'
-    sign_in_as(user)
+    visit root_path(as: user)
     invite_friend(user, friend_email)
     received_invite?(user, friend_email)
     accept_invite(Invite.last)
@@ -13,7 +13,7 @@ feature 'Accept invite' do
 
   scenario 'user types invalid email' do
     user = create(:user, remaining_invites: 1)
-    sign_in_as(user)
+    visit root_path(as: user)
     invite_friend_with_invalid_email(user)
     invalid_email?
   end
@@ -21,13 +21,13 @@ feature 'Accept invite' do
   scenario 'from user without remaining invites' do
     user = create(:user, remaining_invites: 0)
     friend_email = 'friend@example.com'
-    sign_in_as(user)
+    visit root_path(as: user)
     cannot_invite?
   end
 
   scenario 'user does not fill in required fields' do
     user = create(:user, remaining_invites: 1)
-    sign_in_as(user)
+    visit root_path(as: user)
     invite_friend(user, 'friend@example.com')
     accept_invite_without_username(Invite.last)
 
@@ -50,12 +50,6 @@ feature 'Accept invite' do
     invite = create(:invite, email: guest_name.email)
     accept_invite(invite)
     viewing_welcome?
-    # request_feedback = create(:request, requester: guest_name, emails: [friend.email])
-    #
-    # within('.app-box-content') do
-    #   page.should have_content("You gave feedback to #{given_feedback.receiver.name}")
-    #   page.should have_content("#{received_feedback.giver.name} gave feedback to you")
-    # end
   end
 
   private

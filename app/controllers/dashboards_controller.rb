@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
     @events = current_user.stream.page(params[:page])
   end
 
-  private 
+  private
 
   def display_welcome
     if current_user.requests.empty?

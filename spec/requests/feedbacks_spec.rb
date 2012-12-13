@@ -7,15 +7,14 @@ feature 'Feedbacks' do
   end
 
   scenario 'User cannot give feedback before requesting feedback' do
-    sign_in_as @giver
+    visit root_path(as: @giver)
     cannot_give_feedback?
   end
 
   scenario 'User can give feedback after requesting feedback' do
     giver_request = create(:request, user: @giver, emails: [@receiver.email])
-    
-    sign_in_as @giver
-    give_feedback
+
+    give_feedback_as(@giver)
 
     current_path.should == root_path
     page.should have_content('Your feedback was sent successfully')
@@ -25,8 +24,8 @@ feature 'Feedbacks' do
   scenario 'User must fill in all fields to give feedback' do
     reset_email
     giver_request = create(:request, user: @giver, emails: [@receiver.email])
-    
-    sign_in_as @giver
+
+    visit root_path(as: @giver)
     click_link 'Give Feedback'
     fill_in 'Topic', with: 'Test feedback topic'
     click_button 'Give feedback'
@@ -39,8 +38,8 @@ feature 'Feedbacks' do
   scenario 'User leaves feedback for another user' do
     receiver_request = request_for(from: @receiver, to: @giver)
     giver_request = create(:request, user: @giver, emails: [@receiver.email])
-    
-    sign_in_as @giver
+
+    visit root_path(as: @giver)
     click_link @receiver.name
     fill_in 'Topic', with: 'Daily standup'
     fill_in 'What works', with: 'Good attitude'
@@ -61,7 +60,7 @@ feature 'Feedbacks' do
     giver_request = create(:request, user: @giver, emails: [@receiver.email])
     request = request_for(from: @receiver, to: @giver)
 
-    sign_in_as @giver
+    visit root_path(as: @giver)
     click_link request.topic
     fill_in 'What works', with: 'Good attitude'
     fill_in 'What to improve', with: 'Need more smiles'
@@ -79,7 +78,7 @@ feature 'Feedbacks' do
 
   scenario 'Guest leaves feedback for a specific request' do
     reset_email
-    
+
     guest = create(:guest)
     request = request_for(to: guest, from: @receiver)
     requested_feedback = request.requested_feedbacks.first
@@ -124,8 +123,8 @@ feature 'Feedbacks' do
     page.has_no_link?('Give Feedback')
   end
 
-  def give_feedback
-    click_link 'Give Feedback'
+  def give_feedback_as(giver)
+    visit new_feedback_path(as: giver)
     fill_in 'Email', with: @receiver.email
     fill_in 'Topic', with: 'Test feedback topic'
     fill_in 'What works', with: 'Something'

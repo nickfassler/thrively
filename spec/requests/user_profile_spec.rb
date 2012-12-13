@@ -4,7 +4,7 @@ feature 'UserProfile' do
   scenario 'User can navigate to their profile and see their info' do
     user = create(:user)
 
-    sign_in_as user
+    visit root_path(as: user)
     click_link 'Profile'
 
     page.should have_content(user.email)
@@ -15,7 +15,7 @@ feature 'UserProfile' do
   scenario 'User can edit their profile info' do
     user = create(:user)
 
-    sign_in_as user
+    visit root_path(as: user)
     click_link 'Profile'
     click_link 'Edit'
     fill_in 'Name', with: 'Edited User'
@@ -32,7 +32,7 @@ feature 'UserProfile' do
     user = create(:user)
     reset_email
 
-    sign_in_as user
+    visit root_path(as: user)
     click_link 'Profile'
     click_link 'Edit'
     fill_in 'Email', with: 'edited_user@example.com'

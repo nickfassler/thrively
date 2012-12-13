@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Welcome' do
   scenario 'User sees welcome blank slate when first signing in' do
     you = create(:user)
-    sign_in_as(you)
+    visit root_path(as: you)
     viewing_welcome?
   end
 
@@ -20,7 +20,7 @@ feature 'Welcome' do
     you = create(:user)
     friend = create(:user)
     request_from_you = create(:request, user: you, emails: [friend.email])
-    sign_in_as(you)
+    visit root_path(as: you)
     viewing_dashboard?
   end
 

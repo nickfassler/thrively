@@ -1,3 +1,27 @@
+class ClearanceBypass
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    @env = env
+    bypass
+    @app.call(@env)
+  end
+
+  private
+
+  def bypass
+    if user_id = params['as']
+      @env[:clearance].sign_in User.find(user_id)
+    end
+  end
+
+  def params
+    Rack::Utils.parse_query(@env['QUERY_STRING'])
+  end
+end
+
 Thrively::Application.configure do
   config.action_controller.allow_forgery_protection = false
   config.action_controller.perform_caching = false
@@ -8,6 +32,7 @@ Thrively::Application.configure do
   config.active_support.deprecation = :stderr
   config.cache_classes = true
   config.consider_all_requests_local = true
+  config.middleware.use ClearanceBypass
   config.serve_static_assets = true
   config.static_cache_control = 'public, max-age=3600'
   config.whiny_nils = true
