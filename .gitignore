@@ -23,3 +23,5 @@ tags
 vendor/bundler_gems
 .env
 bin
+zeus.json
+custom_plan.rb
