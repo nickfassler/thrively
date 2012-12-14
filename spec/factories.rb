@@ -40,14 +40,14 @@ FactoryGirl.define do
     message 'Dear friend, I would like your feedback'
     topic 'Please provide feedback'
 
-    after(:build) do |request|
+    after :build do |request|
       if request.requested_feedbacks.empty?
         request.requested_feedbacks = [build(:requested_feedback, request: request)]
       end
     end
 
     factory :request_without_requested_feedbacks do |request|
-      after(:build) do |request|
+      after :build do |request|
         request.requested_feedbacks = []
       end
     end
@@ -64,5 +64,9 @@ FactoryGirl.define do
     username
 
     password 'password'
+
+    factory :admin do |user|
+      admin true
+    end
   end
 end

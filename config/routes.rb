@@ -1,4 +1,6 @@
 Thrively::Application.routes.draw do
+  # users
+
   constraints Clearance::Constraints::SignedIn.new do
     root to: 'dashboards#show'
   end
@@ -7,14 +9,23 @@ Thrively::Application.routes.draw do
     root to: 'high_voltage/pages#show', id: 'marketing'
   end
 
-  resource :accept, only: :show
-  resource :dashboard, only: :show
-  resources :feedbacks, only: [:new, :create]
+
   resources :invites, only: [:new, :create]
+  resource :accept, only: :show
+  resources :users, only: [:new, :create, :show, :edit, :update]
+  resource :session, only: [:create]
+
+  # dashboard
+
+  resource :dashboard, only: :show
+
+  # core workflow
+
   resources :requests, only: [:new, :create]
   resources :requested_feedbacks, only: :show
-  resource :session, only: [:create]
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :feedbacks, only: [:new, :create]
+
+  # aliases
 
   match '/about', to: 'high_voltage/pages#show', id: 'about', as: :about
   match '/give', to: 'feedbacks#new', as: :new_feedback
@@ -25,6 +36,13 @@ Thrively::Application.routes.draw do
   match '/terms', to: 'high_voltage/pages#show', id: 'terms', as: :terms
   match '/thanks', to: 'high_voltage/pages#show', id: 'thanks', as: :thanks
   match '/welcome', to: 'high_voltage/pages#show', id: 'welcome', as: :welcome
+
+  # admin
+
+  resource :admin, only: [:show]
+
+  namespace :admin do
+  end
 
   if Rails.env.development?
     mount Mailer::Preview => 'mail_view'
