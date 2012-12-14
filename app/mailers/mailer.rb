@@ -11,6 +11,12 @@ class Mailer < ActionMailer::Base
       reply_to: @user.email,
       to: invite.email,
       subject: "I'd like to invite you to Thrively"
+
+      # ALT INVITE FOR MASS EMAIL
+      # from: SUPPORT_FROM_FIELD,
+      # to: invite.email,
+      # subject: "You've been invited to the Thrively beta"
+      # subject: "Reminder: Your invite to the Thrively beta"
     )
   end
 
