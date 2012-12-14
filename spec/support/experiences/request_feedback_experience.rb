@@ -12,14 +12,6 @@ class RequestFeedbackExperience < Experience
     click_button 'Send'
   end
 
-  def try_to_request_feedback
-    visit new_request_path
-  end
-
-  def impossible_to_request_feedback?
-    current_path == sign_in_path
-  end
-
   def has_requested_feedback?
     current_path == dashboard_path &&
       page.has_content?('Your feedback request was sent successfully')

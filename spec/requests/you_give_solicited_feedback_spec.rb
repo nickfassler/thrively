@@ -22,12 +22,4 @@ feature 'you give solicited feedback' do
     ux.should have_delivered_thank_you
     ux.should have_welcomed_you
   end
-
-  scenario 'as a guest who has no requests' do
-    you = create(:guest)
-    ux = GiveSolicitedFeedbackExperience.new(you)
-    ux.try_to_give_feedback
-
-    ux.should be_impossible_to_give_feedback
-  end
 end

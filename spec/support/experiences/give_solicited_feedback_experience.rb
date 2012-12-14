@@ -16,16 +16,6 @@ class GiveSolicitedFeedbackExperience < Experience
     click_button 'Give feedback'
   end
 
-  def try_to_give_feedback
-    request = create(:request)
-    visit requested_feedback_path(request.requested_feedbacks.first)
-  end
-
-  def impossible_to_give_feedback?
-    current_path == sign_in_path &&
-      page.has_no_content?('Give Feedback')
-  end
-
   def has_given_feedback?
     page.has_content?('Your feedback was sent successfully')
   end

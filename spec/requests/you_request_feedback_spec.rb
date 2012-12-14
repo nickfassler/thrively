@@ -9,12 +9,4 @@ feature 'you request feedback' do
     ux.should have_requested_feedback
     ux.should have_delivered_request_to_friend
   end
-
-  scenario 'as guest' do
-    you = create(:guest)
-    ux = RequestFeedbackExperience.new(you)
-    ux.try_to_request_feedback
-
-    ux.should be_impossible_to_request_feedback
-  end
 end
