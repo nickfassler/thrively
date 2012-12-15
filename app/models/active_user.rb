@@ -1,2 +1,0 @@
-class ActiveUser
-end

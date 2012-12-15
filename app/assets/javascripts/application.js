@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require chosen-jquery
 //= require jquery_nested_form
+//= require jquery.sparkline.min.js
 //= require_tree .

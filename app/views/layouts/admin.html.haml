@@ -4,25 +4,12 @@
   %meta(charset='UTF-8')
   %meta{ name: 'ROBOTS', content: 'NOINDEX, NOFOLLOW' }
   %title Admin
-  = yield :meta
-  = stylesheet_link_tag :application, media: 'all'
+  = stylesheet_link_tag :admin, media: 'all'
   = csrf_meta_tags
 
 %body
-  .navbar.navbar-fixed-top.navbar-inverse
-    .navbar-inner
-      .container
-        .brand
-          = link_to 'Admin', admin_path
-
-  #main-content.container
-    .app-box
-      .app-box-head
-        = yield(:subheader_nav)
-        %h1
-          = yield(:title)
-      .app-box-content
-        = render 'flashes'
-        = yield
+  .container-fluid
+    = render 'flashes'
+    = yield
 
   = render 'javascript'
