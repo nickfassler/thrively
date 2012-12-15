@@ -18,6 +18,14 @@
   table {
     td {
       text-align: center;
+
+      &.pass {
+        color: green;
+      }
+
+      &.fail {
+        color: red;
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 %h2 Active User Growth Rate
 
 %p
-  The following measures Thrively's weekly metrics against
-  = link_to "Paul Graham's 5% target growth rate", 'http://www.paulgraham.com/growth.html'
+  This measures Thrively's weekly numbers against a
+  = link_to "5% target growth rate", 'http://www.paulgraham.com/growth.html'
   for active users.
 %p
   An active user on Thrively is someone who receives solicited
@@ -19,14 +19,14 @@
     %td Dec 3
     %td Dec 10
   %tr
-    %td 1%
-    %td 1%
-    %td 6%
-    %td 1%
-    %td 2%
-    %td 7%
-    %td 3%
-    %td 4%
+    %td.fail 1%
+    %td.fail 1%
+    %td.pass 6%
+    %td.fail 1%
+    %td.fail 2%
+    %td.pass 7%
+    %td.fail 3%
+    %td.fail 4%
 
 %p
   The following gray band represents the target range of 4-6%. Anything in or above is
@@ -40,7 +40,7 @@
       type: 'line',
       width: '100%',
       height: '50',
-      lineColor: '#3366cc',
+      lineColor: '#000',
       fillColor: null,
       lineWidth: 2,
       spotColor: null,
@@ -51,6 +51,6 @@
       spotRadius: 3,
       normalRangeMin: 4,
       normalRangeMax: 6,
-      normalRangeColor: '#e5e5e5'
+      normalRangeColor: '#ccc'
     });
 
