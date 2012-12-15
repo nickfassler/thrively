@@ -22,6 +22,7 @@ module Thrively
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
     config.assets.version = '1.0'
+    config.autoload_paths += %W(#{config.root}/app/queries)
     config.encoding = 'utf-8'
     config.filter_parameters += [:password]
 
