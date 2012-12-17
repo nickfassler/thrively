@@ -3,6 +3,8 @@
     %li.support
       %a{ href: '#', id: 'Intercom' }
         = t('.support_link_html')
+    - if current_user.has_remaining_invites?
+      %li= link_to 'Invite a friend', new_invite_path
     %li= link_to 'Profile', current_user
     %li= link_to 'Sign out', sign_out_path, method: :delete
   - else

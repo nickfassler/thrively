@@ -8,9 +8,6 @@
       %a{ href: new_feedback_path, class: 'btn btn-primary btn-large' }
         = t('.give_button')
 
-- if current_user.has_remaining_invites?
-  = link_to 'Invite a friend', new_invite_path
-
 .events
   - @events.each do |event|
     = render event.name_for(current_user), resource: event.resource
