@@ -2,22 +2,7 @@
   %p{ style: 'margin: 0 0 1.6em 0;' }
     Hello there!
 
-  -# For individual invite (indent to comment out)
-  %p{ style: 'margin: 0 0 1.6em 0;' }
-    #{@user.name} has invited you to try Thrively.
-    Sign up now to begin easily exchanging professional feedback with anyone
-    with an email address.
-
-  %p{ style: 'margin: 0 0 1.6em 0;' }
-    Click the link below to accept the invitation:
-
-  %p{ style: 'margin: 0 0 1.6em 0;' }
-    = link_to accept_url(invite: @invite.token),
-        accept_url(invite: @invite.token)
-
-  = render 'footer', sender_name: @user.name
-
-  -# For mass invite (indent to comment out)
+  - if @user.email == 'support@thrive.ly'
     %p{ style: 'margin: 0 0 1.6em 0;' }
       You've been invited to try the Thrively private beta.
       Sign up now to begin easily exchanging professional feedback with anyone
@@ -39,3 +24,18 @@
 
     %p{ style: 'margin: 0 0 1.6em 0;' }
       \© 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA
+
+  - else
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      #{@user.name} has invited you to try Thrively.
+      Sign up now to begin easily exchanging professional feedback with anyone
+      with an email address.
+
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      Click the link below to accept the invitation:
+
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      = link_to accept_url(invite: @invite.token),
+          accept_url(invite: @invite.token)
+
+    = render 'footer', sender_name: @user.name

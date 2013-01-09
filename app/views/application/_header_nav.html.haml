@@ -4,7 +4,10 @@
       %a{ href: '#', id: 'Intercom' }
         = t('.support_link_html')
     - if current_user.has_remaining_invites?
-      %li= link_to 'Invite a friend', new_invite_path
+      - if current_user.email == 'support@thrive.ly'
+        %li= link_to 'Invite a friend (ADMIN)', new_invite_path
+      - else
+        %li= link_to 'Invite a friend', new_invite_path
     %li= link_to 'Profile', current_user
     %li= link_to 'Sign out', sign_out_path, method: :delete
   - else

@@ -6,18 +6,21 @@ class Mailer < ActionMailer::Base
   def invite_created(invite)
     @invite = invite
     @user = invite.user
-    mail(
-      from: from_text(@user),
-      reply_to: @user.email,
-      to: invite.email,
-      subject: "I'd like to invite you to Thrively"
-
-      # ALT INVITE FOR MASS EMAIL
-      # from: SUPPORT_FROM_FIELD,
-      # to: invite.email,
-      # subject: "You've been invited to the Thrively beta"
-      # subject: "Reminder: Your invite to the Thrively beta"
-    )
+    if @user.email == 'support@thrive.ly'
+      mail(  
+        from: SUPPORT_FROM_FIELD,
+        to: invite.email,
+        subject: "You've been invited to the Thrively beta"
+        # subject: "Reminder: Your invite to the Thrively beta"
+      )
+    else
+      mail(
+        from: from_text(@user),
+        reply_to: @user.email,
+        to: invite.email,
+        subject: "I'd like to invite you to Thrively"
+      )
+    end
   end
 
   def request_sent(requested_feedback)
