@@ -2,7 +2,16 @@
   .history-icon
     %i.icon-retweet
   .history-content
+    %input.pull-right.show{ type: 'submit', :name => "show_#{resource.id}", value: 'Expand', :id => "show_#{resource.id}", :resource => "#{resource.id}", class: 'btn btn-link btn-mini' }
+    %input.pull-right.hide{ type: 'submit', :name => "hide_#{resource.id}", value: 'Collapse', :id => "hide_#{resource.id}", :resource => "#{resource.id}", class: 'btn btn-link btn-mini' }
     = t('.title_html',
         user: resource.receiver.decorator.link_to_profile,
         topic: resource.topic,
         time: time_ago_in_words(resource.created_at))
+    .showhide{:id => "showhide_#{resource.id}"}
+      .plus
+        = image_tag('Plus_666_11px.png', title: 'Plus: what works', alt: 'Plus: what works')
+        = resource.plus
+      .delta
+        = image_tag('Delta_666_11px.png', title: 'Delta: what to improve', alt: 'Delta: what to improve')
+        = resource.delta

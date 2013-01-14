@@ -152,6 +152,24 @@
   }
 }
 
+.showhide {
+  display: none;
+}
+
+.show {
+  color: #999;
+
+  &:hover, &:active {
+    color: #08C;
+  }
+}
+
+.hide {
+  &:hover, &:active {
+    color: #08C;
+  }
+}
+
 .paginate {
   clear: both;
   padding-top: 10px;
