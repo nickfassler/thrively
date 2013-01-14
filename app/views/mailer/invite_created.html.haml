@@ -1,31 +1,45 @@
 %div{ style: 'font-family: Arial,sans-serif; font-size:13px;' }
-  %p{ style: 'margin: 0 0 1.6em 0;' }
-    Hello there!
 
   - if @user.email == 'support@thrive.ly'
     %p{ style: 'margin: 0 0 1.6em 0;' }
-      You've been invited to try the Thrively private beta.
-      Sign up now to begin easily exchanging professional feedback with anyone
-      with an email address.
+      / Hello there!
+      Dear Menlo Innovations team member:
 
     %p{ style: 'margin: 0 0 1.6em 0;' }
-      = link_to "Click here to get started with Thrively.",
-          accept_url(invite: @invite.token)
+      / You've been invited to try the Thrively private beta.
+      / Sign up now to begin easily exchanging professional feedback with anyone
+      / with an email address.
+      You've been invited to try Thrively, the simplest way to share private, 
+      constructive feedback with your team. Sign up now to begin easily exchanging
+      feedback with your teammates at Menlo Innovations, or with anyone with an
+      email address. 
 
     %p{ style: 'margin: 0 0 1.6em 0;' }
-      Thank you.
+      %strong
+        = link_to "Click here to get started with Thrively.",
+            accept_url(invite: @invite.token)
+
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      We are excited to have you in our community!
 
     %hr{ style: 'height: 1px; background-color: #ccc; color: #ccc; border: none; border: 0px solid #ccc;'}
 
     %p{ style: 'margin: 0 0 1.6em 0;' }
       Thrively is currently in our private beta test with a small group of users.
       Please contact us at #{Mailer::SUPPORT_ADDRESS} to share your thoughts and
-      suggestions.
+      suggestions. 
+
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      = link_to 'Click here', 'http://eepurl.com/kBHxj'
+      to subscribe to our email newsletter or update your email preferences.
 
     %p{ style: 'margin: 0 0 1.6em 0;' }
       \© 2012 – Thrively, Inc., 474 55th Street, Unit B, Oakland, CA 94609, USA
 
   - else
+    %p{ style: 'margin: 0 0 1.6em 0;' }
+      Hello there!
+
     %p{ style: 'margin: 0 0 1.6em 0;' }
       #{@user.name} has invited you to try Thrively.
       Sign up now to begin easily exchanging professional feedback with anyone
