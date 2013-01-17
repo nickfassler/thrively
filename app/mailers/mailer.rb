@@ -10,8 +10,8 @@ class Mailer < ActionMailer::Base
       mail(  
         from: SUPPORT_FROM_FIELD,
         to: invite.email,
-        subject: "You've been invited to the Thrively beta"
-        # subject: "Reminder: Your invite to the Thrively beta"
+        # subject: "You've been invited to the Thrively beta"
+        subject: "Reminder: Your invite to the Thrively beta"
       )
     else
       mail(
