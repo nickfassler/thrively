@@ -1,7 +1,7 @@
 %hr
 %footer
   .row
-    .span4 &copy; Thrively 2012
+    .span4 &copy; Thrively #{Time.now.year}
     .span8.footer-nav
       - if signed_out?
         = link_to 'Home', sign_up_path
