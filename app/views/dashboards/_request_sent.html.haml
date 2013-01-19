@@ -1,9 +1,9 @@
-.request.sent
-  .history-icon
-    %i.icon-bullhorn
+%li.request.sent{id: "request_#{resource.id}"}
+  %i.icon-bullhorn
   .history-content
-    %input.pull-right.show{ type: 'submit', :name => "show_#{resource.id}", value: 'Expand', :id => "show_#{resource.id}", :resource => "#{resource.id}", class: 'btn btn-link btn-mini' }
-    %input.pull-right.hide{ type: 'submit', :name => "hide_#{resource.id}", value: 'Collapse', :id => "hide_#{resource.id}", :resource => "#{resource.id}", class: 'btn btn-link btn-mini' }
+    %a.pull-right.btn.btn-link.btn-mini.toggle
+      %span Expand
+      %i.icon-angle-down
     = t('.title_html',
         user: raw(resource.invitees.map { |invitee| invitee.decorator.link_to_profile }.join(', ')),
         topic: resource.topic,

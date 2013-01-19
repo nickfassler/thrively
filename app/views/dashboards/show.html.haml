@@ -8,7 +8,7 @@
       %a{ href: new_feedback_path, class: 'btn btn-primary btn-large' }
         = t('.give_button')
 
-.events
+%ul.events
   - @events.each do |event|
     = render event.name_for(current_user), resource: event.resource
 
