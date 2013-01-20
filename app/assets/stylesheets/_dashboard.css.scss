@@ -67,28 +67,28 @@
 
   li {
     border-top: 1px solid #E6E6E6;
-    clear: both;
-    padding-top:10px;
-    position:relative;
+    padding:10px 0;
+    float:left;
+    width:100%;
 
     & > i {
       color: #999;
       font-size: 18px;
-      margin: 4px 0 10px 0;
-      padding-right: 10px;
-      width: 22px;
-    }
-
-    .avatar {
       float: left;
-      height: 50px;
-      margin: 3px 0 2px 0;
-      width: 50px;
+      width:32px;
+      margin-left:-100%;
+      margin-top:5px;
+      text-align: left;
     }
 
     .history-content {
       width: 100%;
       float: left;
+
+      .inner {
+        margin-left:32px;
+        color: #666;
+      }
 
       .timestamp {
         color: #adadad;
@@ -96,6 +96,13 @@
         font-weight: bold;
         margin-left: 5px;
       }
+    }
+
+    .avatar {
+      float: left;
+      height: 50px;
+      margin: 3px 0 2px 0;
+      width: 50px;
     }
 
     .topic {
@@ -119,27 +126,18 @@
   }
 
   .sent {
-    .history-content {
+    .history-content .inner {
       background-color: #f5f5f5;
       border: 1px solid #f5f5f5;
       border: 1px solid rgba(0, 0, 0, 0.02);
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-      color: #666;
-      margin: 0 0 10px 0;
+      @include border-radius(4px);
+      @include box-shadow(#{inset 0 1px 1px rgba(0, 0, 0, 0.05)});
       padding: 3px 8px;
-      width: 830px;
     }
   }
 
   .received {
-    .history-content {
-      color: #666;
-
+    .history-content .inner {
       .title {
         color: #8a8a8a;
         font-size: 16px;
@@ -163,6 +161,15 @@
 
   .toggle {
     color: #999;
+    display: block;
+
+    &::before {
+      content:"Expand";
+    }
+
+    &.expanded::before {
+      content:"Collapse";
+    }
 
     &:hover, &:active, &.expanded {
       color: #08C;

@@ -1,8 +1,7 @@
 %li.feedback.sent{id: "feedback_#{resource.id}"}
-  %i.icon-retweet
   .history-content
+    .inner
     %a.pull-right.btn.btn-link.btn-mini.toggle
-      %span Expand
       %i.icon-angle-down
     = t('.title_html',
         user: resource.receiver.decorator.link_to_profile,
@@ -15,3 +14,4 @@
       .delta
         = image_tag('Delta_666_11px.png', title: 'Delta: what to improve', alt: 'Delta: what to improve')
         = resource.delta
+  %i.icon-retweet
