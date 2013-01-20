@@ -68,15 +68,16 @@
   li {
     border-top: 1px solid #E6E6E6;
     clear: both;
-    padding-top: 10px;
+    padding-top:10px;
+    position:relative;
 
     & > i {
       color: #999;
-      float: left;
-      display: inline-block;
       font-size: 18px;
-      margin: 4px 0 10px 0;
-      width: 32px;
+      margin: 7px 0 10px 0;
+      float: left;
+      width:32px;
+      text-align: left;
     }
 
     .avatar {
@@ -87,9 +88,8 @@
     }
 
     .history-content {
+      width: 100%;
       float: left;
-      margin: 0 0 10px 10px;
-      width: 777px;
 
       .timestamp {
         color: #adadad;
