@@ -39,7 +39,7 @@ class ActivityExperience < Experience
     within '.request.sent' do
       page.has_content?("You requested feedback from #{@friend.name}") &&
         page.has_content?(@request_from_you.topic) &&
-        page.has_no_content?(@request_from_you.message)
+        page.has_content?(@request_from_you.message)
     end
   end
 
@@ -55,8 +55,8 @@ class ActivityExperience < Experience
     within '.feedback.sent' do
       page.has_content?("You gave feedback to #{@friend.name}") &&
         page.has_content?(@given_feedback.topic) &&
-        page.has_no_content?(@given_feedback.plus) &&
-        page.has_no_content?(@given_feedback.delta)
+        page.has_content?(@given_feedback.plus) &&
+        page.has_content?(@given_feedback.delta)
     end
   end
 
