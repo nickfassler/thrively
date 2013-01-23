@@ -20,4 +20,11 @@ class UsersController < Clearance::UsersController
       render action: 'edit'
     end
   end
+
+  def friends_autocomplete
+    @friends_email = FriendsEmail.all
+    respond_to do |format|
+      format.json { render :json => @friends_email }
+    end
+  end
 end
