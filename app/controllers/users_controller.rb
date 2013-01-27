@@ -1,5 +1,6 @@
 class UsersController < Clearance::UsersController
   before_filter :authorize, only: [:show, :edit, :update]
+  respond_to :html, :json
 
   def create
     @user = user_from_params
@@ -22,9 +23,12 @@ class UsersController < Clearance::UsersController
   end
 
   def friends_autocomplete
-    @friends_email = FriendsEmail.all
-    respond_to do |format|
-      format.json { render :json => @friends_email }
+    results = current_user.friends_emails
+
+    unless params[:term].empty? || params[:term].nil?
+      results.select! { |email| email.include? params[:term]}
     end
+
+    respond_with results.map! { |email| { value: email } }
   end
 end

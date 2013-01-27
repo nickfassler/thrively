@@ -14,7 +14,9 @@ Thrively::Application.routes.draw do
   resources :requests, only: [:new, :create]
   resources :requested_feedbacks, only: :show
   resource :session, only: [:create]
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :users, only: [:new, :create, :show, :edit, :update] do
+    get :friends_autocomplete
+  end
 
   match '/about', to: 'high_voltage/pages#show', id: 'about', as: :about
   match '/give', to: 'feedbacks#new', as: :new_feedback
