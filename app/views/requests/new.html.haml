@@ -13,7 +13,7 @@
     %input{ label: 'New Autocomplete', class: 'tags', id: 'tags_1', type: 'text', value: 'foo,bar,baz,roffle'}
     = f.input :topic, label: 'Feedback Topic', placeholder: 'What do you need feedback about?'
     = f.input :message, label: 'Email Message', input_html: { rows: 3 }, placeholder: 'Send a note to your recipients about how your feedback can help, and any specifics about what you hope to learn.'
-    %input{type:'text', id:'email_tags'}
+    %input.typeahead#email_tags{type:'text'}
     %br
     = f.submit 'Send request', class: 'btn'
 

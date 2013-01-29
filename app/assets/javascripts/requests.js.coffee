@@ -19,6 +19,6 @@ $(->
     interactive:true,
     removeWithBackspace: true,
     autocomplete_url:"users/1/friends_autocomplete.json",
-    autocomplete:{minLength:2}
+    autocomplete:{minLength:1}
   )
 )
