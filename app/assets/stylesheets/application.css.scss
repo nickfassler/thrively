@@ -184,6 +184,12 @@ footer {
 
   .topic {
     margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .message {
+    font-style: italic;
+    margin-bottom: 15px;
   }
 
   #feedback_topic, #feedback_plus, #feedback_delta, #request_emails, #request_topic, #request_message {
