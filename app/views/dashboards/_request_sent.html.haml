@@ -1,8 +1,13 @@
-.request.sent
-  .history-icon
-    %i.icon-bullhorn
+%li.request.sent{id: "request_#{resource.id}"}
   .history-content
-    = t('.title_html',
-        user: raw(resource.invitees.map { |invitee| invitee.decorator.link_to_profile }.join(', ')),
-        topic: resource.topic,
-        time: time_ago_in_words(resource.created_at))
+    .inner
+      %a.pull-right.btn.btn-link.btn-mini.toggle
+        %i.icon-angle-down
+      = t('.title_html',
+          user: raw(resource.invitees.map { |invitee| invitee.decorator.link_to_profile }.join(', ')),
+          topic: resource.topic,
+          time: time_ago_in_words(resource.created_at))
+      .showhide{:id => "showhide_#{resource.id}"}
+        %i{ class: 'icon-envelope' }
+        = resource.message
+  %i.icon-bullhorn

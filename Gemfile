@@ -42,6 +42,6 @@ end
 
 group :assets do
   gem 'coffee-rails', '3.2.1'
-  gem 'font-awesome-sass-rails', '2.0.0.0'
+  gem 'font-awesome-sass-rails', '3.0.0.1'
   gem 'uglifier', '1.2.7'
 end

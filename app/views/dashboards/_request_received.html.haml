@@ -1,20 +1,21 @@
-.request.received
-  .history-icon
-    %i.icon-bullhorn
-  .avatar
-    = image_tag resource.user.avatar.url(:small)
+%li.request.received
   .history-content
-    .title
-      = t('.title_html',
-          user: resource.user.decorator.link_to_profile,
-          time: time_ago_in_words(resource.created_at))
-    .topic
-      = link_to resource.topic,
-        new_feedback_path(feedback: { request_id: resource.id })
-    .message
-      = resource.message
-    .request-btn
-      %a{ href: new_feedback_path(feedback: { request_id: resource.id }),
-        class: 'btn btn-mini'}
-        Give Feedback
-        %i.icon-share-alt
+    .inner
+      .avatar
+        = image_tag resource.user.avatar.url(:small)
+      .sub-inner
+        .title
+          = t('.title_html',
+              user: resource.user.decorator.link_to_profile,
+              time: time_ago_in_words(resource.created_at))
+        .topic
+          = link_to resource.topic,
+            new_feedback_path(feedback: { request_id: resource.id })
+        .message
+          = resource.message
+        .request-btn
+          %a{ href: new_feedback_path(feedback: { request_id: resource.id }),
+            class: 'btn btn-mini'}
+            Give Feedback
+            %i.icon-share-alt
+  %i.icon-bullhorn

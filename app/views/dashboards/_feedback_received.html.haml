@@ -1,18 +1,19 @@
-.feedback.received
-  .history-icon
-    %i.icon-retweet
-  .avatar
-    = image_tag resource.giver.avatar.url(:small)
+%li.feedback.received
   .history-content
-    .title
-      = t('.title_html',
-          user: resource.giver.decorator.link_to_profile,
-          time: time_ago_in_words(resource.created_at))
-    .topic
-      = resource.topic
-    .plus
-      = image_tag('Plus_666_11px.png', title: 'Plus: what works', alt: 'Plus: what works')
-      = resource.plus
-    .delta
-      = image_tag('Delta_666_11px.png', title: 'Delta: what to improve', alt: 'Delta: what to improve')
-      = resource.delta
+    .inner
+      .avatar
+        = image_tag resource.giver.avatar.url(:small)
+      .sub-inner
+        .title
+          = t('.title_html',
+              user: resource.giver.decorator.link_to_profile,
+              time: time_ago_in_words(resource.created_at))
+        .topic
+          = resource.topic
+        .plus
+          = image_tag('Plus_666_11px.png', title: 'Plus: what works', alt: 'Plus: what works')
+          = resource.plus
+        .delta
+          = image_tag('Delta_666_11px.png', title: 'Delta: what to improve', alt: 'Delta: what to improve')
+          = resource.delta
+  %i.icon-retweet
