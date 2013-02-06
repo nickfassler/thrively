@@ -1,7 +1,36 @@
-div.tagsinput { border:1px solid #CCC; background: #FFF; padding:5px; width:300px; height:100px; overflow-y: auto;}
-div.tagsinput span.tag { border: 1px solid #a5d24a; -moz-border-radius:2px; -webkit-border-radius:2px; display: block; float: left; padding: 5px; text-decoration:none; background: #cde69c; color: #638421; margin-right: 5px; margin-bottom:5px;font-family: helvetica;  font-size:13px;}
-div.tagsinput span.tag a { font-weight: bold; color: #82ad2b; text-decoration:none; font-size: 11px;  } 
-div.tagsinput input { width:80px; margin:0px; font-family: helvetica; font-size: 13px; border:1px solid transparent; padding:5px; background: transparent; color: #000; outline:0px;  margin-right:5px; margin-bottom:5px; }
+div.tagsinput { border:1px solid #CCC; background: #FFF; padding: 2px 1px; width:510px; height:50px; overflow-y: auto;}
+div.tagsinput span.tag {
+display: block; float: left; padding: 5px; text-decoration:none; 
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+background-color: #e4e4e4;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#eeeeee', GradientType=0 );
+background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eee));
+background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+background-image: -o-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+-webkit-box-shadow: 0 0 2px #fff inset,0 1px 0 rgba(0,0,0,0.05);
+-moz-box-shadow: 0 0 2px #fff inset,0 1px 0 rgba(0,0,0,0.05);
+box-shadow: 0 0 2px #fff inset,0 1px 0 rgba(0,0,0,0.05);
+color: #333;
+border: 1px solid #aaa;
+line-height: 13px;
+padding: 3px 5px 3px 5px;
+margin: 3px 0px 3px 5px;
+position: relative;
+cursor: default;
+}
+div.tagsinput span.tag a { color: #999; text-decoration:none; font-size: 11px; } 
+div.tagsinput span.tag a:hover { color: #666; } 
+div.tagsinput input { width:100%; margin: 4px; font-family: helvetica; font-size: 14px; border:1px solid transparent; padding:1px; background: transparent; color: #000; outline:0px; }
 div.tagsinput div { display:block; float: left; } 
 .tags_clear { clear: both; width: 100%; height: 0px; }
-.not_valid {background: #FBD8DB !important; color: #90111A !important;}
+.not_valid {background: #FBD8DB !important; color: #90111A !important; }
+
+
+

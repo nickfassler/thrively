@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'bootstrap-sass', '2.1.0.0'
-gem 'chosen-rails', '0.10.0', git: 'git://github.com/croaky/chosen-rails.git'
 gem 'clearance', '1.0.0.rc1'
 gem 'delayed_job_active_record', '0.3.2'
 gem 'draper', '0.17.0'

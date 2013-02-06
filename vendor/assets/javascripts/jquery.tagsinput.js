@@ -97,11 +97,11 @@
 				
 				if (value !='' && skipTag != true) { 
                     $('<span>').addClass('tag').append(
-                        $('<span>').text(value).append('&nbsp;&nbsp;'),
+                        $('<span>').text(value).append('&nbsp;'),
                         $('<a>', {
                             href  : '#',
-                            title : 'Removing tag',
-                            text  : 'x'
+                            title : 'Remove email',
+                            html  : '<span style="display:none">x</span><i class="icon-remove"></i>'
                         }).click(function () {
                             return $('#' + id).removeTag(escape(value));
                         })
@@ -177,7 +177,7 @@
 	$.fn.tagsInput = function(options) { 
     var settings = jQuery.extend({
       interactive:true,
-      defaultText:'add an email',
+      defaultText:'Add a tag',
       minChars:0,
       width:'300px',
       height:'100px',

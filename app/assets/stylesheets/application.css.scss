@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require formtastic-bootstrap
- *= require chosen
  */
 
 @import 'bootstrap';
@@ -18,6 +17,8 @@
 @import url(http://fonts.googleapis.com/css?family=Dosis:500);
 @import 'dashboard';
 @import 'jquery.tagsinput';
+@import 'jquery-ui-1.9.2.custom';
+@import 'jquery.ui.1.9.2.ie';
 @import 'marketing';
 @import 'requests';
 @import 'welcome';
@@ -164,6 +165,7 @@ footer {
 .give-form, .request-form {
   border: 0px;
   font-size: 14px;
+  margin-top: 15px;
 
   .span8 {
     width: 700px;

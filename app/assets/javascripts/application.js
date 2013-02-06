@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
-//= require chosen-jquery
 //= require jquery_nested_form
 //= require jquery.tagsinput.js
 //= require_tree .

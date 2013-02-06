@@ -1,24 +1,19 @@
 $(->
-  # Harvest Chosen (written by ThoughtBot)
-  $('#add_recipient').bind 'click', ->
-    element = $('input.email').last()
-    nextEmailId = element.data('id')
-    nextEmailId++
-    clonedElement = element.clone()
-    clonedElement.attr
-      'id': 'email_' + nextEmailId,
-      'name': 'emails[' + nextEmailId + ']',
-      'value': '',
-      'data-id': nextEmailId
-    element.after clonedElement
-    clonedElement.focus()
 
-  $('#email_tags').tagsInput(
-    height:'100px',
-    width:'529px',
+  $('#request_emails').tagsInput(
+    height:'26px',
+    width:'504px',
+    defaultText:'Add one or more emails',
+    placeholderColor:'#999999',
     interactive:true,
     removeWithBackspace: true,
     autocomplete_url:"users/1/friends_autocomplete.json",
     autocomplete:{minLength:1}
   )
+
+  $("input#request_emails_tag").focus(->
+    $(this).parent("div").parent("div").addClass("tagsinput_focus")
+  ).blur ->
+    $(this).parent("div").parent("div").removeClass("tagsinput_focus")
+
 )
